@@ -6,7 +6,7 @@
 
   <meta
     name="description"
-    content="Nahuel Kinder — DJ, Remixer y Productor Open Format argentino."
+    content="Press Kit Oficial de Nahuel Kinder — DJ, Remixer y Productor Open Format argentino."
   >
 
   <meta name="theme-color" content="#050505">
@@ -58,9 +58,11 @@
       inset: 0;
       z-index: 99999;
       background: #050505;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       transition:
         opacity 1s cubic-bezier(.77,0,.18,1),
         visibility 1s;
@@ -74,8 +76,11 @@
     .intro-logo {
       width: 160px;
       max-width: 60vw;
+
       opacity: 0;
+
       transform: scale(.45);
+
       animation:
         introLogo 3.2s cubic-bezier(.16,1,.3,1) forwards;
     }
@@ -110,6 +115,7 @@
 
     }
 
+
     /* =========================
        TEXTURA
     ========================= */
@@ -117,13 +123,17 @@
     .grain {
       position: fixed;
       inset: 0;
+
       pointer-events: none;
+
       z-index: 9000;
+
       opacity: .045;
 
       background-image:
         url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
     }
+
 
     /* =========================
        HEADER
@@ -131,9 +141,11 @@
 
     header {
       position: fixed;
+
       top: 0;
       left: 0;
       right: 0;
+
       z-index: 5000;
 
       height: 74px;
@@ -141,38 +153,53 @@
       padding: 0 5vw;
 
       display: flex;
+
       align-items: center;
       justify-content: space-between;
 
-      background: rgba(5,5,5,.75);
-      backdrop-filter: blur(18px);
+      background:
+        rgba(5,5,5,.75);
 
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      backdrop-filter:
+        blur(18px);
+
+      border-bottom:
+        1px solid rgba(255,255,255,.06);
     }
 
     .nav-logo {
       font-size: 11px;
+
       font-weight: 700;
+
       letter-spacing: .18em;
+
       text-transform: uppercase;
     }
 
     nav {
       display: flex;
+
       gap: 30px;
     }
 
     nav a {
       font-size: 9px;
+
       letter-spacing: .18em;
+
       text-transform: uppercase;
+
       color: #777;
-      transition: color .3s ease;
+
+      transition:
+        color .3s ease;
     }
 
     nav a:hover {
       color: #fff;
     }
+
 
     /* =========================
        HERO
@@ -184,15 +211,18 @@
       position: relative;
 
       display: flex;
+
       align-items: center;
 
-      padding: 140px 5vw 100px;
+      padding:
+        140px 5vw 100px;
 
       overflow: hidden;
     }
 
     .hero-bg {
       position: absolute;
+
       inset: 0;
 
       background:
@@ -208,6 +238,7 @@
       content: "";
 
       position: absolute;
+
       inset: 0;
 
       background:
@@ -234,7 +265,8 @@
           rgba(255,255,255,.04),
           rgba(255,255,255,0)
         ),
-        url("./main-photo.jpg") center/cover no-repeat;
+        url("./main-photo.jpg")
+        center/cover no-repeat;
 
       filter:
         grayscale(100%)
@@ -258,27 +290,35 @@
           black 100%
         );
 
-      transform: scale(1.02);
+      transform:
+        scale(1.02);
 
       transition:
         transform 1.2s cubic-bezier(.16,1,.3,1);
     }
 
     .hero:hover .hero-photo {
-      transform: scale(1.05);
+      transform:
+        scale(1.05);
     }
 
     .hero-content {
       position: relative;
+
       z-index: 2;
+
       width: 100%;
     }
 
     .eyebrow {
       font-size: 10px;
+
       text-transform: uppercase;
+
       letter-spacing: .3em;
+
       color: #777;
+
       margin-bottom: 25px;
 
       animation:
@@ -286,10 +326,13 @@
     }
 
     .hero-logo {
-      width: min(520px,72vw);
+      width:
+        min(520px,72vw);
+
       max-height: 160px;
 
       object-fit: contain;
+
       object-position: left center;
 
       margin-bottom: 35px;
@@ -299,7 +342,9 @@
     }
 
     .hero-title {
-      font-family: "Archivo Black", sans-serif;
+      font-family:
+        "Archivo Black",
+        sans-serif;
 
       font-size:
         clamp(4rem,12vw,12rem);
@@ -320,13 +365,17 @@
       margin-top: 38px;
 
       display: flex;
+
       gap: 25px;
+
       flex-wrap: wrap;
 
       color: #777;
 
       font-size: 10px;
+
       letter-spacing: .2em;
+
       text-transform: uppercase;
 
       animation:
@@ -344,19 +393,25 @@
       color: #555;
 
       font-size: 9px;
+
       letter-spacing: .3em;
+
       text-transform: uppercase;
     }
 
+
     /* =========================
-       MARQUEE
+       MARQUESINA
     ========================= */
 
     .marquee {
       overflow: hidden;
 
-      border-top: 1px solid #202020;
-      border-bottom: 1px solid #202020;
+      border-top:
+        1px solid #202020;
+
+      border-bottom:
+        1px solid #202020;
 
       padding: 20px 0;
 
@@ -373,7 +428,8 @@
     }
 
     .marquee span {
-      font-family: "Archivo Black";
+      font-family:
+        "Archivo Black";
 
       font-size:
         clamp(28px,5vw,70px);
@@ -388,27 +444,33 @@
 
     .marquee .dot {
       color: #555;
+
       -webkit-text-stroke: 0;
     }
 
     @keyframes marquee {
 
       from {
-        transform: translateX(0);
+        transform:
+          translateX(0);
       }
 
       to {
-        transform: translateX(-50%);
+        transform:
+          translateX(-50%);
       }
 
     }
+
 
     /* =========================
        SECCIONES
     ========================= */
 
     section {
-      padding: 140px 5vw;
+      padding:
+        140px 5vw;
+
       position: relative;
     }
 
@@ -425,7 +487,8 @@
     }
 
     .section-title {
-      font-family: "Archivo Black";
+      font-family:
+        "Archivo Black";
 
       text-transform: uppercase;
 
@@ -462,6 +525,7 @@
         blur(0);
     }
 
+
     /* =========================
        SOBRE MÍ
     ========================= */
@@ -490,6 +554,7 @@
 
     .about-text strong {
       color: #fff;
+
       font-weight: 500;
     }
 
@@ -512,13 +577,15 @@
       content: "";
 
       position: absolute;
+
       inset: 0;
 
       background:
         url("./about-photo.jpg")
         center/cover no-repeat;
 
-      filter: grayscale(100%);
+      filter:
+        grayscale(100%);
 
       opacity: .7;
     }
@@ -527,15 +594,18 @@
       content: "FOTO";
 
       position: absolute;
+
       inset: 0;
 
       display: flex;
+
       align-items: center;
       justify-content: center;
 
       color: #333;
 
-      font-family: "Archivo Black";
+      font-family:
+        "Archivo Black";
 
       font-size: 35px;
 
@@ -543,6 +613,7 @@
 
       z-index: 0;
     }
+
 
     /* =========================
        MÚSICA
@@ -567,7 +638,8 @@
     .music-player {
       margin-top: 70px;
 
-      border: 1px solid #242424;
+      border:
+        1px solid #242424;
 
       padding: 35px;
 
@@ -619,9 +691,11 @@
     }
 
     .spotify-button {
-      border: 1px solid #444;
+      border:
+        1px solid #444;
 
-      padding: 13px 18px;
+      padding:
+        13px 18px;
 
       font-size: 9px;
 
@@ -629,7 +703,8 @@
 
       text-transform: uppercase;
 
-      transition: all .3s ease;
+      transition:
+        all .3s ease;
 
       white-space: nowrap;
     }
@@ -654,6 +729,7 @@
       border-radius: 12px;
     }
 
+
     /* =========================
        ESTADÍSTICAS
     ========================= */
@@ -664,19 +740,24 @@
       grid-template-columns:
         repeat(2,1fr);
 
-      border-top: 1px solid #222;
+      border-top:
+        1px solid #222;
 
-      border-bottom: 1px solid #222;
+      border-bottom:
+        1px solid #222;
 
       margin-top: 80px;
     }
 
     .stat {
-      padding: 55px 30px;
+      padding:
+        55px 30px;
 
-      border-right: 1px solid #222;
+      border-right:
+        1px solid #222;
 
-      border-bottom: 1px solid #222;
+      border-bottom:
+        1px solid #222;
     }
 
     .stat:nth-child(2n) {
@@ -689,12 +770,14 @@
     }
 
     .stat-number {
-      font-family: "Archivo Black";
+      font-family:
+        "Archivo Black";
 
       font-size:
         clamp(40px,6vw,85px);
 
-      letter-spacing: -.06em;
+      letter-spacing:
+        -.06em;
     }
 
     .stat-label {
@@ -708,6 +791,7 @@
 
       margin-top: 10px;
     }
+
 
     /* =========================
        EXPERIENCIA
@@ -734,9 +818,11 @@
 
       gap: 30px;
 
-      padding: 30px 0;
+      padding:
+        30px 0;
 
-      border-bottom: 1px solid #222;
+      border-bottom:
+        1px solid #222;
 
       align-items: center;
 
@@ -747,6 +833,7 @@
 
     .event:hover {
       padding-left: 15px;
+
       padding-right: 15px;
 
       background:
@@ -762,15 +849,22 @@
     }
 
     .event-name {
-      font-size: 20px;
+      font-family:
+        "Archivo Black";
+
+      font-size:
+        clamp(28px,4vw,55px);
+
+      line-height: .95;
 
       text-transform: uppercase;
 
-      font-weight: 600;
+      letter-spacing:
+        -.04em;
     }
 
     .event-location {
-      color: #666;
+      color: #777;
 
       font-size: 10px;
 
@@ -780,6 +874,7 @@
 
       text-align: right;
     }
+
 
     /* =========================
        MEDIA
@@ -813,7 +908,8 @@
 
       color: #333;
 
-      font-family: "Archivo Black";
+      font-family:
+        "Archivo Black";
 
       transition:
         transform .5s cubic-bezier(.16,1,.3,1);
@@ -821,6 +917,7 @@
 
     .gallery-item:nth-child(1) {
       grid-column: span 7;
+
       min-height: 500px;
     }
 
@@ -834,6 +931,7 @@
 
     .gallery-item:nth-child(4) {
       grid-column: span 7;
+
       min-height: 500px;
     }
 
@@ -844,6 +942,7 @@
 
       z-index: 2;
     }
+
 
     /* =========================
        REDES
@@ -857,13 +956,16 @@
       grid-template-columns:
         repeat(4,1fr);
 
-      border-top: 1px solid #222;
+      border-top:
+        1px solid #222;
     }
 
     .social {
-      padding: 35px 0;
+      padding:
+        35px 0;
 
-      border-bottom: 1px solid #222;
+      border-bottom:
+        1px solid #222;
 
       margin-right: 20px;
 
@@ -876,7 +978,8 @@
     }
 
     .social-name {
-      font-family: "Archivo Black";
+      font-family:
+        "Archivo Black";
 
       font-size: 25px;
 
@@ -892,6 +995,7 @@
 
       letter-spacing: .15em;
     }
+
 
     /* =========================
        CONTRATACIONES
@@ -917,7 +1021,8 @@
     }
 
     .booking-title {
-      font-family: "Archivo Black";
+      font-family:
+        "Archivo Black";
 
       font-size:
         clamp(60px,13vw,190px);
@@ -963,6 +1068,7 @@
       border-color: #fff;
     }
 
+
     /* =========================
        WHATSAPP
     ========================= */
@@ -987,7 +1093,8 @@
 
       color: #080808;
 
-      padding: 12px 16px;
+      padding:
+        12px 16px;
 
       border-radius: 4px;
 
@@ -1033,7 +1140,6 @@
       display: flex;
 
       align-items: center;
-
       justify-content: center;
 
       box-shadow:
@@ -1073,12 +1179,14 @@
 
     }
 
+
     /* =========================
        FOOTER
     ========================= */
 
     footer {
-      padding: 30px 5vw;
+      padding:
+        30px 5vw;
 
       border-top:
         1px solid #1c1c1c;
@@ -1096,6 +1204,7 @@
       letter-spacing: .2em;
     }
 
+
     /* =========================
        ANIMACIONES
     ========================= */
@@ -1104,17 +1213,20 @@
 
       from {
         opacity: 0;
+
         transform:
           translateY(30px);
       }
 
       to {
         opacity: 1;
+
         transform:
           translateY(0);
       }
 
     }
+
 
     /* =========================
        RESPONSIVE
@@ -1137,6 +1249,7 @@
 
       .hero-photo {
         width: 90vw;
+
         height: 70vh;
 
         right: -20vw;
@@ -1155,6 +1268,7 @@
 
       .hero-meta {
         gap: 12px;
+
         line-height: 1.6;
       }
 
@@ -1183,6 +1297,7 @@
 
       .track-header {
         flex-direction: column;
+
         align-items: flex-start;
       }
 
@@ -1234,16 +1349,19 @@
 
       footer {
         flex-direction: column;
+
         gap: 12px;
       }
 
       .whatsapp-wrap {
         right: 16px;
+
         bottom: 16px;
       }
 
       .whatsapp-button {
         width: 56px;
+
         height: 56px;
       }
 
@@ -1440,25 +1558,25 @@
             Nahuel Kinderknecht
           </strong>
 
-          es DJ / Productor Open Format argentino
+          , destacado DJ/Productor Open Format Argentino
           y artista de
 
           <strong>
             @soulmusikrecords
           </strong>
 
-          , con una avalada trayectoria en su país
-          🇦🇷.
+          , con una avalada trayectoria en su país 🇦🇷.
 
           <br><br>
 
           Actualmente tocando y produciendo remix,
-          tanto de manera solista como junto a distintos
-          artistas reconocidos del rubro.
+          solo y con distintos artistas reconocidos
+          del rubro.
 
           <br><br>
 
-          Su trabajo logró superar las
+          Su música y producciones lograron superar
+          las
 
           <strong>
             2.000.000 de reproducciones
@@ -1561,8 +1679,10 @@
 
 
       <h2 class="section-title reveal">
+
         El alcance<br>
         de la música
+
       </h2>
 
 
@@ -1639,7 +1759,7 @@
 
       <h2 class="section-title reveal">
 
-        Trayectoria<br>
+        Ciudades<br>
         y escenarios
 
       </h2>
@@ -1655,6 +1775,8 @@
       </div>
 
 
+      <!-- BUENOS AIRES -->
+
       <div class="event reveal">
 
         <div class="event-number">
@@ -1662,15 +1784,17 @@
         </div>
 
         <div class="event-name">
-          Podestá
+          Buenos Aires
         </div>
 
         <div class="event-location">
-          Palermo Soho · Buenos Aires
+          Podestá · Palermo Soho
         </div>
 
       </div>
 
+
+      <!-- ROSARIO -->
 
       <div class="event reveal">
 
@@ -1679,11 +1803,11 @@
         </div>
 
         <div class="event-name">
-          Bound
+          Rosario
         </div>
 
         <div class="event-location">
-          Rosario · Santa Fe
+          Bound
         </div>
 
       </div>
@@ -1696,15 +1820,17 @@
         </div>
 
         <div class="event-name">
-          La Isla
+          Rosario
         </div>
 
         <div class="event-location">
-          Rosario · Santa Fe
+          La Isla
         </div>
 
       </div>
 
+
+      <!-- CONCORDIA -->
 
       <div class="event reveal">
 
@@ -1713,15 +1839,17 @@
         </div>
 
         <div class="event-name">
-          Bonzo Costanera
+          Concordia
         </div>
 
         <div class="event-location">
-          Concordia · Entre Ríos
+          Bonzo Costanera
         </div>
 
       </div>
 
+
+      <!-- VILLAGUAY -->
 
       <div class="event reveal">
 
@@ -1730,11 +1858,11 @@
         </div>
 
         <div class="event-name">
-          Santo Grial
+          Villaguay
         </div>
 
         <div class="event-location">
-          Villaguay · Entre Ríos
+          Santo Grial
         </div>
 
       </div>
@@ -1747,15 +1875,17 @@
         </div>
 
         <div class="event-name">
-          Navidad
+          Villaguay
         </div>
 
         <div class="event-location">
-          Villaguay · Entre Ríos
+          Navidad
         </div>
 
       </div>
 
+
+      <!-- OTRAS CIUDADES -->
 
       <div class="event reveal">
 
@@ -1764,11 +1894,45 @@
         </div>
 
         <div class="event-name">
-          Otras ciudades
+          San Salvador
         </div>
 
         <div class="event-location">
-          San Salvador · Villa Clara · Villa Elisa
+          Entre Ríos
+        </div>
+
+      </div>
+
+
+      <div class="event reveal">
+
+        <div class="event-number">
+          08
+        </div>
+
+        <div class="event-name">
+          Villa Clara
+        </div>
+
+        <div class="event-location">
+          Entre Ríos
+        </div>
+
+      </div>
+
+
+      <div class="event reveal">
+
+        <div class="event-number">
+          09
+        </div>
+
+        <div class="event-name">
+          Villa Elisa
+        </div>
+
+        <div class="event-location">
+          Entre Ríos
         </div>
 
       </div>
@@ -1943,7 +2107,10 @@
          CONTRATACIONES
     ========================= -->
 
-    <section id="booking" class="booking">
+    <section
+      id="booking"
+      class="booking"
+    >
 
 
       <div class="section-label reveal">
