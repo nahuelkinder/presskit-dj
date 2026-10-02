@@ -60,9 +60,7 @@
       display: block;
     }
 
-    /* =========================================================
-       INTRO
-    ========================================================= */
+    /* INTRO */
 
     .intro {
       position: fixed;
@@ -113,9 +111,7 @@
       }
     }
 
-    /* =========================================================
-       NOISE
-    ========================================================= */
+    /* RUIDO */
 
     body::before {
       content: "";
@@ -128,9 +124,7 @@
         url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
     }
 
-    /* =========================================================
-       HEADER
-    ========================================================= */
+    /* HEADER */
 
     header {
       position: fixed;
@@ -180,9 +174,7 @@
       width: 100%;
     }
 
-    /* =========================================================
-       HERO
-    ========================================================= */
+    /* HERO */
 
     .hero {
       position: relative;
@@ -241,13 +233,6 @@
       text-align: center;
     }
 
-    /*
-      LOGO PRINCIPAL DEL HERO
-
-      Ahora ocupa el lugar que antes tenía
-      "NAHUEL KINDER".
-    */
-
     .hero-logo {
       width: min(950px, 82vw);
       height: auto;
@@ -287,9 +272,7 @@
       background: rgba(255,255,255,.5);
     }
 
-    /* =========================================================
-       MARQUEE
-    ========================================================= */
+    /* MARQUEE */
 
     .marquee {
       background: #050505;
@@ -335,10 +318,6 @@
       }
     }
 
-    /* =========================================================
-       GENERAL
-    ========================================================= */
-
     section {
       position: relative;
     }
@@ -364,6 +343,8 @@
       letter-spacing: -.065em;
     }
 
+    /* REVEAL */
+
     .reveal {
       opacity: 0;
       transform: translateY(35px);
@@ -377,9 +358,7 @@
       transform: translateY(0);
     }
 
-    /* =========================================================
-       ABOUT
-    ========================================================= */
+    /* SOBRE MÍ */
 
     .about {
       background: var(--white);
@@ -449,9 +428,7 @@
       max-width: 620px;
     }
 
-    /* =========================================================
-       MUSIC
-    ========================================================= */
+    /* MÚSICA */
 
     .music {
       background: #050505;
@@ -508,9 +485,7 @@
       color: #000;
     }
 
-    /* =========================================================
-       STATS
-    ========================================================= */
+    /* ESTADÍSTICAS */
 
     .stats {
       background: var(--soft);
@@ -548,9 +523,7 @@
       color: #666;
     }
 
-    /* =========================================================
-       EXPERIENCE
-    ========================================================= */
+    /* EXPERIENCIA */
 
     .experience {
       background: var(--white);
@@ -604,9 +577,7 @@
       color: #777;
     }
 
-    /* =========================================================
-       GALLERY
-    ========================================================= */
+    /* GALERÍA */
 
     .gallery {
       background: #050505;
@@ -663,9 +634,7 @@
       transform: scale(1.045);
     }
 
-    /* =========================================================
-       SOCIAL
-    ========================================================= */
+    /* REDES */
 
     .social {
       background: var(--white);
@@ -716,9 +685,7 @@
       opacity: .55;
     }
 
-    /* =========================================================
-       BOOKING
-    ========================================================= */
+    /* CONTRATACIONES */
 
     .booking {
       background: #050505;
@@ -782,9 +749,7 @@
       color: #fff;
     }
 
-    /* =========================================================
-       TECH RIDER
-    ========================================================= */
+    /* EQUIPAMIENTO */
 
     .tech {
       background: var(--soft);
@@ -826,9 +791,7 @@
       object-fit: contain;
     }
 
-    /* =========================================================
-       FOOTER
-    ========================================================= */
+    /* FOOTER */
 
     footer {
       background: #050505;
@@ -870,9 +833,7 @@
       text-transform: uppercase;
     }
 
-    /* =========================================================
-       WHATSAPP
-    ========================================================= */
+    /* WHATSAPP */
 
     .whatsapp {
       position: fixed;
@@ -943,9 +904,7 @@
       }
     }
 
-    /* =========================================================
-       LIGHTBOX
-    ========================================================= */
+    /* LIGHTBOX */
 
     .lightbox {
       position: fixed;
@@ -980,9 +939,7 @@
       line-height: 1;
     }
 
-    /* =========================================================
-       MOBILE
-    ========================================================= */
+    /* RESPONSIVE */
 
     @media (max-width: 800px) {
 
@@ -1173,9 +1130,7 @@
 
 <body class="intro-active">
 
-  <!-- =========================================================
-       INTRO
-  ========================================================= -->
+  <!-- INTRO -->
 
   <div class="intro" id="intro">
     <img
@@ -1185,27 +1140,25 @@
     />
   </div>
 
-  <!-- =========================================================
-       HEADER
-  ========================================================= -->
+  <!-- ENCABEZADO -->
 
   <header>
+
     <div class="header-brand">
-      PRESS KIT
+      PRESS KIT OFICIAL
     </div>
 
     <nav class="header-nav">
-      <a href="#about">About</a>
-      <a href="#music">Music</a>
-      <a href="#experience">Experience</a>
-      <a href="#gallery">Media</a>
-      <a href="#booking">Booking</a>
+      <a href="#about">Sobre mí</a>
+      <a href="#music">Música</a>
+      <a href="#experience">Experiencia</a>
+      <a href="#gallery">Galería</a>
+      <a href="#booking">Contrataciones</a>
     </nav>
+
   </header>
 
-  <!-- =========================================================
-       HERO
-  ========================================================= -->
+  <!-- HERO -->
 
   <section class="hero">
 
@@ -1224,11 +1177,6 @@
         DJ · Remixer · Producer · Open Format
       </div>
 
-      <!--
-        LOGO PRINCIPAL:
-        ocupa el lugar que antes tenía "NAHUEL KINDER"
-      -->
-
       <img
         src="./nahuel%20kinder%20png%20logo.png"
         alt="Nahuel Kinder"
@@ -1244,7 +1192,7 @@
       </div>
 
       <div class="hero-scroll">
-        Scroll
+        Deslizá
         <span></span>
       </div>
 
@@ -1252,9 +1200,7 @@
 
   </section>
 
-  <!-- =========================================================
-       MARQUEE
-  ========================================================= -->
+  <!-- MARQUEE -->
 
   <div class="marquee">
 
@@ -1302,9 +1248,7 @@
 
   </div>
 
-  <!-- =========================================================
-       ABOUT
-  ========================================================= -->
+  <!-- SOBRE MÍ -->
 
   <section class="about" id="about">
 
@@ -1313,17 +1257,19 @@
       <div class="about-grid">
 
         <div class="about-image-wrap reveal">
+
           <img
             src="./about-photo.jpg"
             alt="Nahuel Kinder DJ"
             class="about-image"
           />
+
         </div>
 
         <div class="about-copy reveal">
 
           <div class="section-label">
-            01 / About
+            01 / Sobre mí
           </div>
 
           <h2>
@@ -1348,9 +1294,7 @@
 
   </section>
 
-  <!-- =========================================================
-       MUSIC
-  ========================================================= -->
+  <!-- MÚSICA -->
 
   <section class="music" id="music">
 
@@ -1361,12 +1305,12 @@
         <div class="reveal">
 
           <div class="section-label">
-            02 / Music
+            02 / Música
           </div>
 
           <h2 class="music-title">
-            Listen<br />
-            Now.
+            Escuchá<br />
+            ahora.
           </h2>
 
           <p class="music-description">
@@ -1379,7 +1323,7 @@
             target="_blank"
             class="music-button"
           >
-            Spotify Artist →
+            Artista en Spotify →
           </a>
 
         </div>
@@ -1401,9 +1345,7 @@
 
   </section>
 
-  <!-- =========================================================
-       STATS
-  ========================================================= -->
+  <!-- ESTADÍSTICAS -->
 
   <section class="stats">
 
@@ -1453,9 +1395,7 @@
 
   </section>
 
-  <!-- =========================================================
-       EXPERIENCE
-  ========================================================= -->
+  <!-- EXPERIENCIA -->
 
   <section class="experience" id="experience">
 
@@ -1466,12 +1406,12 @@
         <div>
 
           <div class="section-label">
-            03 / Experience
+            03 / Experiencia
           </div>
 
           <h2 class="section-title">
-            Selected<br />
-            Events.
+            Eventos<br />
+            destacados.
           </h2>
 
         </div>
@@ -1540,9 +1480,7 @@
 
   </section>
 
-  <!-- =========================================================
-       GALLERY
-  ========================================================= -->
+  <!-- GALERÍA -->
 
   <section class="gallery" id="gallery">
 
@@ -1551,12 +1489,12 @@
       <div class="gallery-header reveal">
 
         <div class="section-label">
-          04 / Media
+          04 / Galería
         </div>
 
         <h2 class="section-title">
-          Visual<br />
-          Archive.
+          Archivo<br />
+          visual.
         </h2>
 
       </div>
@@ -1597,9 +1535,7 @@
 
   </section>
 
-  <!-- =========================================================
-       SOCIALS
-  ========================================================= -->
+  <!-- REDES -->
 
   <section class="social">
 
@@ -1608,12 +1544,11 @@
       <div class="social-header reveal">
 
         <div class="section-label">
-          05 / Social
+          05 / Redes
         </div>
 
         <h2 class="section-title">
-          Follow<br />
-          Along.
+          Seguime.
         </h2>
 
       </div>
@@ -1625,6 +1560,7 @@
           target="_blank"
           class="social-link reveal"
         >
+
           <div class="social-name">
             Instagram
           </div>
@@ -1632,6 +1568,7 @@
           <div class="social-handle">
             @nahuelkinderknecht
           </div>
+
         </a>
 
         <a
@@ -1639,6 +1576,7 @@
           target="_blank"
           class="social-link reveal"
         >
+
           <div class="social-name">
             Spotify
           </div>
@@ -1646,6 +1584,7 @@
           <div class="social-handle">
             Nahuel Kinder
           </div>
+
         </a>
 
         <a
@@ -1653,6 +1592,7 @@
           target="_blank"
           class="social-link reveal"
         >
+
           <div class="social-name">
             YouTube
           </div>
@@ -1660,6 +1600,7 @@
           <div class="social-handle">
             @nahuelkinder
           </div>
+
         </a>
 
         <a
@@ -1667,6 +1608,7 @@
           target="_blank"
           class="social-link reveal"
         >
+
           <div class="social-name">
             TikTok
           </div>
@@ -1674,6 +1616,7 @@
           <div class="social-handle">
             @nahuelkin_
           </div>
+
         </a>
 
       </div>
@@ -1682,9 +1625,7 @@
 
   </section>
 
-  <!-- =========================================================
-       BOOKING
-  ========================================================= -->
+  <!-- CONTRATACIONES -->
 
   <section class="booking" id="booking">
 
@@ -1695,12 +1636,11 @@
         <div class="reveal">
 
           <div class="section-label">
-            06 / Booking
+            06 / Contrataciones
           </div>
 
           <h2 class="booking-title">
-            Let's<br />
-            Work.
+            ¡Trabajemos!
           </h2>
 
         </div>
@@ -1739,9 +1679,7 @@
 
   </section>
 
-  <!-- =========================================================
-       TECH RIDER
-  ========================================================= -->
+  <!-- EQUIPAMIENTO -->
 
   <section class="tech">
 
@@ -1752,12 +1690,12 @@
         <div class="reveal">
 
           <div class="section-label">
-            07 / Tech Rider
+            07 / Equipamiento
           </div>
 
           <h2 class="tech-title">
-            DJ<br />
-            Setup.
+            Equipamiento<br />
+            DJ.
           </h2>
 
           <p class="tech-copy">
@@ -1781,9 +1719,7 @@
 
   </section>
 
-  <!-- =========================================================
-       FOOTER
-  ========================================================= -->
+  <!-- FOOTER -->
 
   <footer>
 
@@ -1800,7 +1736,7 @@
         <div class="footer-right">
 
           <p>
-            DJ · Remixer · Producer · Open Format
+            DJ · Remixer · Productor · Open Format
           </p>
 
           <p>
@@ -1818,7 +1754,7 @@
         </span>
 
         <span>
-          Official Press Kit
+          Press Kit Oficial
         </span>
 
       </div>
@@ -1827,9 +1763,7 @@
 
   </footer>
 
-  <!-- =========================================================
-       WHATSAPP
-  ========================================================= -->
+  <!-- WHATSAPP -->
 
   <div class="whatsapp">
 
@@ -1851,16 +1785,16 @@
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >
+
         <path d="M20.52 3.48A11.8 11.8 0 0 0 12.09 0C5.56 0 .25 5.31.25 11.84c0 2.09.55 4.13 1.6 5.93L.16 24l6.37-1.67a11.82 11.82 0 0 0 5.56 1.41h.01c6.52 0 11.83-5.31 11.83-11.84 0-3.16-1.23-6.13-3.41-8.42ZM12.1 21.78h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.78.99 1.01-3.68-.23-.38a9.89 9.89 0 0 1-1.52-5.28C2.16 6.38 6.62 1.92 12.09 1.92c2.65 0 5.14 1.03 7.01 2.91a9.85 9.85 0 0 1 2.9 7.02c0 5.48-4.45 9.93-9.9 9.93Zm5.45-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.21 5.08 4.5.71.31 1.27.5 1.7.64.72.23 1.37.2 1.88.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+
       </svg>
 
     </a>
 
   </div>
 
-  <!-- =========================================================
-       LIGHTBOX
-  ========================================================= -->
+  <!-- LIGHTBOX -->
 
   <div
     class="lightbox"
@@ -1882,15 +1816,9 @@
 
   </div>
 
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================= -->
-
   <script>
 
-    /* =========================================================
-       INTRO
-    ========================================================= */
+    /* INTRO */
 
     window.addEventListener("load", () => {
 
@@ -1917,10 +1845,7 @@
 
     });
 
-
-    /* =========================================================
-       SCROLL REVEAL
-    ========================================================= */
+    /* ANIMACIONES AL HACER SCROLL */
 
     const revealElements =
       document.querySelectorAll(".reveal");
@@ -1951,10 +1876,7 @@
       revealObserver.observe(element);
     });
 
-
-    /* =========================================================
-       HERO PARALLAX
-    ========================================================= */
+    /* PARALLAX DEL HERO */
 
     const heroBg =
       document.getElementById("heroBg");
@@ -1974,10 +1896,7 @@
 
     });
 
-
-    /* =========================================================
-       WHATSAPP POPUP
-    ========================================================= */
+    /* POPUP WHATSAPP */
 
     const whatsappPopup =
       document.getElementById("whatsappPopup");
@@ -2000,10 +1919,7 @@
 
     setInterval(showWhatsappPopup, 18000);
 
-
-    /* =========================================================
-       GALLERY LIGHTBOX
-    ========================================================= */
+    /* LIGHTBOX */
 
     const galleryItems =
       document.querySelectorAll(".gallery-item");
@@ -2036,7 +1952,6 @@
 
     });
 
-
     function closeLightbox() {
 
       lightbox.classList.remove("active");
@@ -2045,12 +1960,10 @@
 
     }
 
-
     lightboxClose.addEventListener(
       "click",
       closeLightbox
     );
-
 
     lightbox.addEventListener(
       "click",
@@ -2062,7 +1975,6 @@
 
       }
     );
-
 
     document.addEventListener(
       "keydown",
