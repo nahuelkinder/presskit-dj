@@ -268,9 +268,11 @@
       padding: 150px 7vw 70px;
     }
 
+    /* LOGO CENTRADO CON LA IDENTIDAD DEBAJO */
+
     .hero-logo {
       width: 270px;
-      margin-bottom: 42px;
+      margin: 0 auto 30px;
     }
 
     .hero-kicker {
@@ -279,6 +281,7 @@
       text-transform: uppercase;
       color: #aaa;
       margin-bottom: 18px;
+      text-align: center;
     }
 
     .hero-title {
@@ -363,12 +366,6 @@
       gap: 9vw;
       align-items: center;
     }
-
-    /*
-      FOTO COMPLETA:
-      Se elimina el recorte anterior y se respeta
-      la proporción original de la imagen.
-    */
 
     .about-image {
       width: 100%;
@@ -609,18 +606,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
     }
-
-    /*
-      Antes:
-      height: 100%;
-      aspect-ratio: 1.15;
-      object-fit: cover;
-
-      Eso hacía que las fotos se cortaran.
-
-      Ahora se respeta completamente la imagen original.
-    */
 
     .gallery-item img {
       width: 100%;
@@ -632,8 +619,6 @@
       transition:
         transform .8s cubic-bezier(.16,1,.3,1);
     }
-
-    /* Cambio desfasado entre fotografías */
 
     .gallery-item:nth-child(1) img {
       animation-delay: 0s;
@@ -653,6 +638,110 @@
 
     .gallery-item:hover img {
       transform: scale(1.045);
+    }
+
+    /* =========================
+       GALLERY LIGHTBOX
+    ========================= */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0,0,0,.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .35s ease, visibility .35s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .lightbox-image {
+      max-width: 90vw;
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      box-shadow: 0 25px 80px rgba(0,0,0,.6);
+      transform: scale(.94);
+      transition: transform .4s cubic-bezier(.16,1,.3,1);
+    }
+
+    .lightbox.active .lightbox-image {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 22px;
+      right: 30px;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      font-size: 30px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .25s ease, transform .25s ease;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,.14);
+      transform: rotate(90deg);
+    }
+
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.25);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .25s ease, transform .25s ease;
+    }
+
+    .lightbox-arrow:hover {
+      background: rgba(255,255,255,.14);
+    }
+
+    .lightbox-prev {
+      left: 28px;
+    }
+
+    .lightbox-next {
+      right: 28px;
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #777;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
     }
 
     /* =========================
@@ -745,9 +834,15 @@
       font-weight: 600;
     }
 
+    .booking-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 45px;
+    }
+
     .booking-button {
       display: inline-flex;
-      margin-top: 45px;
       padding: 18px 28px;
       background: #080808;
       color: #fff;
@@ -760,6 +855,17 @@
     .booking-button:hover {
       transform: translateY(-3px);
       background: #222;
+    }
+
+    .booking-button.secondary {
+      background: transparent;
+      color: #080808;
+      border: 1px solid rgba(0,0,0,.22);
+    }
+
+    .booking-button.secondary:hover {
+      background: #080808;
+      color: #fff;
     }
 
     /* =========================
@@ -787,15 +893,6 @@
       text-transform: uppercase;
       letter-spacing: -.06em;
       max-width: 900px;
-    }
-
-    .tech-description {
-      color: #777;
-      font-size: 12px;
-      line-height: 1.7;
-      max-width: 250px;
-      text-transform: uppercase;
-      letter-spacing: .08em;
     }
 
     .tech-product {
@@ -1039,7 +1136,13 @@
 
       .hero-logo {
         width: 185px;
-        margin-bottom: 30px;
+        margin: 0 auto 25px;
+      }
+
+      .hero-kicker {
+        font-size: 9px;
+        letter-spacing: .18em;
+        white-space: nowrap;
       }
 
       .hero-title {
@@ -1090,6 +1193,15 @@
         font-size: 17vw;
       }
 
+      .booking-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .booking-button {
+        justify-content: center;
+      }
+
       .tech-product {
         min-height: 250px;
         padding: 15px;
@@ -1128,6 +1240,37 @@
       .footer-bottom {
         flex-direction: column;
         gap: 10px;
+      }
+
+      .lightbox {
+        padding: 25px;
+      }
+
+      .lightbox-image {
+        max-width: 94vw;
+        max-height: 82vh;
+      }
+
+      .lightbox-close {
+        top: 15px;
+        right: 15px;
+        width: 42px;
+        height: 42px;
+        font-size: 26px;
+      }
+
+      .lightbox-arrow {
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
+      }
+
+      .lightbox-prev {
+        left: 12px;
+      }
+
+      .lightbox-next {
+        right: 12px;
       }
     }
   </style>
@@ -1490,44 +1633,36 @@
 
       <div class="gallery">
 
-        <div class="gallery-item reveal">
-
+        <div class="gallery-item reveal" data-index="0">
           <img
             src="./gallery-01.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
           />
-
         </div>
 
-        <div class="gallery-item reveal">
-
+        <div class="gallery-item reveal" data-index="1">
           <img
             src="./gallery-02.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
           />
-
         </div>
 
-        <div class="gallery-item reveal">
-
+        <div class="gallery-item reveal" data-index="2">
           <img
             src="./gallery-03.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
           />
-
         </div>
 
-        <div class="gallery-item reveal">
-
+        <div class="gallery-item reveal" data-index="3">
           <img
             src="./gallery-04.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
           />
-
         </div>
 
       </div>
@@ -1637,14 +1772,25 @@
 
         </div>
 
-        <a
-          href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="booking-button reveal"
-        >
-          Consultar fecha ↗
-        </a>
+        <div class="booking-buttons">
+
+          <a
+            href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="booking-button reveal"
+          >
+            WhatsApp ↗
+          </a>
+
+          <a
+            href="mailto:Nahuelkinder@gmail.com?subject=Booking%20-%20Nahuel%20Kinder"
+            class="booking-button secondary reveal"
+          >
+            Email ↗
+          </a>
+
+        </div>
 
       </div>
     </section>
@@ -1666,10 +1812,6 @@
           DDJ-FLX10
         </h2>
 
-        <p class="tech-description reveal">
-          Equipment requerido para la presentación.
-        </p>
-
       </div>
 
       <div class="tech-product reveal">
@@ -1689,6 +1831,56 @@
     </section>
 
   </main>
+
+  <!-- =========================
+       GALLERY LIGHTBOX
+  ========================= -->
+
+  <div
+    class="lightbox"
+    id="lightbox"
+    aria-hidden="true"
+  >
+
+    <button
+      class="lightbox-close"
+      id="lightboxClose"
+      aria-label="Cerrar"
+    >
+      ×
+    </button>
+
+    <button
+      class="lightbox-arrow lightbox-prev"
+      id="lightboxPrev"
+      aria-label="Foto anterior"
+    >
+      ‹
+    </button>
+
+    <img
+      src=""
+      alt="Nahuel Kinder"
+      class="lightbox-image"
+      id="lightboxImage"
+    />
+
+    <button
+      class="lightbox-arrow lightbox-next"
+      id="lightboxNext"
+      aria-label="Foto siguiente"
+    >
+      ›
+    </button>
+
+    <div
+      class="lightbox-counter"
+      id="lightboxCounter"
+    >
+      1 / 4
+    </div>
+
+  </div>
 
   <!-- =========================
        WHATSAPP
@@ -1806,6 +1998,163 @@
     revealElements.forEach((element) => {
 
       revealObserver.observe(element);
+
+    });
+
+
+    /* =========================
+       GALLERY LIGHTBOX
+    ========================= */
+
+    const galleryItems =
+      document.querySelectorAll(".gallery-item");
+
+    const lightbox =
+      document.getElementById("lightbox");
+
+    const lightboxImage =
+      document.getElementById("lightboxImage");
+
+    const lightboxClose =
+      document.getElementById("lightboxClose");
+
+    const lightboxPrev =
+      document.getElementById("lightboxPrev");
+
+    const lightboxNext =
+      document.getElementById("lightboxNext");
+
+    const lightboxCounter =
+      document.getElementById("lightboxCounter");
+
+    const galleryImages = [
+      "./gallery-01.jpg",
+      "./gallery-02.jpg",
+      "./gallery-03.jpg",
+      "./gallery-04.jpg"
+    ];
+
+    let currentGalleryIndex = 0;
+
+
+    function updateLightbox() {
+
+      lightboxImage.src =
+        galleryImages[currentGalleryIndex];
+
+      lightboxCounter.textContent =
+        `${currentGalleryIndex + 1} / ${galleryImages.length}`;
+
+    }
+
+
+    function openLightbox(index) {
+
+      currentGalleryIndex = index;
+
+      updateLightbox();
+
+      lightbox.classList.add("active");
+
+      lightbox.setAttribute("aria-hidden", "false");
+
+      document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeLightbox() {
+
+      lightbox.classList.remove("active");
+
+      lightbox.setAttribute("aria-hidden", "true");
+
+      document.body.style.overflow = "";
+
+    }
+
+
+    function nextImage() {
+
+      currentGalleryIndex =
+        (currentGalleryIndex + 1) % galleryImages.length;
+
+      updateLightbox();
+
+    }
+
+
+    function previousImage() {
+
+      currentGalleryIndex =
+        (currentGalleryIndex - 1 + galleryImages.length)
+        % galleryImages.length;
+
+      updateLightbox();
+
+    }
+
+
+    galleryItems.forEach((item) => {
+
+      item.addEventListener("click", () => {
+
+        const index =
+          Number(item.dataset.index);
+
+        openLightbox(index);
+
+      });
+
+    });
+
+
+    lightboxClose.addEventListener(
+      "click",
+      closeLightbox
+    );
+
+
+    lightboxNext.addEventListener(
+      "click",
+      nextImage
+    );
+
+
+    lightboxPrev.addEventListener(
+      "click",
+      previousImage
+    );
+
+
+    lightbox.addEventListener("click", (event) => {
+
+      if (event.target === lightbox) {
+
+        closeLightbox();
+
+      }
+
+    });
+
+
+    document.addEventListener("keydown", (event) => {
+
+      if (!lightbox.classList.contains("active")) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowRight") {
+        nextImage();
+      }
+
+      if (event.key === "ArrowLeft") {
+        previousImage();
+      }
 
     });
 
