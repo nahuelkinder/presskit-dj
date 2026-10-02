@@ -703,8 +703,8 @@
     .booking-title {
       font-family: "Archivo Black", sans-serif;
       text-transform: uppercase;
-      font-size: clamp(60px, 9vw, 140px);
-      line-height: .78;
+      font-size: clamp(42px, 6vw, 85px);
+      line-height: .82;
       letter-spacing: -.07em;
     }
 
@@ -758,16 +758,16 @@
 
     .tech-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 90px;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 60px;
       align-items: center;
     }
 
     .tech-title {
       font-family: "Archivo Black", sans-serif;
       text-transform: uppercase;
-      font-size: clamp(55px, 8vw, 120px);
-      line-height: .8;
+      font-size: clamp(38px, 5vw, 75px);
+      line-height: .82;
       letter-spacing: -.065em;
     }
 
@@ -786,9 +786,10 @@
     }
 
     .tech-gear img {
-      width: min(620px, 100%);
+      width: min(850px, 115%);
       height: auto;
       object-fit: contain;
+      transform: scale(1.08);
     }
 
     /* FOOTER */
@@ -994,10 +995,14 @@
 
       .about-grid,
       .music-grid,
-      .booking-grid,
-      .tech-grid {
+      .booking-grid {
         grid-template-columns: 1fr;
         gap: 55px;
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
       }
 
       .about-copy h2 {
@@ -1039,7 +1044,11 @@
 
       .experience-city {
         grid-column: 2;
-        margin-top: -10px;
+        margin-top: 0;
+      }
+
+      .experience-place {
+        grid-column: 2;
       }
 
       .gallery-grid {
@@ -1095,6 +1104,16 @@
       .whatsapp-popup {
         right: 65px;
       }
+
+      .tech-gear {
+        min-height: 280px;
+      }
+
+      .tech-gear img {
+        width: 115%;
+        max-width: none;
+        transform: scale(1.05);
+      }
     }
 
     @media (max-width: 480px) {
@@ -1124,6 +1143,11 @@
       .social-link:last-child {
         border-bottom: none !important;
       }
+
+      .tech-gear img {
+        width: 120%;
+        transform: scale(1.02);
+      }
     }
   </style>
 </head>
@@ -1133,11 +1157,13 @@
   <!-- INTRO -->
 
   <div class="intro" id="intro">
+
     <img
       src="./intro-logo.png"
       alt="Nahuel Kinder"
       class="intro-logo"
     />
+
   </div>
 
   <!-- ENCABEZADO -->
@@ -1149,11 +1175,27 @@
     </div>
 
     <nav class="header-nav">
-      <a href="#about">Sobre mí</a>
-      <a href="#music">Música</a>
-      <a href="#experience">Experiencia</a>
-      <a href="#gallery">Galería</a>
-      <a href="#booking">Contrataciones</a>
+
+      <a href="#about">
+        Sobre mí
+      </a>
+
+      <a href="#music">
+        Música
+      </a>
+
+      <a href="#experience">
+        Experiencia
+      </a>
+
+      <a href="#gallery">
+        Galería
+      </a>
+
+      <a href="#booking">
+        Contrataciones
+      </a>
+
     </nav>
 
   </header>
@@ -1174,7 +1216,7 @@
     <div class="hero-content">
 
       <div class="hero-kicker reveal">
-        DJ · Remixer · Producer · Open Format
+        DJ · Remixer · Productor · Open Format
       </div>
 
       <img
@@ -1207,41 +1249,59 @@
     <div class="marquee-track">
 
       <div class="marquee-content">
+
         <span>DJ</span>
         <span class="dot">✦</span>
+
         <span>Remixer</span>
         <span class="dot">✦</span>
-        <span>Producer</span>
+
+        <span>Productor</span>
         <span class="dot">✦</span>
+
         <span>Open Format</span>
         <span class="dot">✦</span>
+
         <span>DJ</span>
         <span class="dot">✦</span>
+
         <span>Remixer</span>
         <span class="dot">✦</span>
-        <span>Producer</span>
+
+        <span>Productor</span>
         <span class="dot">✦</span>
+
         <span>Open Format</span>
         <span class="dot">✦</span>
+
       </div>
 
       <div class="marquee-content">
+
         <span>DJ</span>
         <span class="dot">✦</span>
+
         <span>Remixer</span>
         <span class="dot">✦</span>
-        <span>Producer</span>
+
+        <span>Productor</span>
         <span class="dot">✦</span>
+
         <span>Open Format</span>
         <span class="dot">✦</span>
+
         <span>DJ</span>
         <span class="dot">✦</span>
+
         <span>Remixer</span>
         <span class="dot">✦</span>
-        <span>Producer</span>
+
+        <span>Productor</span>
         <span class="dot">✦</span>
+
         <span>Open Format</span>
         <span class="dot">✦</span>
+
       </div>
 
     </div>
@@ -1421,57 +1481,147 @@
       <div class="experience-list">
 
         <div class="experience-item reveal">
-          <div class="experience-number">01</div>
-          <div class="experience-place">Podestá · Palermo Soho</div>
-          <div class="experience-city">Buenos Aires</div>
+
+          <div class="experience-number">
+            01
+          </div>
+
+          <div class="experience-city">
+            Buenos Aires
+          </div>
+
+          <div class="experience-place">
+            Podestá · Palermo Soho
+          </div>
+
         </div>
 
         <div class="experience-item reveal">
-          <div class="experience-number">02</div>
-          <div class="experience-place">Bound</div>
-          <div class="experience-city">Rosario</div>
+
+          <div class="experience-number">
+            02
+          </div>
+
+          <div class="experience-city">
+            Rosario
+          </div>
+
+          <div class="experience-place">
+            Bound
+          </div>
+
         </div>
 
         <div class="experience-item reveal">
-          <div class="experience-number">03</div>
-          <div class="experience-place">La Isla</div>
-          <div class="experience-city">Rosario</div>
+
+          <div class="experience-number">
+            03
+          </div>
+
+          <div class="experience-city">
+            Rosario
+          </div>
+
+          <div class="experience-place">
+            La Isla
+          </div>
+
         </div>
 
         <div class="experience-item reveal">
-          <div class="experience-number">04</div>
-          <div class="experience-place">Bonzo Costanera</div>
-          <div class="experience-city">Concordia</div>
+
+          <div class="experience-number">
+            04
+          </div>
+
+          <div class="experience-city">
+            Concordia
+          </div>
+
+          <div class="experience-place">
+            Bonzo Costanera
+          </div>
+
         </div>
 
         <div class="experience-item reveal">
-          <div class="experience-number">05</div>
-          <div class="experience-place">Santo Grial</div>
-          <div class="experience-city">Villaguay</div>
+
+          <div class="experience-number">
+            05
+          </div>
+
+          <div class="experience-city">
+            Villaguay
+          </div>
+
+          <div class="experience-place">
+            Santo Grial
+          </div>
+
         </div>
 
         <div class="experience-item reveal">
-          <div class="experience-number">06</div>
-          <div class="experience-place">Navidad</div>
-          <div class="experience-city">Villaguay</div>
+
+          <div class="experience-number">
+            06
+          </div>
+
+          <div class="experience-city">
+            Villaguay
+          </div>
+
+          <div class="experience-place">
+            Navidad
+          </div>
+
         </div>
 
         <div class="experience-item reveal">
-          <div class="experience-number">07</div>
-          <div class="experience-place">Entre Ríos</div>
-          <div class="experience-city">San Salvador</div>
+
+          <div class="experience-number">
+            07
+          </div>
+
+          <div class="experience-city">
+            San Salvador · Entre Ríos
+          </div>
+
+          <div class="experience-place">
+            —
+          </div>
+
         </div>
 
         <div class="experience-item reveal">
-          <div class="experience-number">08</div>
-          <div class="experience-place">Entre Ríos</div>
-          <div class="experience-city">Villa Clara</div>
+
+          <div class="experience-number">
+            08
+          </div>
+
+          <div class="experience-city">
+            Villa Clara · Entre Ríos
+          </div>
+
+          <div class="experience-place">
+            —
+          </div>
+
         </div>
 
         <div class="experience-item reveal">
-          <div class="experience-number">09</div>
-          <div class="experience-place">Entre Ríos</div>
-          <div class="experience-city">Villa Elisa</div>
+
+          <div class="experience-number">
+            09
+          </div>
+
+          <div class="experience-city">
+            Villa Elisa · Entre Ríos
+          </div>
+
+          <div class="experience-place">
+            —
+          </div>
+
         </div>
 
       </div>
@@ -1502,31 +1652,39 @@
       <div class="gallery-grid">
 
         <div class="gallery-item reveal">
+
           <img
             src="./gallery-01.jpg"
             alt="Nahuel Kinder"
           />
+
         </div>
 
         <div class="gallery-item reveal">
+
           <img
             src="./gallery-02.jpg"
             alt="Nahuel Kinder"
           />
+
         </div>
 
         <div class="gallery-item reveal">
+
           <img
             src="./gallery-03.jpg"
             alt="Nahuel Kinder"
           />
+
         </div>
 
         <div class="gallery-item reveal">
+
           <img
             src="./gallery-04.jpg"
             alt="Nahuel Kinder"
           />
+
         </div>
 
       </div>
