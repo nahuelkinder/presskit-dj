@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Nahuel Kinder — Press Kit Oficial</title>
+
   <meta
     name="description"
     content="Press Kit Oficial de Nahuel Kinder — DJ, Remixer y Productor Open Format Argentino."
@@ -14,27 +15,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
   <style>
     :root {
-      --black: #080808;
-      --black-soft: #101010;
-      --graphite: #171717;
-      --gray: #8b8b8b;
-      --gray-light: #c8c8c8;
-      --white: #f4f4f1;
-      --offwhite: #ededE8;
-      --line: rgba(255,255,255,.12);
-      --line-dark: rgba(0,0,0,.12);
+      --black: #050505;
+      --white: #f5f5f2;
+      --soft: #e9e9e5;
+      --gray: #8d8d8d;
+      --line: rgba(0,0,0,.12);
+      --dark-line: rgba(255,255,255,.12);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -42,9 +40,9 @@
     }
 
     body {
-      background: var(--black);
-      color: var(--white);
       font-family: "Inter", sans-serif;
+      background: var(--white);
+      color: var(--black);
       overflow-x: hidden;
     }
 
@@ -58,13 +56,13 @@
     }
 
     img {
-      display: block;
       max-width: 100%;
+      display: block;
     }
 
-    /* =========================
+    /* =========================================================
        INTRO
-    ========================= */
+    ========================================================= */
 
     .intro {
       position: fixed;
@@ -74,13 +72,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity .7s ease, visibility .7s ease;
-    }
-
-    .intro.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+      overflow: hidden;
     }
 
     .intro-logo {
@@ -121,119 +113,86 @@
       }
     }
 
-    /* =========================
-       GRAIN
-    ========================= */
+    /* =========================================================
+       NOISE
+    ========================================================= */
 
-    .grain {
+    body::before {
+      content: "";
       position: fixed;
       inset: 0;
-      z-index: 100;
+      z-index: 9990;
       pointer-events: none;
       opacity: .035;
       background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
-      mix-blend-mode: soft-light;
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
     }
 
-    /* =========================
-       NAV
-    ========================= */
+    /* =========================================================
+       HEADER
+    ========================================================= */
 
-    .topbar {
+    header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 500;
-      padding: 18px 34px;
+      z-index: 1000;
+      padding: 22px 34px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      background: rgba(8,8,8,.72);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .nav-logo {
-      width: 115px;
-      height: auto;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 26px;
-      align-items: center;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      color: #aaa;
-    }
-
-    .nav-links a {
-      transition: color .3s ease;
-    }
-
-    .nav-links a:hover {
+      mix-blend-mode: difference;
       color: #fff;
     }
 
-    /* =========================
-       GENERAL
-    ========================= */
+    .header-brand {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
 
-    section {
+    .header-nav {
+      display: flex;
+      gap: 26px;
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .header-nav a {
       position: relative;
-      padding: 120px 7vw;
     }
 
-    .section-number {
-      font-size: 11px;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: #777;
-      margin-bottom: 20px;
+    .header-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width .35s ease;
     }
 
-    .section-title {
-      font-family: "Archivo Black", sans-serif;
-      text-transform: uppercase;
-      font-size: clamp(42px, 7vw, 105px);
-      line-height: .9;
-      letter-spacing: -.055em;
+    .header-nav a:hover::after {
+      width: 100%;
     }
 
-    .eyebrow {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      color: #888;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(35px);
-      transition:
-        opacity .9s ease,
-        transform .9s cubic-bezier(.16,1,.3,1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* =========================
+    /* =========================================================
        HERO
-    ========================= */
+    ========================================================= */
 
     .hero {
-      min-height: 100vh;
-      padding: 0;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
+      position: relative;
+      min-height: 100svh;
       background: #050505;
+      color: #fff;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hero-bg {
@@ -255,26 +214,22 @@
       background:
         linear-gradient(
           to bottom,
-          rgba(0,0,0,.3),
-          rgba(0,0,0,.15) 35%,
-          rgba(0,0,0,.92) 100%
+          rgba(0,0,0,.55),
+          rgba(0,0,0,.18) 45%,
+          rgba(0,0,0,.72)
         );
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      width: 100%;
-      padding: 150px 7vw 70px;
-    }
-
-    /* LOGO COMO IDENTIDAD PRINCIPAL */
-
-    .hero-logo {
-      width: 430px;
-      max-width: 72vw;
-      height: auto;
-      margin: 0 auto;
+      width: min(1400px, 92vw);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 70px;
     }
 
     .hero-kicker {
@@ -282,61 +237,92 @@
       letter-spacing: .24em;
       text-transform: uppercase;
       color: #aaa;
-      margin-bottom: 28px;
+      margin-bottom: 34px;
       text-align: center;
     }
 
-    .hero-title {
-      display: none;
+    /*
+      LOGO PRINCIPAL DEL HERO
+
+      Ahora ocupa el lugar que antes tenía
+      "NAHUEL KINDER".
+    */
+
+    .hero-logo {
+      width: min(950px, 82vw);
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      object-fit: contain;
     }
 
     .hero-bottom {
+      position: absolute;
+      bottom: 30px;
+      left: 34px;
+      right: 34px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-top: 65px;
-      gap: 30px;
+      z-index: 3;
     }
 
-    .hero-location {
-      font-size: 12px;
-      color: #aaa;
-      letter-spacing: .12em;
+    .hero-location,
+    .hero-scroll {
+      font-size: 9px;
+      letter-spacing: .18em;
       text-transform: uppercase;
+      color: rgba(255,255,255,.68);
     }
 
-    .scroll-label {
-      font-size: 10px;
-      color: #888;
-      letter-spacing: .2em;
-      text-transform: uppercase;
+    .hero-scroll {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    /* =========================
+    .hero-scroll span {
+      width: 35px;
+      height: 1px;
+      background: rgba(255,255,255,.5);
+    }
+
+    /* =========================================================
        MARQUEE
-    ========================= */
+    ========================================================= */
 
     .marquee {
+      background: #050505;
+      color: #fff;
       overflow: hidden;
-      white-space: nowrap;
-      background: var(--offwhite);
-      color: #090909;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #000;
-      padding: 22px 0;
+      border-top: 1px solid rgba(255,255,255,.12);
+      border-bottom: 1px solid rgba(255,255,255,.12);
     }
 
     .marquee-track {
-      display: inline-block;
+      display: flex;
+      width: max-content;
       animation: marquee 24s linear infinite;
-      font-family: "Archivo Black", sans-serif;
-      font-size: clamp(28px, 4vw, 58px);
-      text-transform: uppercase;
-      letter-spacing: -.03em;
     }
 
-    .marquee-track span {
-      margin-right: 50px;
+    .marquee-content {
+      display: flex;
+      align-items: center;
+      gap: 45px;
+      padding: 22px 0;
+      white-space: nowrap;
+    }
+
+    .marquee-content span {
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(28px, 4vw, 60px);
+      text-transform: uppercase;
+      letter-spacing: -.04em;
+    }
+
+    .marquee-content .dot {
+      font-size: 20px;
+      opacity: .4;
     }
 
     @keyframes marquee {
@@ -349,19 +335,67 @@
       }
     }
 
-    /* =========================
+    /* =========================================================
+       GENERAL
+    ========================================================= */
+
+    section {
+      position: relative;
+    }
+
+    .section-inner {
+      width: min(1250px, 88vw);
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      font-family: "Archivo Black", sans-serif;
+      text-transform: uppercase;
+      font-size: clamp(50px, 8vw, 125px);
+      line-height: .82;
+      letter-spacing: -.065em;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition:
+        opacity .9s cubic-bezier(.16,1,.3,1),
+        transform .9s cubic-bezier(.16,1,.3,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
        ABOUT
-    ========================= */
+    ========================================================= */
 
     .about {
-      background: var(--black);
+      background: var(--white);
+      padding: 150px 0;
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9vw;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 90px;
       align-items: center;
+    }
+
+    .about-image-wrap {
+      overflow: hidden;
+      background: #ddd;
     }
 
     .about-image {
@@ -373,32 +407,7 @@
       transform-origin: center;
     }
 
-    .about-copy {
-      max-width: 650px;
-    }
-
-    .about-copy h2 {
-      font-family: "Archivo Black", sans-serif;
-      font-size: clamp(42px, 5vw, 76px);
-      line-height: .92;
-      letter-spacing: -.05em;
-      text-transform: uppercase;
-      margin-bottom: 35px;
-    }
-
-    .about-copy p {
-      color: #aaa;
-      font-size: 17px;
-      line-height: 1.8;
-      max-width: 650px;
-    }
-
-    /* =========================
-       FOTO COLOR / BLANCO Y NEGRO
-    ========================= */
-
     @keyframes photoColorCycle {
-
       0% {
         filter: grayscale(100%);
       }
@@ -418,43 +427,59 @@
       100% {
         filter: grayscale(100%);
       }
-
     }
 
-    /* =========================
+    .about-copy {
+      max-width: 680px;
+    }
+
+    .about-copy h2 {
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(46px, 6vw, 88px);
+      line-height: .86;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+      margin-bottom: 38px;
+    }
+
+    .about-copy p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: #4d4d4d;
+      max-width: 620px;
+    }
+
+    /* =========================================================
        MUSIC
-    ========================= */
+    ========================================================= */
 
     .music {
-      background: var(--offwhite);
-      color: #080808;
+      background: #050505;
+      color: #fff;
+      padding: 150px 0;
     }
 
     .music-grid {
       display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 8vw;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
       align-items: center;
-    }
-
-    .music .section-number,
-    .music .eyebrow {
-      color: #777;
     }
 
     .music-title {
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(48px, 7vw, 105px);
-      line-height: .86;
       text-transform: uppercase;
-      letter-spacing: -.06em;
-      margin-bottom: 30px;
+      font-size: clamp(55px, 8vw, 120px);
+      line-height: .82;
+      letter-spacing: -.065em;
     }
 
-    .music-copy {
-      color: #555;
+    .music-description {
+      color: #999;
       line-height: 1.7;
-      max-width: 500px;
+      max-width: 520px;
+      margin-top: 35px;
+      font-size: 15px;
     }
 
     .spotify-frame {
@@ -462,24 +487,34 @@
       min-height: 352px;
       border: 0;
       border-radius: 14px;
+      overflow: hidden;
     }
 
-    .spotify-link {
+    .music-button {
       display: inline-flex;
-      margin-top: 25px;
-      font-size: 11px;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+      padding: 15px 22px;
+      border: 1px solid rgba(255,255,255,.3);
+      font-size: 10px;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      letter-spacing: .15em;
-      border-bottom: 1px solid #222;
-      padding-bottom: 7px;
+      transition: all .3s ease;
     }
 
-    /* =========================
+    .music-button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* =========================================================
        STATS
-    ========================= */
+    ========================================================= */
 
     .stats {
-      background: var(--black-soft);
+      background: var(--soft);
+      padding: 120px 0;
     }
 
     .stats-grid {
@@ -490,111 +525,103 @@
     }
 
     .stat {
-      padding: 55px 35px;
+      padding: 50px 35px;
       border-right: 1px solid var(--line);
     }
 
     .stat:last-child {
-      border-right: 0;
+      border-right: none;
     }
 
     .stat-number {
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(48px, 7vw, 105px);
+      font-size: clamp(55px, 7vw, 110px);
       letter-spacing: -.06em;
-      line-height: .85;
+      line-height: .8;
     }
 
     .stat-label {
-      margin-top: 20px;
-      color: #888;
-      font-size: 11px;
-      text-transform: uppercase;
+      margin-top: 22px;
+      font-size: 10px;
       letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #666;
     }
 
-    /* =========================
+    /* =========================================================
        EXPERIENCE
-    ========================= */
+    ========================================================= */
 
     .experience {
-      background: #111;
+      background: var(--white);
+      padding: 150px 0;
     }
 
-    .experience-head {
+    .experience-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 30px;
-      margin-bottom: 75px;
+      gap: 40px;
+      margin-bottom: 80px;
     }
 
-    .experience-subtitle {
-      color: #777;
-      font-size: 13px;
-      max-width: 260px;
-      line-height: 1.6;
-    }
-
-    .event-list {
+    .experience-list {
       border-top: 1px solid var(--line);
     }
 
-    .event {
+    .experience-item {
       display: grid;
-      grid-template-columns: 90px 1fr 1fr;
-      gap: 30px;
+      grid-template-columns: 80px 1fr auto;
       align-items: center;
-      padding: 27px 0;
+      gap: 30px;
+      padding: 28px 0;
       border-bottom: 1px solid var(--line);
       transition: padding .35s ease;
     }
 
-    .event:hover {
+    .experience-item:hover {
       padding-left: 15px;
       padding-right: 15px;
-      background: rgba(255,255,255,.025);
     }
 
-    .event-number {
-      color: #666;
-      font-size: 11px;
-      letter-spacing: .15em;
+    .experience-number {
+      font-size: 10px;
+      letter-spacing: .12em;
+      color: #999;
     }
 
-    .event-name {
+    .experience-place {
       font-family: "Archivo Black", sans-serif;
+      font-size: clamp(24px, 3vw, 42px);
       text-transform: uppercase;
-      font-size: clamp(23px, 3vw, 42px);
-      letter-spacing: -.04em;
+      letter-spacing: -.035em;
     }
 
-    .event-place {
-      text-align: right;
-      color: #888;
-      font-size: 12px;
+    .experience-city {
+      font-size: 10px;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      letter-spacing: .1em;
-    }
-
-    /* =========================
-       MEDIA
-    ========================= */
-
-    .media {
-      background: var(--offwhite);
-      color: #080808;
-    }
-
-    .media .section-number {
       color: #777;
     }
 
+    /* =========================================================
+       GALLERY
+    ========================================================= */
+
     .gallery {
+      background: #050505;
+      padding: 150px 0;
+      color: #fff;
+    }
+
+    .gallery-header {
+      margin-bottom: 70px;
+    }
+
+    .gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
-      margin-top: 65px;
     }
 
     .gallery-item {
@@ -613,8 +640,7 @@
       object-fit: contain;
       filter: grayscale(100%);
       animation: photoColorCycle 10s ease-in-out infinite;
-      transition:
-        transform .8s cubic-bezier(.16,1,.3,1);
+      transition: transform .8s cubic-bezier(.16,1,.3,1);
     }
 
     .gallery-item:nth-child(1) img {
@@ -637,433 +663,396 @@
       transform: scale(1.045);
     }
 
-    /* =========================
-       GALLERY LIGHTBOX
-    ========================= */
+    /* =========================================================
+       SOCIAL
+    ========================================================= */
 
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      z-index: 10000;
-      background: rgba(0,0,0,.96);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 50px;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity .35s ease, visibility .35s ease;
+    .social {
+      background: var(--white);
+      padding: 150px 0;
     }
 
-    .lightbox.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
+    .social-header {
+      margin-bottom: 75px;
     }
 
-    .lightbox-image {
-      max-width: 90vw;
-      max-height: 88vh;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      box-shadow: 0 25px 80px rgba(0,0,0,.6);
-      transform: scale(.94);
-      transition: transform .4s cubic-bezier(.16,1,.3,1);
-    }
-
-    .lightbox.active .lightbox-image {
-      transform: scale(1);
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 22px;
-      right: 30px;
-      width: 48px;
-      height: 48px;
-      border: 1px solid rgba(255,255,255,.25);
-      background: rgba(255,255,255,.06);
-      color: #fff;
-      font-size: 30px;
-      line-height: 1;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .25s ease, transform .25s ease;
-    }
-
-    .lightbox-close:hover {
-      background: rgba(255,255,255,.14);
-      transform: rotate(90deg);
-    }
-
-    .lightbox-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,.25);
-      background: rgba(255,255,255,.06);
-      color: #fff;
-      font-size: 28px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background .25s ease, transform .25s ease;
-    }
-
-    .lightbox-arrow:hover {
-      background: rgba(255,255,255,.14);
-    }
-
-    .lightbox-prev {
-      left: 28px;
-    }
-
-    .lightbox-next {
-      right: 28px;
-    }
-
-    .lightbox-counter {
-      position: absolute;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #777;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-    }
-
-    /* =========================
-       SOCIALS
-    ========================= */
-
-    .socials {
-      background: var(--black);
-    }
-
-    .social-list {
-      margin-top: 65px;
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
     .social-link {
+      min-height: 180px;
+      padding: 30px;
+      border-right: 1px solid var(--line);
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      align-items: center;
-      padding: 32px 0;
-      border-bottom: 1px solid var(--line);
-      transition: padding .3s ease;
+      transition: background .35s ease, color .35s ease;
+    }
+
+    .social-link:last-child {
+      border-right: none;
     }
 
     .social-link:hover {
-      padding-left: 15px;
-      padding-right: 15px;
+      background: #050505;
+      color: #fff;
     }
 
     .social-name {
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(30px, 5vw, 70px);
+      font-size: 28px;
       text-transform: uppercase;
-      letter-spacing: -.05em;
+      letter-spacing: -.04em;
     }
 
-    .social-arrow {
-      color: #777;
-      font-size: 20px;
+    .social-handle {
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .55;
     }
 
-    /* =========================
+    /* =========================================================
        BOOKING
-    ========================= */
+    ========================================================= */
 
     .booking {
-      background: var(--offwhite);
-      color: #080808;
-      min-height: 65vh;
-      display: flex;
-      align-items: center;
-    }
-
-    .booking-inner {
-      width: 100%;
-    }
-
-    .booking-title {
-      font-family: "Archivo Black", sans-serif;
-      font-size: clamp(55px, 10vw, 150px);
-      line-height: .82;
-      text-transform: uppercase;
-      letter-spacing: -.07em;
-      max-width: 1100px;
-      margin: 25px 0 60px;
+      background: #050505;
+      color: #fff;
+      padding: 170px 0;
     }
 
     .booking-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      max-width: 800px;
+      gap: 90px;
+      align-items: end;
     }
 
-    .booking-item {
-      border-top: 1px solid var(--line-dark);
-      padding-top: 18px;
-    }
-
-    .booking-label {
-      color: #777;
-      font-size: 10px;
+    .booking-title {
+      font-family: "Archivo Black", sans-serif;
       text-transform: uppercase;
-      letter-spacing: .18em;
-      margin-bottom: 10px;
+      font-size: clamp(60px, 9vw, 140px);
+      line-height: .78;
+      letter-spacing: -.07em;
     }
 
-    .booking-value {
-      font-size: 18px;
-      font-weight: 600;
+    .booking-copy {
+      color: #999;
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 30px;
     }
 
-    .booking-buttons {
+    .booking-links {
       display: flex;
-      gap: 12px;
       flex-wrap: wrap;
-      margin-top: 45px;
+      gap: 12px;
     }
 
     .booking-button {
       display: inline-flex;
-      padding: 18px 28px;
-      background: #080808;
-      color: #fff;
-      font-size: 11px;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border: 1px solid rgba(255,255,255,.3);
+      font-size: 10px;
+      letter-spacing: .15em;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      transition: transform .3s ease, background .3s ease;
+      transition: all .3s ease;
     }
 
     .booking-button:hover {
-      transform: translateY(-3px);
-      background: #222;
+      background: #fff;
+      color: #000;
     }
 
-    .booking-button.secondary {
+    .booking-button.primary {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+    }
+
+    .booking-button.primary:hover {
       background: transparent;
-      color: #080808;
-      border: 1px solid rgba(0,0,0,.22);
-    }
-
-    .booking-button.secondary:hover {
-      background: #080808;
       color: #fff;
     }
 
-    /* =========================
+    /* =========================================================
        TECH RIDER
-    ========================= */
+    ========================================================= */
 
-    .tech-rider {
-      background: #090909;
-      color: var(--white);
-      overflow: hidden;
+    .tech {
+      background: var(--soft);
+      padding: 150px 0;
     }
 
-    .tech-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 40px;
-      margin-bottom: 60px;
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 90px;
+      align-items: center;
     }
 
     .tech-title {
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(45px, 7vw, 100px);
-      line-height: .86;
       text-transform: uppercase;
-      letter-spacing: -.06em;
-      max-width: 900px;
+      font-size: clamp(55px, 8vw, 120px);
+      line-height: .8;
+      letter-spacing: -.065em;
     }
 
-    .tech-product {
-      position: relative;
-      width: 100%;
-      min-height: 460px;
+    .tech-copy {
+      margin-top: 35px;
+      color: #666;
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    .tech-gear {
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 40px;
-      border: 1px solid rgba(255,255,255,.1);
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(255,255,255,.055),
-          rgba(255,255,255,0) 65%
-        );
-      overflow: hidden;
+      justify-content: center;
+      min-height: 400px;
     }
 
-    .tech-product::before {
-      content: "";
-      position: absolute;
-      width: 65%;
-      height: 1px;
-      top: 50%;
-      left: 17.5%;
-      background: rgba(255,255,255,.08);
-    }
-
-    .tech-product img {
-      position: relative;
-      z-index: 2;
-      width: min(100%, 1050px);
-      max-height: 520px;
+    .tech-gear img {
+      width: min(620px, 100%);
+      height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 25px 35px rgba(0,0,0,.55));
-      transition: transform .7s cubic-bezier(.16,1,.3,1);
     }
 
-    .tech-product:hover img {
-      transform: scale(1.025);
-    }
-
-    .tech-product-name {
-      margin-top: 25px;
-      font-family: "Archivo Black", sans-serif;
-      font-size: clamp(25px, 4vw, 48px);
-      text-transform: uppercase;
-      letter-spacing: -.04em;
-    }
-
-    /* =========================
-       WHATSAPP
-    ========================= */
-
-    .whatsapp {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 800;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: #f1f1ed;
-      color: #080808;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 12px 40px rgba(0,0,0,.35);
-      transition: transform .3s ease;
-    }
-
-    .whatsapp:hover {
-      transform: scale(1.08);
-    }
-
-    .whatsapp svg {
-      width: 25px;
-      height: 25px;
-    }
-
-    .whatsapp-popup {
-      position: fixed;
-      right: 25px;
-      bottom: 94px;
-      z-index: 799;
-      background: #f1f1ed;
-      color: #111;
-      padding: 13px 17px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      transition: all .35s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,.3);
-    }
-
-    .whatsapp-popup.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* =========================
+    /* =========================================================
        FOOTER
-    ========================= */
+    ========================================================= */
 
     footer {
       background: #050505;
-      padding: 55px 7vw 30px;
-      border-top: 1px solid var(--line);
+      color: #fff;
+      padding: 70px 0 35px;
     }
 
     .footer-top {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-      padding-bottom: 80px;
+      align-items: flex-end;
+      gap: 50px;
+      padding-bottom: 70px;
     }
 
     .footer-logo {
-      width: 180px;
+      width: 230px;
+      height: auto;
     }
 
-    .footer-text {
-      color: #666;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      line-height: 1.8;
+    .footer-right {
       text-align: right;
     }
 
-    .footer-bottom {
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      color: #555;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: .15em;
+    .footer-right p {
+      color: #777;
+      font-size: 11px;
+      line-height: 1.7;
     }
 
-    /* =========================
-       TABLET
-    ========================= */
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.12);
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: #666;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
 
-    @media (max-width: 900px) {
+    /* =========================================================
+       WHATSAPP
+    ========================================================= */
 
-      .topbar {
-        padding: 16px 22px;
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2000;
+    }
+
+    .whatsapp-button {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 35px rgba(0,0,0,.25);
+      animation: whatsappPulse 2.4s infinite;
+      transition: transform .3s ease;
+    }
+
+    .whatsapp-button:hover {
+      transform: scale(1.08);
+    }
+
+    .whatsapp-button svg {
+      width: 27px;
+      height: 27px;
+      fill: currentColor;
+    }
+
+    .whatsapp-popup {
+      position: absolute;
+      right: 72px;
+      bottom: 5px;
+      width: max-content;
+      max-width: 240px;
+      background: #050505;
+      color: #fff;
+      padding: 12px 16px;
+      font-size: 10px;
+      letter-spacing: .03em;
+      opacity: 0;
+      transform: translateX(10px);
+      pointer-events: none;
+      transition: all .4s ease;
+      border-radius: 4px;
+    }
+
+    .whatsapp-popup.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @keyframes whatsappPulse {
+      0%,
+      100% {
+        box-shadow:
+          0 0 0 0 rgba(37,211,102,.35),
+          0 12px 35px rgba(0,0,0,.25);
       }
 
-      .nav-links {
-        gap: 14px;
+      50% {
+        box-shadow:
+          0 0 0 14px rgba(37,211,102,0),
+          0 12px 35px rgba(0,0,0,.25);
+      }
+    }
+
+    /* =========================================================
+       LIGHTBOX
+    ========================================================= */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      background: rgba(0,0,0,.94);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 88vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 800px) {
+
+      header {
+        padding: 18px 20px;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .hero-content {
+        width: 90vw;
+        padding-top: 45px;
+      }
+
+      .hero-kicker {
         font-size: 9px;
+        letter-spacing: .18em;
+        white-space: nowrap;
+        margin-bottom: 25px;
       }
 
-      section {
-        padding: 90px 6vw;
+      .hero-logo {
+        width: min(600px, 90vw);
+        margin: 0 auto;
+      }
+
+      .hero-bottom {
+        left: 20px;
+        right: 20px;
+        bottom: 22px;
+      }
+
+      .hero-location,
+      .hero-scroll {
+        font-size: 8px;
+      }
+
+      .about,
+      .music,
+      .experience,
+      .gallery,
+      .social,
+      .tech {
+        padding: 100px 0;
+      }
+
+      .booking {
+        padding: 110px 0;
       }
 
       .about-grid,
-      .music-grid {
+      .music-grid,
+      .booking-grid,
+      .tech-grid {
         grid-template-columns: 1fr;
         gap: 55px;
       }
 
-      .about-image {
-        max-width: 600px;
+      .about-copy h2 {
+        margin-bottom: 25px;
+      }
+
+      .about-copy p {
+        font-size: 15px;
+      }
+
+      .stats {
+        padding: 90px 0;
       }
 
       .stats-grid {
@@ -1071,168 +1060,63 @@
       }
 
       .stat {
-        border-right: 0;
+        border-right: none;
         border-bottom: 1px solid var(--line);
+        padding: 40px 25px;
       }
 
       .stat:last-child {
-        border-bottom: 0;
+        border-bottom: none;
       }
 
-      .event {
-        grid-template-columns: 55px 1fr 1fr;
-      }
-
-      .tech-head {
+      .experience-header {
         flex-direction: column;
         align-items: flex-start;
+        margin-bottom: 45px;
       }
 
-      .tech-product {
-        min-height: 350px;
-      }
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 600px) {
-
-      .intro-logo {
-        width: 280px;
-        max-width: 82vw;
+      .experience-item {
+        grid-template-columns: 40px 1fr;
+        gap: 15px;
       }
 
-      .topbar {
-        padding: 14px 18px;
-      }
-
-      .nav-logo {
-        width: 92px;
-      }
-
-      .nav-links {
-        gap: 10px;
-        font-size: 8px;
-        letter-spacing: .1em;
-      }
-
-      .nav-links a:nth-child(3),
-      .nav-links a:nth-child(4) {
-        display: none;
-      }
-
-      section {
-        padding: 75px 6vw;
-      }
-
-      .hero-content {
-        padding: 130px 6vw 45px;
-      }
-
-      .hero-logo {
-        width: 300px;
-        max-width: 82vw;
-        margin: 0 auto;
-      }
-
-      .hero-kicker {
-        font-size: 9px;
-        letter-spacing: .18em;
-        white-space: nowrap;
-        margin-bottom: 22px;
-      }
-
-      .hero-title {
-        display: none;
-      }
-
-      .hero-bottom {
-        margin-top: 55px;
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .about-copy p {
-        font-size: 15px;
-      }
-
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-
-      .experience-head {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .event {
-        grid-template-columns: 35px 1fr;
-        gap: 10px;
-        padding: 22px 0;
-      }
-
-      .event-place {
+      .experience-city {
         grid-column: 2;
-        text-align: left;
-        margin-top: -3px;
+        margin-top: -10px;
       }
 
-      .event-name {
-        font-size: 27px;
-      }
-
-      .booking-grid {
+      .gallery-grid {
         grid-template-columns: 1fr;
       }
 
-      .booking-title {
-        font-size: 17vw;
+      .social-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .booking-buttons {
-        flex-direction: column;
-        align-items: stretch;
+      .social-link {
+        min-height: 150px;
+        border-bottom: 1px solid var(--line);
       }
 
-      .booking-button {
-        justify-content: center;
+      .social-link:nth-child(2) {
+        border-right: none;
       }
 
-      .tech-product {
-        min-height: 250px;
-        padding: 15px;
+      .social-link:nth-child(3),
+      .social-link:nth-child(4) {
+        border-bottom: none;
       }
 
-      .tech-product img {
-        width: 100%;
-      }
-
-      .tech-product-name {
-        font-size: 28px;
-      }
-
-      .whatsapp {
-        right: 18px;
-        bottom: 18px;
-        width: 54px;
-        height: 54px;
-      }
-
-      .whatsapp-popup {
-        right: 18px;
-        bottom: 84px;
-        max-width: 230px;
+      .social-link:nth-child(4) {
+        border-right: none;
       }
 
       .footer-top {
         flex-direction: column;
-        padding-bottom: 50px;
+        align-items: flex-start;
       }
 
-      .footer-text {
+      .footer-right {
         text-align: left;
       }
 
@@ -1241,35 +1125,47 @@
         gap: 10px;
       }
 
-      .lightbox {
-        padding: 25px;
+      .intro-logo {
+        width: 280px;
+        max-width: 82vw;
       }
 
-      .lightbox-image {
-        max-width: 94vw;
-        max-height: 82vh;
+      .whatsapp {
+        right: 17px;
+        bottom: 17px;
       }
 
-      .lightbox-close {
-        top: 15px;
-        right: 15px;
-        width: 42px;
-        height: 42px;
-        font-size: 26px;
+      .whatsapp-popup {
+        right: 65px;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .hero-logo {
+        width: 92vw;
       }
 
-      .lightbox-arrow {
-        width: 42px;
-        height: 42px;
-        font-size: 22px;
+      .hero-kicker {
+        font-size: 8px;
+        letter-spacing: .14em;
       }
 
-      .lightbox-prev {
-        left: 12px;
+      .section-inner {
+        width: 90vw;
       }
 
-      .lightbox-next {
-        right: 12px;
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .social-link {
+        border-right: none !important;
+        border-bottom: 1px solid var(--line) !important;
+      }
+
+      .social-link:last-child {
+        border-bottom: none !important;
       }
     }
   </style>
@@ -1277,9 +1173,9 @@
 
 <body class="intro-active">
 
-  <!-- =========================
+  <!-- =========================================================
        INTRO
-  ========================= -->
+  ========================================================= -->
 
   <div class="intro" id="intro">
     <img
@@ -1289,132 +1185,150 @@
     />
   </div>
 
-  <div class="grain"></div>
+  <!-- =========================================================
+       HEADER
+  ========================================================= -->
 
-  <!-- =========================
-       NAV
-  ========================= -->
+  <header>
+    <div class="header-brand">
+      PRESS KIT
+    </div>
 
-  <header class="topbar">
-    <a href="#top">
-      <img
-        src="./nahuel%20kinder%20png%20logo.png"
-        alt="Nahuel Kinder"
-        class="nav-logo"
-      />
-    </a>
-
-    <nav class="nav-links">
-      <a href="#about">Bio</a>
+    <nav class="header-nav">
+      <a href="#about">About</a>
       <a href="#music">Music</a>
-      <a href="#experience">Shows</a>
+      <a href="#experience">Experience</a>
+      <a href="#gallery">Media</a>
       <a href="#booking">Booking</a>
-      <a href="#tech-rider">Rider</a>
     </nav>
   </header>
 
-  <main id="top">
+  <!-- =========================================================
+       HERO
+  ========================================================= -->
 
-    <!-- =========================
-         HERO
-    ========================= -->
+  <section class="hero">
 
-    <section class="hero">
+    <img
+      src="./main-photo.jpg"
+      alt="Nahuel Kinder"
+      class="hero-bg"
+      id="heroBg"
+    />
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+      <div class="hero-kicker reveal">
+        DJ · Remixer · Producer · Open Format
+      </div>
+
+      <!--
+        LOGO PRINCIPAL:
+        ocupa el lugar que antes tenía "NAHUEL KINDER"
+      -->
 
       <img
-        src="./main-photo.jpg"
+        src="./nahuel%20kinder%20png%20logo.png"
         alt="Nahuel Kinder"
-        class="hero-bg"
-        id="heroBg"
+        class="hero-logo reveal"
       />
 
-      <div class="hero-overlay"></div>
-
-      <div class="hero-content">
-
-        <div class="hero-kicker reveal">
-          DJ · Remixer · Producer · Open Format
-        </div>
-
-        <img
-          src="./nahuel%20kinder%20png%20logo.png"
-          alt="Nahuel Kinder"
-          class="hero-logo reveal"
-        />
-
-        <h1 class="hero-title">
-          Nahuel<br />
-          Kinder
-        </h1>
-
-        <div class="hero-bottom reveal">
-
-          <div class="hero-location">
-            Argentina · DJ Press Kit
-          </div>
-
-          <div class="scroll-label">
-            Scroll to explore ↓
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         MARQUEE
-    ========================= -->
-
-    <div class="marquee">
-
-      <div class="marquee-track">
-
-        <span>DJ</span>
-        <span>Remixer</span>
-        <span>Producer</span>
-        <span>Open Format</span>
-        <span>Argentina</span>
-
-        <span>DJ</span>
-        <span>Remixer</span>
-        <span>Producer</span>
-        <span>Open Format</span>
-        <span>Argentina</span>
-
-      </div>
     </div>
 
-    <!-- =========================
-         ABOUT
-    ========================= -->
+    <div class="hero-bottom">
 
-    <section class="about" id="about">
-
-      <div class="section-number reveal">
-        01 / About
+      <div class="hero-location">
+        Argentina 🇦🇷
       </div>
+
+      <div class="hero-scroll">
+        Scroll
+        <span></span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       MARQUEE
+  ========================================================= -->
+
+  <div class="marquee">
+
+    <div class="marquee-track">
+
+      <div class="marquee-content">
+        <span>DJ</span>
+        <span class="dot">✦</span>
+        <span>Remixer</span>
+        <span class="dot">✦</span>
+        <span>Producer</span>
+        <span class="dot">✦</span>
+        <span>Open Format</span>
+        <span class="dot">✦</span>
+        <span>DJ</span>
+        <span class="dot">✦</span>
+        <span>Remixer</span>
+        <span class="dot">✦</span>
+        <span>Producer</span>
+        <span class="dot">✦</span>
+        <span>Open Format</span>
+        <span class="dot">✦</span>
+      </div>
+
+      <div class="marquee-content">
+        <span>DJ</span>
+        <span class="dot">✦</span>
+        <span>Remixer</span>
+        <span class="dot">✦</span>
+        <span>Producer</span>
+        <span class="dot">✦</span>
+        <span>Open Format</span>
+        <span class="dot">✦</span>
+        <span>DJ</span>
+        <span class="dot">✦</span>
+        <span>Remixer</span>
+        <span class="dot">✦</span>
+        <span>Producer</span>
+        <span class="dot">✦</span>
+        <span>Open Format</span>
+        <span class="dot">✦</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- =========================================================
+       ABOUT
+  ========================================================= -->
+
+  <section class="about" id="about">
+
+    <div class="section-inner">
 
       <div class="about-grid">
 
-        <div class="reveal">
-
+        <div class="about-image-wrap reveal">
           <img
             src="./about-photo.jpg"
-            alt="Nahuel Kinder"
+            alt="Nahuel Kinder DJ"
             class="about-image"
           />
-
         </div>
 
         <div class="about-copy reveal">
 
-          <div class="eyebrow">
-            Nahuel Kinderknecht
+          <div class="section-label">
+            01 / About
           </div>
 
           <h2>
-            DJ / Productor
+            Más que<br />
+            música.
           </h2>
 
           <p>
@@ -1429,42 +1343,43 @@
         </div>
 
       </div>
-    </section>
 
-    <!-- =========================
-         MUSIC
-    ========================= -->
+    </div>
 
-    <section class="music" id="music">
+  </section>
 
-      <div class="section-number reveal">
-        02 / Music
-      </div>
+  <!-- =========================================================
+       MUSIC
+  ========================================================= -->
+
+  <section class="music" id="music">
+
+    <div class="section-inner">
 
       <div class="music-grid">
 
         <div class="reveal">
 
-          <div class="eyebrow">
-            Selected release
+          <div class="section-label">
+            02 / Music
           </div>
 
           <h2 class="music-title">
-            Music<br />
-            & Remixes
+            Listen<br />
+            Now.
           </h2>
 
-          <p class="music-copy">
-            Escuchá música y producciones de Nahuel Kinder en Spotify.
+          <p class="music-description">
+            Escuchá producciones, remixes y música de Nahuel Kinder
+            en plataformas digitales.
           </p>
 
           <a
             href="https://open.spotify.com/intl-es/artist/6BHzE0aDmQphuuaDTkfJtu?si=ciqs4476SbGrGxKes0zyWw"
             target="_blank"
-            rel="noopener noreferrer"
-            class="spotify-link"
+            class="music-button"
           >
-            Ver artista en Spotify ↗
+            Spotify Artist →
           </a>
 
         </div>
@@ -1481,21 +1396,22 @@
         </div>
 
       </div>
-    </section>
 
-    <!-- =========================
-         STATS
-    ========================= -->
+    </div>
 
-    <section class="stats">
+  </section>
 
-      <div class="section-number reveal">
-        03 / Numbers
-      </div>
+  <!-- =========================================================
+       STATS
+  ========================================================= -->
 
-      <div class="stats-grid reveal">
+  <section class="stats">
 
-        <div class="stat">
+    <div class="section-inner">
+
+      <div class="stats-grid">
+
+        <div class="stat reveal">
 
           <div class="stat-number">
             +180K
@@ -1507,7 +1423,7 @@
 
         </div>
 
-        <div class="stat">
+        <div class="stat reveal">
 
           <div class="stat-number">
             +2M
@@ -1519,7 +1435,7 @@
 
         </div>
 
-        <div class="stat">
+        <div class="stat reveal">
 
           <div class="stat-number">
             ARG
@@ -1532,446 +1448,485 @@
         </div>
 
       </div>
-    </section>
 
-    <!-- =========================
-         EXPERIENCE
-    ========================= -->
+    </div>
 
-    <section class="experience" id="experience">
+  </section>
 
-      <div class="section-number reveal">
-        04 / Experience
+  <!-- =========================================================
+       EXPERIENCE
+  ========================================================= -->
+
+  <section class="experience" id="experience">
+
+    <div class="section-inner">
+
+      <div class="experience-header">
+
+        <div>
+
+          <div class="section-label">
+            03 / Experience
+          </div>
+
+          <h2 class="section-title">
+            Selected<br />
+            Events.
+          </h2>
+
+        </div>
+
       </div>
 
-      <div class="experience-head">
+      <div class="experience-list">
 
-        <h2 class="section-title reveal">
-          Ciudades<br />
-          y escenarios
+        <div class="experience-item reveal">
+          <div class="experience-number">01</div>
+          <div class="experience-place">Podestá · Palermo Soho</div>
+          <div class="experience-city">Buenos Aires</div>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-number">02</div>
+          <div class="experience-place">Bound</div>
+          <div class="experience-city">Rosario</div>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-number">03</div>
+          <div class="experience-place">La Isla</div>
+          <div class="experience-city">Rosario</div>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-number">04</div>
+          <div class="experience-place">Bonzo Costanera</div>
+          <div class="experience-city">Concordia</div>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-number">05</div>
+          <div class="experience-place">Santo Grial</div>
+          <div class="experience-city">Villaguay</div>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-number">06</div>
+          <div class="experience-place">Navidad</div>
+          <div class="experience-city">Villaguay</div>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-number">07</div>
+          <div class="experience-place">Entre Ríos</div>
+          <div class="experience-city">San Salvador</div>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-number">08</div>
+          <div class="experience-place">Entre Ríos</div>
+          <div class="experience-city">Villa Clara</div>
+        </div>
+
+        <div class="experience-item reveal">
+          <div class="experience-number">09</div>
+          <div class="experience-place">Entre Ríos</div>
+          <div class="experience-city">Villa Elisa</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       GALLERY
+  ========================================================= -->
+
+  <section class="gallery" id="gallery">
+
+    <div class="section-inner">
+
+      <div class="gallery-header reveal">
+
+        <div class="section-label">
+          04 / Media
+        </div>
+
+        <h2 class="section-title">
+          Visual<br />
+          Archive.
         </h2>
 
-        <p class="experience-subtitle reveal">
-          Presentaciones y escenarios en distintas ciudades de Argentina.
-        </p>
-
       </div>
 
-      <div class="event-list">
+      <div class="gallery-grid">
 
-        <div class="event reveal">
-          <div class="event-number">01</div>
-          <div class="event-name">Buenos Aires</div>
-          <div class="event-place">Podestá · Palermo Soho</div>
-        </div>
-
-        <div class="event reveal">
-          <div class="event-number">02</div>
-          <div class="event-name">Rosario</div>
-          <div class="event-place">Bound</div>
-        </div>
-
-        <div class="event reveal">
-          <div class="event-number">03</div>
-          <div class="event-name">Rosario</div>
-          <div class="event-place">La Isla</div>
-        </div>
-
-        <div class="event reveal">
-          <div class="event-number">04</div>
-          <div class="event-name">Concordia</div>
-          <div class="event-place">Bonzo Costanera</div>
-        </div>
-
-        <div class="event reveal">
-          <div class="event-number">05</div>
-          <div class="event-name">Villaguay</div>
-          <div class="event-place">Santo Grial</div>
-        </div>
-
-        <div class="event reveal">
-          <div class="event-number">06</div>
-          <div class="event-name">Villaguay</div>
-          <div class="event-place">Navidad</div>
-        </div>
-
-        <div class="event reveal">
-          <div class="event-number">07</div>
-          <div class="event-name">San Salvador</div>
-          <div class="event-place">Entre Ríos</div>
-        </div>
-
-        <div class="event reveal">
-          <div class="event-number">08</div>
-          <div class="event-name">Villa Clara</div>
-          <div class="event-place">Entre Ríos</div>
-        </div>
-
-        <div class="event reveal">
-          <div class="event-number">09</div>
-          <div class="event-name">Villa Elisa</div>
-          <div class="event-place">Entre Ríos</div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         MEDIA
-    ========================= -->
-
-    <section class="media">
-
-      <div class="section-number reveal">
-        05 / Media
-      </div>
-
-      <h2 class="section-title reveal">
-        Gallery
-      </h2>
-
-      <div class="gallery">
-
-        <div class="gallery-item reveal" data-index="0">
+        <div class="gallery-item reveal">
           <img
             src="./gallery-01.jpg"
             alt="Nahuel Kinder"
-            loading="lazy"
           />
         </div>
 
-        <div class="gallery-item reveal" data-index="1">
+        <div class="gallery-item reveal">
           <img
             src="./gallery-02.jpg"
             alt="Nahuel Kinder"
-            loading="lazy"
           />
         </div>
 
-        <div class="gallery-item reveal" data-index="2">
+        <div class="gallery-item reveal">
           <img
             src="./gallery-03.jpg"
             alt="Nahuel Kinder"
-            loading="lazy"
           />
         </div>
 
-        <div class="gallery-item reveal" data-index="3">
+        <div class="gallery-item reveal">
           <img
             src="./gallery-04.jpg"
             alt="Nahuel Kinder"
-            loading="lazy"
           />
         </div>
 
       </div>
-    </section>
 
-    <!-- =========================
-         SOCIALS
-    ========================= -->
+    </div>
 
-    <section class="socials">
+  </section>
 
-      <div class="section-number reveal">
-        06 / Connect
+  <!-- =========================================================
+       SOCIALS
+  ========================================================= -->
+
+  <section class="social">
+
+    <div class="section-inner">
+
+      <div class="social-header reveal">
+
+        <div class="section-label">
+          05 / Social
+        </div>
+
+        <h2 class="section-title">
+          Follow<br />
+          Along.
+        </h2>
+
       </div>
 
-      <h2 class="section-title reveal">
-        Follow
-      </h2>
-
-      <div class="social-list">
+      <div class="social-grid">
 
         <a
           href="https://www.instagram.com/nahuelkinderknecht/"
           target="_blank"
-          rel="noopener noreferrer"
           class="social-link reveal"
         >
-          <span class="social-name">Instagram</span>
-          <span class="social-arrow">↗</span>
+          <div class="social-name">
+            Instagram
+          </div>
+
+          <div class="social-handle">
+            @nahuelkinderknecht
+          </div>
         </a>
 
         <a
           href="https://open.spotify.com/intl-es/artist/6BHzE0aDmQphuuaDTkfJtu?si=ciqs4476SbGrGxKes0zyWw"
           target="_blank"
-          rel="noopener noreferrer"
           class="social-link reveal"
         >
-          <span class="social-name">Spotify</span>
-          <span class="social-arrow">↗</span>
+          <div class="social-name">
+            Spotify
+          </div>
+
+          <div class="social-handle">
+            Nahuel Kinder
+          </div>
         </a>
 
         <a
           href="https://www.youtube.com/@nahuelkinder"
           target="_blank"
-          rel="noopener noreferrer"
           class="social-link reveal"
         >
-          <span class="social-name">YouTube</span>
-          <span class="social-arrow">↗</span>
+          <div class="social-name">
+            YouTube
+          </div>
+
+          <div class="social-handle">
+            @nahuelkinder
+          </div>
         </a>
 
         <a
           href="https://www.tiktok.com/@nahuelkin_"
           target="_blank"
-          rel="noopener noreferrer"
           class="social-link reveal"
         >
-          <span class="social-name">TikTok</span>
-          <span class="social-arrow">↗</span>
+          <div class="social-name">
+            TikTok
+          </div>
+
+          <div class="social-handle">
+            @nahuelkin_
+          </div>
         </a>
 
       </div>
-    </section>
 
-    <!-- =========================
-         BOOKING
-    ========================= -->
-
-    <section class="booking" id="booking">
-
-      <div class="booking-inner">
-
-        <div class="section-number reveal">
-          07 / Booking
-        </div>
-
-        <h2 class="booking-title reveal">
-          Let's<br />
-          work
-        </h2>
-
-        <div class="booking-grid">
-
-          <div class="booking-item reveal">
-
-            <div class="booking-label">
-              Email
-            </div>
-
-            <div class="booking-value">
-              Nahuelkinder@gmail.com
-            </div>
-
-          </div>
-
-          <div class="booking-item reveal">
-
-            <div class="booking-label">
-              WhatsApp
-            </div>
-
-            <div class="booking-value">
-              +54 9 345 414 1714
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="booking-buttons">
-
-          <a
-            href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
-            target="_blank"
-            rel="noopener noreferrer"
-            class="booking-button reveal"
-          >
-            WhatsApp ↗
-          </a>
-
-          <a
-            href="mailto:Nahuelkinder@gmail.com?subject=Booking%20-%20Nahuel%20Kinder"
-            class="booking-button secondary reveal"
-          >
-            Email ↗
-          </a>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =========================
-         TECH RIDER
-    ========================= -->
-
-    <section class="tech-rider" id="tech-rider">
-
-      <div class="section-number reveal">
-        08 / Tech Rider
-      </div>
-
-      <div class="tech-head">
-
-        <h2 class="tech-title reveal">
-          Pioneer<br />
-          DDJ-FLX10
-        </h2>
-
-      </div>
-
-      <div class="tech-product reveal">
-
-        <img
-          src="./ddj-flx10.png"
-          alt="Pioneer DDJ-FLX10"
-          loading="lazy"
-        />
-
-      </div>
-
-      <div class="tech-product-name reveal">
-        PIONEER DDJ-FLX10
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- =========================
-       GALLERY LIGHTBOX
-  ========================= -->
-
-  <div
-    class="lightbox"
-    id="lightbox"
-    aria-hidden="true"
-  >
-
-    <button
-      class="lightbox-close"
-      id="lightboxClose"
-      aria-label="Cerrar"
-    >
-      ×
-    </button>
-
-    <button
-      class="lightbox-arrow lightbox-prev"
-      id="lightboxPrev"
-      aria-label="Foto anterior"
-    >
-      ‹
-    </button>
-
-    <img
-      src=""
-      alt="Nahuel Kinder"
-      class="lightbox-image"
-      id="lightboxImage"
-    />
-
-    <button
-      class="lightbox-arrow lightbox-next"
-      id="lightboxNext"
-      aria-label="Foto siguiente"
-    >
-      ›
-    </button>
-
-    <div
-      class="lightbox-counter"
-      id="lightboxCounter"
-    >
-      1 / 4
     </div>
 
-  </div>
+  </section>
 
-  <!-- =========================
-       WHATSAPP
-  ========================= -->
+  <!-- =========================================================
+       BOOKING
+  ========================================================= -->
 
-  <div class="whatsapp-popup" id="whatsappPopup">
-    Contratá a Nahuel Kinder por acá!
-  </div>
+  <section class="booking" id="booking">
 
-  <a
-    href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
-    target="_blank"
-    rel="noopener noreferrer"
-    class="whatsapp"
-    aria-label="Contactar por WhatsApp"
-  >
+    <div class="section-inner">
 
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.8"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
+      <div class="booking-grid">
 
-      <path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L4 20l1.1-4.1A8.5 8.5 0 1 1 21 11.5Z"></path>
+        <div class="reveal">
 
-      <path d="M8.7 8.7c.2-.5.4-.5.7-.5h.5c.2 0 .4.1.5.4l.6 1.4c.1.2.1.4-.1.6l-.5.6c-.1.1-.1.3 0 .5.3.6 1.1 1.7 2.6 2.3.2.1.4.1.5-.1l.6-.7c.2-.2.4-.2.6-.1l1.4.7c.2.1.3.3.2.6-.2.8-.9 1.4-1.7 1.5-.5.1-1.1 0-1.7-.2-1-.4-2.2-1.1-3.2-2.1-1-1-1.7-2.2-2-3.2-.2-.7-.2-1.3 0-1.7Z"></path>
+          <div class="section-label">
+            06 / Booking
+          </div>
 
-    </svg>
+          <h2 class="booking-title">
+            Let's<br />
+            Work.
+          </h2>
 
-  </a>
+        </div>
 
-  <!-- =========================
+        <div class="reveal">
+
+          <p class="booking-copy">
+            Para fechas, eventos, presentaciones, colaboraciones
+            y propuestas profesionales.
+          </p>
+
+          <div class="booking-links">
+
+            <a
+              href="mailto:Nahuelkinder@gmail.com"
+              class="booking-button primary"
+            >
+              Email
+            </a>
+
+            <a
+              href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
+              target="_blank"
+              class="booking-button"
+            >
+              WhatsApp
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
+       TECH RIDER
+  ========================================================= -->
+
+  <section class="tech">
+
+    <div class="section-inner">
+
+      <div class="tech-grid">
+
+        <div class="reveal">
+
+          <div class="section-label">
+            07 / Tech Rider
+          </div>
+
+          <h2 class="tech-title">
+            DJ<br />
+            Setup.
+          </h2>
+
+          <p class="tech-copy">
+            Equipamiento utilizado para las presentaciones.
+          </p>
+
+        </div>
+
+        <div class="tech-gear reveal">
+
+          <img
+            src="./ddj-flx10.png"
+            alt="Pioneer DDJ-FLX10"
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================
        FOOTER
-  ========================= -->
+  ========================================================= -->
 
   <footer>
 
-    <div class="footer-top">
+    <div class="section-inner">
 
-      <img
-        src="./nahuel%20kinder%20png%20logo.png"
-        alt="Nahuel Kinder"
-        class="footer-logo"
-      />
+      <div class="footer-top">
 
-      <div class="footer-text">
-        DJ · Remixer · Producer · Open Format<br />
-        Argentina
+        <img
+          src="./nahuel%20kinder%20png%20logo.png"
+          alt="Nahuel Kinder"
+          class="footer-logo"
+        />
+
+        <div class="footer-right">
+
+          <p>
+            DJ · Remixer · Producer · Open Format
+          </p>
+
+          <p>
+            Argentina 🇦🇷
+          </p>
+
+        </div>
+
       </div>
 
-    </div>
+      <div class="footer-bottom">
 
-    <div class="footer-bottom">
-      <span>© 2026 Nahuel Kinder</span>
-      <span>Press Kit Oficial</span>
+        <span>
+          © 2026 Nahuel Kinder
+        </span>
+
+        <span>
+          Official Press Kit
+        </span>
+
+      </div>
+
     </div>
 
   </footer>
 
+  <!-- =========================================================
+       WHATSAPP
+  ========================================================= -->
+
+  <div class="whatsapp">
+
+    <div
+      class="whatsapp-popup"
+      id="whatsappPopup"
+    >
+      Contratá a Nahuel Kinder por acá!
+    </div>
+
+    <a
+      href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
+      target="_blank"
+      class="whatsapp-button"
+      aria-label="Contactar por WhatsApp"
+    >
+
+      <svg
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M20.52 3.48A11.8 11.8 0 0 0 12.09 0C5.56 0 .25 5.31.25 11.84c0 2.09.55 4.13 1.6 5.93L.16 24l6.37-1.67a11.82 11.82 0 0 0 5.56 1.41h.01c6.52 0 11.83-5.31 11.83-11.84 0-3.16-1.23-6.13-3.41-8.42ZM12.1 21.78h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.78.99 1.01-3.68-.23-.38a9.89 9.89 0 0 1-1.52-5.28C2.16 6.38 6.62 1.92 12.09 1.92c2.65 0 5.14 1.03 7.01 2.91a9.85 9.85 0 0 1 2.9 7.02c0 5.48-4.45 9.93-9.9 9.93Zm5.45-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.21 5.08 4.5.71.31 1.27.5 1.7.64.72.23 1.37.2 1.88.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+      </svg>
+
+    </a>
+
+  </div>
+
+  <!-- =========================================================
+       LIGHTBOX
+  ========================================================= -->
+
+  <div
+    class="lightbox"
+    id="lightbox"
+  >
+
+    <div
+      class="lightbox-close"
+      id="lightboxClose"
+    >
+      ×
+    </div>
+
+    <img
+      id="lightboxImage"
+      src=""
+      alt="Imagen ampliada"
+    />
+
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================= -->
+
   <script>
 
-    /* =========================
+    /* =========================================================
        INTRO
-    ========================= */
+    ========================================================= */
 
-    document.addEventListener("DOMContentLoaded", () => {
-
-      const intro = document.getElementById("intro");
+    window.addEventListener("load", () => {
 
       setTimeout(() => {
 
-        intro.classList.add("hidden");
+        const intro = document.getElementById("intro");
+
+        if (intro) {
+          intro.style.opacity = "0";
+          intro.style.transition = "opacity .7s ease";
+        }
+
         document.body.classList.remove("intro-active");
+
+        setTimeout(() => {
+
+          if (intro) {
+            intro.remove();
+          }
+
+        }, 750);
 
       }, 3300);
 
     });
 
 
-    /* =========================
+    /* =========================================================
        SCROLL REVEAL
-    ========================= */
+    ========================================================= */
 
     const revealElements =
       document.querySelectorAll(".reveal");
 
     const revealObserver =
       new IntersectionObserver(
-
         (entries) => {
 
           entries.forEach((entry) => {
@@ -1987,205 +1942,19 @@
           });
 
         },
-
         {
-          threshold: 0.12
+          threshold: .12
         }
-
       );
 
     revealElements.forEach((element) => {
-
       revealObserver.observe(element);
-
     });
 
 
-    /* =========================
-       GALLERY LIGHTBOX
-    ========================= */
-
-    const galleryItems =
-      document.querySelectorAll(".gallery-item");
-
-    const lightbox =
-      document.getElementById("lightbox");
-
-    const lightboxImage =
-      document.getElementById("lightboxImage");
-
-    const lightboxClose =
-      document.getElementById("lightboxClose");
-
-    const lightboxPrev =
-      document.getElementById("lightboxPrev");
-
-    const lightboxNext =
-      document.getElementById("lightboxNext");
-
-    const lightboxCounter =
-      document.getElementById("lightboxCounter");
-
-    const galleryImages = [
-      "./gallery-01.jpg",
-      "./gallery-02.jpg",
-      "./gallery-03.jpg",
-      "./gallery-04.jpg"
-    ];
-
-    let currentGalleryIndex = 0;
-
-
-    function updateLightbox() {
-
-      lightboxImage.src =
-        galleryImages[currentGalleryIndex];
-
-      lightboxCounter.textContent =
-        `${currentGalleryIndex + 1} / ${galleryImages.length}`;
-
-    }
-
-
-    function openLightbox(index) {
-
-      currentGalleryIndex = index;
-
-      updateLightbox();
-
-      lightbox.classList.add("active");
-
-      lightbox.setAttribute("aria-hidden", "false");
-
-      document.body.style.overflow = "hidden";
-
-    }
-
-
-    function closeLightbox() {
-
-      lightbox.classList.remove("active");
-
-      lightbox.setAttribute("aria-hidden", "true");
-
-      document.body.style.overflow = "";
-
-    }
-
-
-    function nextImage() {
-
-      currentGalleryIndex =
-        (currentGalleryIndex + 1) % galleryImages.length;
-
-      updateLightbox();
-
-    }
-
-
-    function previousImage() {
-
-      currentGalleryIndex =
-        (currentGalleryIndex - 1 + galleryImages.length)
-        % galleryImages.length;
-
-      updateLightbox();
-
-    }
-
-
-    galleryItems.forEach((item) => {
-
-      item.addEventListener("click", () => {
-
-        const index =
-          Number(item.dataset.index);
-
-        openLightbox(index);
-
-      });
-
-    });
-
-
-    lightboxClose.addEventListener(
-      "click",
-      closeLightbox
-    );
-
-
-    lightboxNext.addEventListener(
-      "click",
-      nextImage
-    );
-
-
-    lightboxPrev.addEventListener(
-      "click",
-      previousImage
-    );
-
-
-    lightbox.addEventListener("click", (event) => {
-
-      if (event.target === lightbox) {
-
-        closeLightbox();
-
-      }
-
-    });
-
-
-    document.addEventListener("keydown", (event) => {
-
-      if (!lightbox.classList.contains("active")) {
-        return;
-      }
-
-      if (event.key === "Escape") {
-        closeLightbox();
-      }
-
-      if (event.key === "ArrowRight") {
-        nextImage();
-      }
-
-      if (event.key === "ArrowLeft") {
-        previousImage();
-      }
-
-    });
-
-
-    /* =========================
-       WHATSAPP POPUP
-    ========================= */
-
-    const whatsappPopup =
-      document.getElementById("whatsappPopup");
-
-    function showWhatsAppPopup() {
-
-      whatsappPopup.classList.add("show");
-
-      setTimeout(() => {
-
-        whatsappPopup.classList.remove("show");
-
-      }, 4500);
-
-    }
-
-    setTimeout(showWhatsAppPopup, 6000);
-
-    setInterval(showWhatsAppPopup, 15000);
-
-
-    /* =========================
+    /* =========================================================
        HERO PARALLAX
-       NO SE MODIFICA EL COLOR
-    ========================= */
+    ========================================================= */
 
     const heroBg =
       document.getElementById("heroBg");
@@ -2199,11 +1968,115 @@
       if (scrollY < window.innerHeight) {
 
         heroBg.style.transform =
-          `scale(1.05) translateY(${scrollY * 0.08}px)`;
+          `scale(1.05) translateY(${scrollY * .12}px)`;
 
       }
 
     });
+
+
+    /* =========================================================
+       WHATSAPP POPUP
+    ========================================================= */
+
+    const whatsappPopup =
+      document.getElementById("whatsappPopup");
+
+    function showWhatsappPopup() {
+
+      if (!whatsappPopup) return;
+
+      whatsappPopup.classList.add("show");
+
+      setTimeout(() => {
+
+        whatsappPopup.classList.remove("show");
+
+      }, 4500);
+
+    }
+
+    setTimeout(showWhatsappPopup, 5000);
+
+    setInterval(showWhatsappPopup, 18000);
+
+
+    /* =========================================================
+       GALLERY LIGHTBOX
+    ========================================================= */
+
+    const galleryItems =
+      document.querySelectorAll(".gallery-item");
+
+    const lightbox =
+      document.getElementById("lightbox");
+
+    const lightboxImage =
+      document.getElementById("lightboxImage");
+
+    const lightboxClose =
+      document.getElementById("lightboxClose");
+
+    galleryItems.forEach((item) => {
+
+      item.addEventListener("click", () => {
+
+        const image =
+          item.querySelector("img");
+
+        if (!image) return;
+
+        lightboxImage.src = image.src;
+
+        lightbox.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+      });
+
+    });
+
+
+    function closeLightbox() {
+
+      lightbox.classList.remove("active");
+
+      document.body.style.overflow = "";
+
+    }
+
+
+    lightboxClose.addEventListener(
+      "click",
+      closeLightbox
+    );
+
+
+    lightbox.addEventListener(
+      "click",
+      (event) => {
+
+        if (event.target === lightbox) {
+          closeLightbox();
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "Escape" &&
+          lightbox.classList.contains("active")
+        ) {
+          closeLightbox();
+        }
+
+      }
+    );
 
   </script>
 
