@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin — Nahuel Kinder Press Kit</title>
+
+  <title>Admin — Nahuel Kinder</title>
 
   <style>
     * {
@@ -19,8 +20,22 @@
       min-height: 100vh;
     }
 
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* =========================
+       TOPBAR
+    ========================= */
+
     .topbar {
-      height: 80px;
+      height: 76px;
       border-bottom: 1px solid #222;
       display: flex;
       align-items: center;
@@ -28,122 +43,421 @@
       padding: 0 40px;
       position: sticky;
       top: 0;
+      z-index: 50;
       background: rgba(5,5,5,.94);
-      backdrop-filter: blur(15px);
-      z-index: 10;
+      backdrop-filter: blur(18px);
     }
 
     .brand {
-      font-size: 12px;
-      font-weight: bold;
+      font-size: 11px;
+      font-weight: 700;
       letter-spacing: .22em;
       text-transform: uppercase;
     }
 
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
     .status {
-      font-size: 10px;
-      color: #777;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-    }
-
-    main {
-      width: min(1100px, 92%);
-      margin: 70px auto;
-    }
-
-    .intro {
-      margin-bottom: 55px;
-    }
-
-    .intro small {
       color: #666;
-      text-transform: uppercase;
-      letter-spacing: .2em;
       font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
     }
 
-    h1 {
-      font-size: clamp(45px, 8vw, 90px);
+    .view-site {
+      border: 1px solid #333;
+      background: transparent;
+      color: #fff;
+      padding: 10px 15px;
+      font-size: 9px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      transition: .3s;
+    }
+
+    .view-site:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* =========================
+       LAYOUT
+    ========================= */
+
+    .layout {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      min-height: calc(100vh - 76px);
+    }
+
+    .sidebar {
+      border-right: 1px solid #1d1d1d;
+      padding: 35px 20px;
+      position: sticky;
+      top: 76px;
+      height: calc(100vh - 76px);
+    }
+
+    .sidebar-label {
+      color: #444;
+      font-size: 8px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin: 0 15px 18px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .menu button {
+      border: 0;
+      background: transparent;
+      color: #777;
+      text-align: left;
+      padding: 13px 15px;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: .25s;
+    }
+
+    .menu button:hover {
+      color: #fff;
+      background: #0d0d0d;
+    }
+
+    .menu button.active {
+      color: #fff;
+      background: #111;
+      border-left: 2px solid #fff;
+    }
+
+    /* =========================
+       CONTENT
+    ========================= */
+
+    .content {
+      width: min(1100px, 100%);
+      padding: 55px 6vw 100px;
+    }
+
+    .page-header {
+      margin-bottom: 45px;
+    }
+
+    .page-header small {
+      color: #555;
+      font-size: 8px;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+    }
+
+    .page-header h1 {
+      margin-top: 14px;
+      font-size: clamp(40px, 6vw, 75px);
       line-height: .9;
       letter-spacing: -.06em;
-      margin-top: 18px;
       text-transform: uppercase;
     }
 
-    .grid {
+    .page-header p {
+      max-width: 600px;
+      margin-top: 20px;
+      color: #666;
+      line-height: 1.6;
+      font-size: 13px;
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    .panel {
+      display: none;
+      animation: panelIn .45s ease both;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    @keyframes panelIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .panel-title {
+      font-size: 10px;
+      color: #555;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      border-bottom: 1px solid #222;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      border: 1px solid #222;
+      background: #0a0a0a;
+      padding: 20px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      display: block;
+      color: #666;
+      font-size: 8px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid #242424;
+      background: #050505;
+      color: #fff;
+      padding: 13px;
+      outline: none;
+      font-size: 13px;
+      transition: .25s;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #555;
+    }
+
+    /* =========================
+       IMAGE UPLOAD
+    ========================= */
+
+    .upload {
+      border: 1px dashed #333;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      transition: .3s;
+    }
+
+    .upload:hover {
+      border-color: #666;
+    }
+
+    .upload strong {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      margin-bottom: 8px;
+    }
+
+    .upload span {
+      color: #555;
+      font-size: 10px;
+    }
+
+    .upload input {
+      margin-top: 18px;
+      border: 0;
+      padding: 0;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .save {
+      background: #fff;
+      color: #000;
+      border: 1px solid #fff;
+      padding: 14px 24px;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      transition: .3s;
+    }
+
+    .save:hover {
+      background: #ccc;
+      border-color: #ccc;
+    }
+
+    .secondary {
+      background: transparent;
+      color: #777;
+      border: 1px solid #333;
+      padding: 14px 24px;
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .secondary:hover {
+      color: #fff;
+      border-color: #555;
+    }
+
+    .saved {
+      color: #666;
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: .3s;
+    }
+
+    .saved.show {
+      opacity: 1;
+    }
+
+    /* =========================
+       STAT CARDS
+    ========================= */
+
+    .stat-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
 
-    .card {
+    /* =========================
+       EVENTS
+    ========================= */
+
+    .event-editor {
       border: 1px solid #222;
-      background: #0b0b0b;
-      padding: 30px;
-      min-height: 180px;
-      transition: .3s ease;
+      padding: 22px;
+      margin-bottom: 15px;
+      background: #0a0a0a;
     }
 
-    .card:hover {
-      border-color: #444;
-      transform: translateY(-3px);
+    .event-editor-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 18px;
     }
 
-    .card-number {
+    .event-number {
       color: #555;
       font-size: 9px;
-      letter-spacing: .2em;
-      margin-bottom: 30px;
+      letter-spacing: .15em;
     }
 
-    .card h2 {
-      font-size: 23px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .card p {
-      color: #666;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .coming {
-      margin-top: 50px;
-      border-top: 1px solid #222;
-      padding-top: 30px;
+    .remove {
+      border: 0;
+      background: transparent;
       color: #555;
-      font-size: 11px;
-      line-height: 1.6;
-    }
-
-    .back {
-      display: inline-block;
-      margin-top: 25px;
-      color: #fff;
-      font-size: 10px;
+      font-size: 9px;
       text-transform: uppercase;
-      letter-spacing: .18em;
-      border-bottom: 1px solid #444;
-      padding-bottom: 8px;
     }
 
-    @media (max-width: 700px) {
+    .remove:hover {
+      color: #fff;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .admin-footer {
+      margin-top: 80px;
+      padding-top: 25px;
+      border-top: 1px solid #1d1d1d;
+      color: #444;
+      font-size: 8px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 800px) {
+
       .topbar {
-        padding: 0 20px;
+        padding: 0 18px;
       }
 
-      main {
-        margin: 45px auto;
+      .status {
+        display: none;
       }
 
-      .grid {
+      .layout {
         grid-template-columns: 1fr;
       }
 
-      .card {
-        padding: 24px;
+      .sidebar {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid #1d1d1d;
+        padding: 15px;
+        overflow-x: auto;
+      }
+
+      .menu {
+        flex-direction: row;
+        width: max-content;
+      }
+
+      .menu button {
+        white-space: nowrap;
+      }
+
+      .content {
+        padding: 40px 5vw 80px;
+      }
+
+      .form-grid,
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .field.full {
+        grid-column: auto;
       }
     }
   </style>
@@ -152,105 +466,1004 @@
 <body>
 
   <header class="topbar">
-    <div class="brand">NK / PRESS KIT</div>
-    <div class="status">Admin Panel</div>
+
+    <div class="brand">
+      NK / PRESS KIT
+    </div>
+
+    <div class="top-right">
+
+      <div class="status">
+        Admin / Editor
+      </div>
+
+      <button
+        class="view-site"
+        onclick="window.location.href='../'"
+      >
+        Ver Press Kit
+      </button>
+
+    </div>
+
   </header>
 
-  <main>
 
-    <div class="intro">
-      <small>Private control panel / 2026</small>
+  <div class="layout">
 
-      <h1>
-        Edit<br>
-        Your Kit
-      </h1>
-    </div>
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
 
-    <div class="grid">
+    <aside class="sidebar">
 
-      <div class="card">
-        <div class="card-number">01</div>
-        <h2>Identidad</h2>
-        <p>
-          Logo, nombre, descripción principal y
-          datos generales del Press Kit.
-        </p>
+      <div class="sidebar-label">
+        Content
       </div>
 
-      <div class="card">
-        <div class="card-number">02</div>
-        <h2>Fotografías</h2>
-        <p>
-          Foto principal, fotos de galería y
-          material visual.
-        </p>
+      <div class="menu">
+
+        <button class="active" data-panel="identity">
+          01 — Identidad
+        </button>
+
+        <button data-panel="photos">
+          02 — Fotos
+        </button>
+
+        <button data-panel="music">
+          03 — Música
+        </button>
+
+        <button data-panel="stats">
+          04 — Estadísticas
+        </button>
+
+        <button data-panel="events">
+          05 — Experiencia
+        </button>
+
+        <button data-panel="social">
+          06 — Redes
+        </button>
+
+        <button data-panel="booking">
+          07 — Booking
+        </button>
+
       </div>
 
-      <div class="card">
-        <div class="card-number">03</div>
-        <h2>Música</h2>
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="content">
+
+      <div class="page-header">
+
+        <small>
+          Private control panel / 2026
+        </small>
+
+        <h1>
+          Edit<br>
+          Your Kit
+        </h1>
+
         <p>
-          Tracks, remixes, Spotify, YouTube y
-          otros enlaces musicales.
+          Desde este panel vas a poder administrar el contenido
+          de tu Press Kit sin modificar el diseño de la página.
         </p>
+
       </div>
 
-      <div class="card">
-        <div class="card-number">04</div>
-        <h2>Estadísticas</h2>
-        <p>
-          Streams, oyentes, eventos, releases y
-          otros números destacados.
-        </p>
+
+      <!-- =========================
+           IDENTITY
+      ========================= -->
+
+      <section
+        class="panel active"
+        id="identity"
+      >
+
+        <div class="panel-title">
+          01 / Identidad
+        </div>
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label>
+              Nombre artístico
+            </label>
+
+            <input
+              type="text"
+              value="Nahuel Kinder"
+              id="artistName"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label>
+              País / ubicación
+            </label>
+
+            <input
+              type="text"
+              value="Argentina"
+              id="artistLocation"
+            >
+
+          </div>
+
+
+          <div class="field full">
+
+            <label>
+              Descripción / Biografía
+            </label>
+
+            <textarea id="bio">Nahuel Kinder is a DJ and remixer focused on creating energetic experiences through music, mixing and sound.</textarea>
+
+          </div>
+
+        </div>
+
+
+        <div class="actions">
+
+          <button
+            class="save"
+            onclick="saveSection('identity')"
+          >
+            Guardar cambios
+          </button>
+
+          <span
+            class="saved"
+            id="saved-identity"
+          >
+            Guardado
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           PHOTOS
+      ========================= -->
+
+      <section
+        class="panel"
+        id="photos"
+      >
+
+        <div class="panel-title">
+          02 / Fotografías
+        </div>
+
+        <div class="form-grid">
+
+          <div class="field full">
+
+            <label>
+              Foto principal
+            </label>
+
+            <div class="upload">
+
+              <div>
+
+                <strong>
+                  Seleccionar foto
+                </strong>
+
+                <span>
+                  JPG / PNG / WEBP
+                </span>
+
+                <input
+                  type="file"
+                  accept="image/*"
+                >
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label>
+              Galería
+            </label>
+
+            <div class="upload">
+
+              <div>
+
+                <strong>
+                  Agregar fotografías
+                </strong>
+
+                <span>
+                  Podrás seleccionar varias imágenes
+                </span>
+
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                >
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="actions">
+
+          <button
+            class="save"
+            onclick="saveSection('photos')"
+          >
+            Guardar fotos
+          </button>
+
+          <span
+            class="saved"
+            id="saved-photos"
+          >
+            Guardado
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           MUSIC
+      ========================= -->
+
+      <section
+        class="panel"
+        id="music"
+      >
+
+        <div class="panel-title">
+          03 / Música
+        </div>
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label>
+              Nombre del track
+            </label>
+
+            <input
+              type="text"
+              value="Featured Remix"
+              id="trackName"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Artista / descripción
+            </label>
+
+            <input
+              type="text"
+              value="Nahuel Kinder / Remix"
+              id="trackInfo"
+            >
+
+          </div>
+
+          <div class="field full">
+
+            <label>
+              Link de Spotify
+            </label>
+
+            <input
+              type="url"
+              placeholder="https://open.spotify.com/..."
+              id="spotifyMusic"
+            >
+
+          </div>
+
+          <div class="field full">
+
+            <label>
+              Link de YouTube
+            </label>
+
+            <input
+              type="url"
+              placeholder="https://youtube.com/..."
+              id="youtubeMusic"
+            >
+
+          </div>
+
+        </div>
+
+        <div class="actions">
+
+          <button
+            class="save"
+            onclick="saveSection('music')"
+          >
+            Guardar música
+          </button>
+
+          <span
+            class="saved"
+            id="saved-music"
+          >
+            Guardado
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           STATS
+      ========================= -->
+
+      <section
+        class="panel"
+        id="stats"
+      >
+
+        <div class="panel-title">
+          04 / Estadísticas
+        </div>
+
+        <div class="stat-grid">
+
+          <div class="field">
+
+            <label>
+              Estadística 01
+            </label>
+
+            <input
+              type="text"
+              value="100K+"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Título 01
+            </label>
+
+            <input
+              type="text"
+              value="Listeners"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Estadística 02
+            </label>
+
+            <input
+              type="text"
+              value="1M+"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Título 02
+            </label>
+
+            <input
+              type="text"
+              value="Streams"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Estadística 03
+            </label>
+
+            <input
+              type="text"
+              value="00"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Título 03
+            </label>
+
+            <input
+              type="text"
+              value="Events"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Estadística 04
+            </label>
+
+            <input
+              type="text"
+              value="00"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Título 04
+            </label>
+
+            <input
+              type="text"
+              value="Releases"
+            >
+
+          </div>
+
+        </div>
+
+        <div class="actions">
+
+          <button
+            class="save"
+            onclick="saveSection('stats')"
+          >
+            Guardar estadísticas
+          </button>
+
+          <span
+            class="saved"
+            id="saved-stats"
+          >
+            Guardado
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           EVENTS
+      ========================= -->
+
+      <section
+        class="panel"
+        id="events"
+      >
+
+        <div class="panel-title">
+          05 / Experiencia
+        </div>
+
+        <div id="eventsContainer">
+
+          <div class="event-editor">
+
+            <div class="event-editor-header">
+
+              <span class="event-number">
+                EVENT 01
+              </span>
+
+              <button
+                class="remove"
+                onclick="removeEvent(this)"
+              >
+                Eliminar
+              </button>
+
+            </div>
+
+            <div class="form-grid">
+
+              <div class="field">
+
+                <label>
+                  Año
+                </label>
+
+                <input
+                  type="text"
+                  value="2026"
+                >
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  Lugar / evento
+                </label>
+
+                <input
+                  type="text"
+                  value="Event / Club"
+                >
+
+              </div>
+
+              <div class="field full">
+
+                <label>
+                  Ubicación
+                </label>
+
+                <input
+                  type="text"
+                  value="Argentina"
+                >
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="event-editor">
+
+            <div class="event-editor-header">
+
+              <span class="event-number">
+                EVENT 02
+              </span>
+
+              <button
+                class="remove"
+                onclick="removeEvent(this)"
+              >
+                Eliminar
+              </button>
+
+            </div>
+
+            <div class="form-grid">
+
+              <div class="field">
+
+                <label>
+                  Año
+                </label>
+
+                <input
+                  type="text"
+                  value="2026"
+                >
+
+              </div>
+
+              <div class="field">
+
+                <label>
+                  Lugar / evento
+                </label>
+
+                <input
+                  type="text"
+                  value="Event / Festival"
+                >
+
+              </div>
+
+              <div class="field full">
+
+                <label>
+                  Ubicación
+                </label>
+
+                <input
+                  type="text"
+                  value="Argentina"
+                >
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="actions">
+
+          <button
+            class="secondary"
+            onclick="addEvent()"
+          >
+            + Agregar evento
+          </button>
+
+        </div>
+
+
+        <div class="actions">
+
+          <button
+            class="save"
+            onclick="saveSection('events')"
+          >
+            Guardar eventos
+          </button>
+
+          <span
+            class="saved"
+            id="saved-events"
+          >
+            Guardado
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           SOCIAL
+      ========================= -->
+
+      <section
+        class="panel"
+        id="social"
+      >
+
+        <div class="panel-title">
+          06 / Redes sociales
+        </div>
+
+        <div class="form-grid">
+
+          <div class="field full">
+
+            <label>
+              Instagram
+            </label>
+
+            <input
+              type="url"
+              placeholder="https://instagram.com/..."
+            >
+
+          </div>
+
+          <div class="field full">
+
+            <label>
+              Spotify
+            </label>
+
+            <input
+              type="url"
+              placeholder="https://open.spotify.com/artist/..."
+            >
+
+          </div>
+
+          <div class="field full">
+
+            <label>
+              YouTube
+            </label>
+
+            <input
+              type="url"
+              placeholder="https://youtube.com/..."
+            >
+
+          </div>
+
+          <div class="field full">
+
+            <label>
+              TikTok
+            </label>
+
+            <input
+              type="url"
+              placeholder="https://tiktok.com/@..."
+            >
+
+          </div>
+
+        </div>
+
+        <div class="actions">
+
+          <button
+            class="save"
+            onclick="saveSection('social')"
+          >
+            Guardar redes
+          </button>
+
+          <span
+            class="saved"
+            id="saved-social"
+          >
+            Guardado
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- =========================
+           BOOKING
+      ========================= -->
+
+      <section
+        class="panel"
+        id="booking"
+      >
+
+        <div class="panel-title">
+          07 / Booking
+        </div>
+
+        <div class="form-grid">
+
+          <div class="field full">
+
+            <label>
+              Email profesional
+            </label>
+
+            <input
+              type="email"
+              placeholder="booking@..."
+            >
+
+          </div>
+
+          <div class="field full">
+
+            <label>
+              Texto de contacto
+            </label>
+
+            <textarea>For bookings, collaborations and professional inquiries.</textarea>
+
+          </div>
+
+        </div>
+
+        <div class="actions">
+
+          <button
+            class="save"
+            onclick="saveSection('booking')"
+          >
+            Guardar booking
+          </button>
+
+          <span
+            class="saved"
+            id="saved-booking"
+          >
+            Guardado
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <div class="admin-footer">
+        Nahuel Kinder / Press Kit Administration
       </div>
 
-      <div class="card">
-        <div class="card-number">05</div>
-        <h2>Experiencia</h2>
-        <p>
-          Eventos, clubes, festivales y
-          presentaciones.
-        </p>
-      </div>
+    </main>
 
-      <div class="card">
-        <div class="card-number">06</div>
-        <h2>Redes</h2>
-        <p>
-          Instagram, Spotify, YouTube y TikTok.
-        </p>
-      </div>
+  </div>
 
-      <div class="card">
-        <div class="card-number">07</div>
-        <h2>Booking</h2>
-        <p>
-          Email y datos de contacto profesional.
-        </p>
-      </div>
 
-      <div class="card">
-        <div class="card-number">08</div>
-        <h2>Configuración</h2>
-        <p>
-          Opciones generales del Press Kit.
-        </p>
-      </div>
+  <script>
 
-    </div>
+    /* =========================
+       NAVEGACIÓN
+    ========================= */
 
-    <div class="coming">
-      PANEL DE EDICIÓN — PRÓXIMAMENTE<br>
-      Estamos preparando el sistema para que puedas
-      modificar todo el contenido sin tocar código.
-    </div>
+    const menuButtons =
+      document.querySelectorAll(".menu button");
 
-    <a href="../" class="back">
-      ← Volver al Press Kit
-    </a>
+    const panels =
+      document.querySelectorAll(".panel");
 
-  </main>
+
+    menuButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        const target =
+          button.dataset.panel;
+
+        menuButtons.forEach(item => {
+          item.classList.remove("active");
+        });
+
+        panels.forEach(panel => {
+          panel.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        document
+          .getElementById(target)
+          .classList.add("active");
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      });
+
+    });
+
+
+    /* =========================
+       GUARDADO TEMPORAL
+       ========================= */
+
+    function saveSection(section) {
+
+      const message =
+        document.getElementById("saved-" + section);
+
+      if (!message) return;
+
+      message.classList.add("show");
+
+      setTimeout(() => {
+        message.classList.remove("show");
+      }, 2200);
+
+    }
+
+
+    /* =========================
+       EVENTOS
+    ========================= */
+
+    function addEvent() {
+
+      const container =
+        document.getElementById("eventsContainer");
+
+      const number =
+        container.children.length + 1;
+
+      const event =
+        document.createElement("div");
+
+      event.className = "event-editor";
+
+      event.innerHTML = `
+
+        <div class="event-editor-header">
+
+          <span class="event-number">
+            EVENT ${String(number).padStart(2, "0")}
+          </span>
+
+          <button
+            class="remove"
+            onclick="removeEvent(this)"
+          >
+            Eliminar
+          </button>
+
+        </div>
+
+        <div class="form-grid">
+
+          <div class="field">
+
+            <label>Año</label>
+
+            <input
+              type="text"
+              placeholder="2026"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>Lugar / evento</label>
+
+            <input
+              type="text"
+              placeholder="Nombre del evento"
+            >
+
+          </div>
+
+          <div class="field full">
+
+            <label>Ubicación</label>
+
+            <input
+              type="text"
+              placeholder="Ciudad / País"
+            >
+
+          </div>
+
+        </div>
+
+      `;
+
+      container.appendChild(event);
+
+    }
+
+
+    function removeEvent(button) {
+
+      const event =
+        button.closest(".event-editor");
+
+      if (!event) return;
+
+      event.remove();
+
+    }
+
+  </script>
 
 </body>
 </html>
