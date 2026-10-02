@@ -23,10 +23,10 @@
     :root {
       --black: #050505;
       --white: #f5f5f2;
-      --soft: #e9e9e5;
-      --gray: #8d8d8d;
-      --line: rgba(0,0,0,.12);
-      --dark-line: rgba(255,255,255,.12);
+      --offwhite: #e9e9e5;
+      --gray: #777;
+      --line: rgba(0,0,0,.13);
+      --dark-line: rgba(255,255,255,.14);
     }
 
     * {
@@ -40,9 +40,9 @@
     }
 
     body {
-      font-family: "Inter", sans-serif;
       background: var(--white);
       color: var(--black);
+      font-family: "Inter", sans-serif;
       overflow-x: hidden;
     }
 
@@ -60,7 +60,13 @@
       display: block;
     }
 
-    /* INTRO */
+    button {
+      font-family: inherit;
+    }
+
+    /* =========================
+       INTRO
+    ========================= */
 
     .intro {
       position: fixed;
@@ -70,7 +76,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      pointer-events: all;
     }
 
     .intro-logo {
@@ -111,7 +117,16 @@
       }
     }
 
-    /* RUIDO */
+    .intro.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .8s ease, visibility .8s ease;
+    }
+
+    /* =========================
+       NOISE
+    ========================= */
 
     body::before {
       content: "";
@@ -119,72 +134,90 @@
       inset: 0;
       z-index: 9990;
       pointer-events: none;
-      opacity: .035;
+      opacity: .045;
       background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
     }
 
-    /* HEADER */
+    /* =========================
+       TOPBAR
+    ========================= */
 
-    header {
+    .topbar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
-      padding: 22px 34px;
+      padding: 20px 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       mix-blend-mode: difference;
-      color: #fff;
+      color: white;
     }
 
-    .header-brand {
+    .topbar-brand {
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
+      font-weight: 600;
+      letter-spacing: .16em;
       text-transform: uppercase;
     }
 
-    .header-nav {
+    .topbar-nav {
       display: flex;
-      gap: 26px;
+      gap: 24px;
       font-size: 10px;
-      letter-spacing: .15em;
+      letter-spacing: .12em;
       text-transform: uppercase;
     }
 
-    .header-nav a {
-      position: relative;
+    .topbar-nav a {
+      transition: opacity .25s ease;
     }
 
-    .header-nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0;
-      height: 1px;
-      background: currentColor;
-      transition: width .35s ease;
+    .topbar-nav a:hover {
+      opacity: .5;
     }
 
-    .header-nav a:hover::after {
-      width: 100%;
+    /* =========================
+       GENERAL
+    ========================= */
+
+    .section-inner {
+      width: min(1400px, calc(100% - 70px));
+      margin: 0 auto;
     }
 
-    /* HERO */
+    .section-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: #888;
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(55px, 8vw, 125px);
+      line-height: .82;
+      letter-spacing: -.07em;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
 
     .hero {
       position: relative;
-      min-height: 100svh;
+      height: 100vh;
+      min-height: 720px;
       background: #050505;
-      color: #fff;
+      color: white;
       overflow: hidden;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end;
     }
 
     .hero-bg {
@@ -206,31 +239,26 @@
       background:
         linear-gradient(
           to bottom,
-          rgba(0,0,0,.55),
-          rgba(0,0,0,.18) 45%,
-          rgba(0,0,0,.72)
+          rgba(0,0,0,.25),
+          rgba(0,0,0,.1) 35%,
+          rgba(0,0,0,.78) 100%
         );
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      width: min(1400px, 92vw);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding-top: 70px;
+      width: min(1400px, calc(100% - 70px));
+      margin: 0 auto;
+      padding-bottom: 65px;
     }
 
     .hero-kicker {
       font-size: 11px;
-      letter-spacing: .24em;
+      letter-spacing: .18em;
       text-transform: uppercase;
-      color: #aaa;
-      margin-bottom: 34px;
-      text-align: center;
+      margin-bottom: 28px;
+      color: rgba(255,255,255,.8);
     }
 
     .hero-logo {
@@ -242,108 +270,30 @@
     }
 
     .hero-bottom {
-      position: absolute;
-      bottom: 30px;
-      left: 34px;
-      right: 34px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      z-index: 3;
+      margin-top: 45px;
     }
 
-    .hero-location,
-    .hero-scroll {
-      font-size: 9px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.68);
+    .hero-description {
+      max-width: 390px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255,255,255,.72);
     }
 
-    .hero-scroll {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .hero-scroll span {
-      width: 35px;
-      height: 1px;
-      background: rgba(255,255,255,.5);
-    }
-
-    /* MARQUEE */
-
-    .marquee {
-      background: #050505;
-      color: #fff;
-      overflow: hidden;
-      border-top: 1px solid rgba(255,255,255,.12);
-      border-bottom: 1px solid rgba(255,255,255,.12);
-    }
-
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 24s linear infinite;
-    }
-
-    .marquee-content {
-      display: flex;
-      align-items: center;
-      gap: 45px;
-      padding: 22px 0;
-      white-space: nowrap;
-    }
-
-    .marquee-content span {
-      font-family: "Archivo Black", sans-serif;
-      font-size: clamp(28px, 4vw, 60px);
-      text-transform: uppercase;
-      letter-spacing: -.04em;
-    }
-
-    .marquee-content .dot {
-      font-size: 20px;
-      opacity: .4;
-    }
-
-    @keyframes marquee {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    section {
-      position: relative;
-    }
-
-    .section-inner {
-      width: min(1250px, 88vw);
-      margin: 0 auto;
-    }
-
-    .section-label {
+    .scroll-label {
       font-size: 10px;
-      letter-spacing: .2em;
+      letter-spacing: .15em;
       text-transform: uppercase;
-      color: #777;
-      margin-bottom: 22px;
+      writing-mode: vertical-rl;
+      color: rgba(255,255,255,.6);
     }
 
-    .section-title {
-      font-family: "Archivo Black", sans-serif;
-      text-transform: uppercase;
-      font-size: clamp(50px, 8vw, 125px);
-      line-height: .82;
-      letter-spacing: -.065em;
-    }
-
-    /* REVEAL */
+    /* =========================
+       REVEAL
+    ========================= */
 
     .reveal {
       opacity: 0;
@@ -358,23 +308,79 @@
       transform: translateY(0);
     }
 
-    /* SOBRE MÍ */
+    /* =========================
+       MARQUEE
+    ========================= */
+
+    .marquee {
+      overflow: hidden;
+      background: var(--black);
+      color: white;
+      padding: 25px 0;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      gap: 50px;
+      animation: marquee 25s linear infinite;
+    }
+
+    .marquee-item {
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(25px, 4vw, 55px);
+      text-transform: uppercase;
+      letter-spacing: -.04em;
+    }
+
+    .marquee-dot {
+      opacity: .35;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
 
     .about {
-      background: var(--white);
       padding: 150px 0;
+      background: var(--white);
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns: .85fr 1.15fr;
+      grid-template-columns: 1fr 1fr;
       gap: 90px;
       align-items: center;
     }
 
+    .about-copy {
+      margin-top: 45px;
+      max-width: 570px;
+    }
+
+    .about-copy p {
+      font-size: clamp(20px, 2.1vw, 31px);
+      line-height: 1.22;
+      letter-spacing: -.035em;
+    }
+
+    .about-copy p + p {
+      margin-top: 25px;
+    }
+
     .about-image-wrap {
+      position: relative;
       overflow: hidden;
-      background: #ddd;
     }
 
     .about-image {
@@ -386,156 +392,92 @@
       transform-origin: center;
     }
 
-    @keyframes photoColorCycle {
-      0% {
-        filter: grayscale(100%);
-      }
-
-      25% {
-        filter: grayscale(100%);
-      }
-
-      50% {
-        filter: grayscale(0%);
-      }
-
-      75% {
-        filter: grayscale(0%);
-      }
-
-      100% {
-        filter: grayscale(100%);
-      }
-    }
-
-    .about-copy {
-      max-width: 680px;
-    }
-
-    .about-copy h2 {
-      font-family: "Archivo Black", sans-serif;
-      font-size: clamp(46px, 6vw, 88px);
-      line-height: .86;
-      letter-spacing: -.06em;
-      text-transform: uppercase;
-      margin-bottom: 38px;
-    }
-
-    .about-copy p {
-      font-size: 17px;
-      line-height: 1.75;
-      color: #4d4d4d;
-      max-width: 620px;
-    }
-
-    /* MÚSICA */
+    /* =========================
+       MUSIC
+    ========================= */
 
     .music {
-      background: #050505;
-      color: #fff;
       padding: 150px 0;
+      background: #deded9;
     }
 
-    .music-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: center;
+    .music-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 70px;
     }
 
-    .music-title {
-      font-family: "Archivo Black", sans-serif;
+    .music-link {
+      font-size: 11px;
+      letter-spacing: .13em;
       text-transform: uppercase;
-      font-size: clamp(55px, 8vw, 120px);
-      line-height: .82;
-      letter-spacing: -.065em;
+      border-bottom: 1px solid #111;
+      padding-bottom: 7px;
     }
 
-    .music-description {
-      color: #999;
-      line-height: 1.7;
-      max-width: 520px;
-      margin-top: 35px;
-      font-size: 15px;
-    }
-
-    .spotify-frame {
+    .music-player {
       width: 100%;
-      min-height: 352px;
-      border: 0;
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
+      background: #000;
     }
 
-    .music-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 32px;
-      padding: 15px 22px;
-      border: 1px solid rgba(255,255,255,.3);
-      font-size: 10px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      transition: all .3s ease;
+    .music-player iframe {
+      display: block;
+      width: 100%;
+      height: 152px;
+      border: 0;
     }
 
-    .music-button:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    /* ESTADÍSTICAS */
+    /* =========================
+       STATS
+    ========================= */
 
     .stats {
-      background: var(--soft);
-      padding: 120px 0;
+      padding: 110px 0;
+      background: var(--black);
+      color: white;
     }
 
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      gap: 1px;
+      background: var(--dark-line);
     }
 
     .stat {
-      padding: 50px 35px;
-      border-right: 1px solid var(--line);
-    }
-
-    .stat:last-child {
-      border-right: none;
+      padding: 55px 40px;
+      background: var(--black);
     }
 
     .stat-number {
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(55px, 7vw, 110px);
-      letter-spacing: -.06em;
+      font-size: clamp(55px, 7vw, 105px);
+      letter-spacing: -.07em;
       line-height: .8;
+      margin-bottom: 25px;
     }
 
     .stat-label {
-      margin-top: 22px;
       font-size: 10px;
-      letter-spacing: .18em;
       text-transform: uppercase;
-      color: #666;
+      letter-spacing: .15em;
+      color: #999;
     }
 
-    /* EXPERIENCIA */
+    /* =========================
+       EXPERIENCE
+    ========================= */
 
     .experience {
-      background: var(--white);
       padding: 150px 0;
+      background: var(--white);
     }
 
     .experience-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 40px;
-      margin-bottom: 80px;
+      margin-bottom: 90px;
     }
 
     .experience-list {
@@ -544,10 +486,10 @@
 
     .experience-item {
       display: grid;
-      grid-template-columns: 80px 1fr auto;
+      grid-template-columns: 70px 1fr 240px;
       align-items: center;
-      gap: 30px;
-      padding: 28px 0;
+      gap: 35px;
+      padding: 30px 0;
       border-bottom: 1px solid var(--line);
       transition: padding .35s ease;
     }
@@ -563,30 +505,36 @@
       color: #999;
     }
 
-    .experience-place {
-      font-family: "Archivo Black", sans-serif;
-      font-size: clamp(24px, 3vw, 42px);
-      text-transform: uppercase;
-      letter-spacing: -.035em;
-    }
-
     .experience-city {
-      font-size: 10px;
-      letter-spacing: .16em;
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(28px, 4vw, 58px);
       text-transform: uppercase;
-      color: #777;
+      letter-spacing: -.055em;
+      line-height: .9;
+      color: #050505;
     }
 
-    /* GALERÍA */
+    .experience-place {
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: #777;
+      text-align: left;
+    }
+
+    /* =========================
+       GALLERY
+    ========================= */
 
     .gallery {
-      background: #050505;
       padding: 150px 0;
-      color: #fff;
+      background: #d8d8d4;
     }
 
     .gallery-header {
-      margin-bottom: 70px;
+      margin-bottom: 75px;
     }
 
     .gallery-grid {
@@ -601,7 +549,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
     }
 
     .gallery-item img {
@@ -634,70 +581,85 @@
       transform: scale(1.045);
     }
 
-    /* REDES */
+    @keyframes photoColorCycle {
+      0% {
+        filter: grayscale(100%);
+      }
+
+      25% {
+        filter: grayscale(100%);
+      }
+
+      50% {
+        filter: grayscale(0%);
+      }
+
+      75% {
+        filter: grayscale(0%);
+      }
+
+      100% {
+        filter: grayscale(100%);
+      }
+    }
+
+    /* =========================
+       SOCIAL
+    ========================= */
 
     .social {
-      background: var(--white);
       padding: 150px 0;
+      background: var(--black);
+      color: white;
     }
 
     .social-header {
-      margin-bottom: 75px;
+      margin-bottom: 80px;
     }
 
     .social-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      gap: 1px;
+      background: var(--dark-line);
     }
 
-    .social-link {
-      min-height: 180px;
+    .social-card {
+      min-height: 230px;
       padding: 30px;
-      border-right: 1px solid var(--line);
+      background: var(--black);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: background .35s ease, color .35s ease;
     }
 
-    .social-link:last-child {
-      border-right: none;
-    }
-
-    .social-link:hover {
-      background: #050505;
-      color: #fff;
+    .social-card:hover {
+      background: white;
+      color: black;
     }
 
     .social-name {
       font-family: "Archivo Black", sans-serif;
-      font-size: 28px;
+      font-size: 27px;
       text-transform: uppercase;
       letter-spacing: -.04em;
     }
 
     .social-handle {
       font-size: 10px;
-      letter-spacing: .14em;
+      letter-spacing: .12em;
       text-transform: uppercase;
-      opacity: .55;
+      opacity: .6;
     }
 
-    /* CONTRATACIONES */
+    /* =========================
+       BOOKING
+    ========================= */
 
     .booking {
-      background: #050505;
-      color: #fff;
       padding: 170px 0;
-    }
-
-    .booking-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 90px;
-      align-items: end;
+      background: var(--white);
     }
 
     .booking-title {
@@ -708,52 +670,45 @@
       letter-spacing: -.07em;
     }
 
-    .booking-copy {
-      color: #999;
-      line-height: 1.7;
-      max-width: 480px;
-      margin-bottom: 30px;
+    .booking-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 70px;
+      align-items: end;
+    }
+
+    .booking-text {
+      max-width: 520px;
+      font-size: 19px;
+      line-height: 1.45;
     }
 
     .booking-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
+      flex-direction: column;
+      gap: 15px;
     }
 
-    .booking-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px 24px;
-      border: 1px solid rgba(255,255,255,.3);
-      font-size: 10px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      transition: all .3s ease;
+    .booking-link {
+      font-size: clamp(20px, 3vw, 35px);
+      letter-spacing: -.035em;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 15px;
+      transition: padding .3s ease;
     }
 
-    .booking-button:hover {
-      background: #fff;
-      color: #000;
+    .booking-link:hover {
+      padding-left: 12px;
     }
 
-    .booking-button.primary {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
-    }
-
-    .booking-button.primary:hover {
-      background: transparent;
-      color: #fff;
-    }
-
-    /* EQUIPAMIENTO */
+    /* =========================
+       TECH
+    ========================= */
 
     .tech {
-      background: var(--soft);
       padding: 150px 0;
+      background: #deded9;
     }
 
     .tech-grid {
@@ -771,18 +726,11 @@
       letter-spacing: -.065em;
     }
 
-    .tech-copy {
-      margin-top: 35px;
-      color: #666;
-      line-height: 1.7;
-      max-width: 500px;
-    }
-
     .tech-gear {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 400px;
+      overflow: visible;
     }
 
     .tech-gear img {
@@ -792,54 +740,46 @@
       transform: scale(1.08);
     }
 
-    /* FOOTER */
+    /* =========================
+       FOOTER
+    ========================= */
 
     footer {
       background: #050505;
-      color: #fff;
-      padding: 70px 0 35px;
+      color: white;
+      padding: 45px 0;
     }
 
-    .footer-top {
+    .footer-inner {
+      width: min(1400px, calc(100% - 70px));
+      margin: 0 auto;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: flex-end;
-      gap: 50px;
-      padding-bottom: 70px;
+      gap: 30px;
     }
 
     .footer-logo {
-      width: 230px;
+      width: 170px;
       height: auto;
     }
 
-    .footer-right {
+    .footer-copy {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: #777;
       text-align: right;
     }
 
-    .footer-right p {
-      color: #777;
-      font-size: 11px;
-      line-height: 1.7;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.12);
-      padding-top: 22px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 9px;
-      color: #666;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    /* WHATSAPP */
+    /* =========================
+       WHATSAPP
+    ========================= */
 
     .whatsapp {
       position: fixed;
-      right: 22px;
-      bottom: 22px;
+      right: 24px;
+      bottom: 24px;
       z-index: 2000;
     }
 
@@ -847,18 +787,14 @@
       width: 58px;
       height: 58px;
       border-radius: 50%;
-      background: #25d366;
-      color: #fff;
+      background: #25D366;
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 12px 35px rgba(0,0,0,.25);
-      animation: whatsappPulse 2.4s infinite;
-      transition: transform .3s ease;
-    }
-
-    .whatsapp-button:hover {
-      transform: scale(1.08);
+      box-shadow: 0 10px 35px rgba(0,0,0,.25);
+      animation: whatsappPulse 2.5s infinite;
+      cursor: pointer;
     }
 
     .whatsapp-button svg {
@@ -869,64 +805,63 @@
 
     .whatsapp-popup {
       position: absolute;
-      right: 72px;
-      bottom: 5px;
-      width: max-content;
-      max-width: 240px;
-      background: #050505;
-      color: #fff;
-      padding: 12px 16px;
-      font-size: 10px;
-      letter-spacing: .03em;
+      right: 0;
+      bottom: 72px;
+      width: 235px;
+      padding: 15px 18px;
+      background: #fff;
+      color: #111;
+      border-radius: 10px;
+      font-size: 12px;
+      line-height: 1.4;
+      box-shadow: 0 15px 50px rgba(0,0,0,.2);
       opacity: 0;
-      transform: translateX(10px);
+      transform: translateY(10px);
       pointer-events: none;
       transition: all .4s ease;
-      border-radius: 4px;
     }
 
     .whatsapp-popup.show {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
 
     @keyframes whatsappPulse {
-      0%,
-      100% {
-        box-shadow:
-          0 0 0 0 rgba(37,211,102,.35),
-          0 12px 35px rgba(0,0,0,.25);
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(37,211,102,.25), 0 10px 35px rgba(0,0,0,.25);
       }
 
       50% {
-        box-shadow:
-          0 0 0 14px rgba(37,211,102,0),
-          0 12px 35px rgba(0,0,0,.25);
+        box-shadow: 0 0 0 12px rgba(37,211,102,0), 0 10px 35px rgba(0,0,0,.25);
       }
     }
 
-    /* LIGHTBOX */
+    /* =========================
+       LIGHTBOX
+    ========================= */
 
     .lightbox {
       position: fixed;
       inset: 0;
       z-index: 5000;
       background: rgba(0,0,0,.94);
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 30px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .35s ease, visibility .35s ease;
     }
 
-    .lightbox.active {
-      display: flex;
+    .lightbox.open {
+      opacity: 1;
+      visibility: visible;
     }
 
     .lightbox img {
-      max-width: 92vw;
-      max-height: 88vh;
-      width: auto;
-      height: auto;
+      max-width: 95vw;
+      max-height: 90vh;
       object-fit: contain;
     }
 
@@ -934,175 +869,53 @@
       position: absolute;
       top: 25px;
       right: 30px;
-      color: #fff;
-      font-size: 28px;
+      color: white;
+      font-size: 30px;
       cursor: pointer;
-      line-height: 1;
+      font-weight: 300;
     }
 
-    /* RESPONSIVE */
+    /* =========================
+       RESPONSIVE
+    ========================= */
 
-    @media (max-width: 800px) {
+    @media (max-width: 1000px) {
 
-      header {
+      .topbar {
         padding: 18px 20px;
       }
 
-      .header-nav {
-        display: none;
+      .topbar-nav {
+        gap: 14px;
       }
 
-      .hero-content {
-        width: 90vw;
-        padding-top: 45px;
+      .section-inner,
+      .hero-content,
+      .footer-inner {
+        width: min(100% - 40px, 1400px);
       }
 
-      .hero-kicker {
-        font-size: 9px;
-        letter-spacing: .18em;
-        white-space: nowrap;
-        margin-bottom: 25px;
-      }
-
-      .hero-logo {
-        width: min(600px, 90vw);
-        margin: 0 auto;
-      }
-
-      .hero-bottom {
-        left: 20px;
-        right: 20px;
-        bottom: 22px;
-      }
-
-      .hero-location,
-      .hero-scroll {
-        font-size: 8px;
-      }
-
-      .about,
-      .music,
-      .experience,
-      .gallery,
-      .social,
-      .tech {
-        padding: 100px 0;
-      }
-
-      .booking {
-        padding: 110px 0;
-      }
-
-      .about-grid,
-      .music-grid,
-      .booking-grid {
+      .about-grid {
         grid-template-columns: 1fr;
         gap: 55px;
       }
 
-      .tech-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-      }
-
-      .about-copy h2 {
-        margin-bottom: 25px;
-      }
-
-      .about-copy p {
-        font-size: 15px;
-      }
-
-      .stats {
-        padding: 90px 0;
+      .about-image-wrap {
+        max-width: 750px;
+        margin: 0 auto;
       }
 
       .stats-grid {
         grid-template-columns: 1fr;
       }
 
-      .stat {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-        padding: 40px 25px;
-      }
-
-      .stat:last-child {
-        border-bottom: none;
-      }
-
-      .experience-header {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-bottom: 45px;
-      }
-
-      .experience-item {
-        grid-template-columns: 40px 1fr;
-        gap: 15px;
-      }
-
-      .experience-city {
-        grid-column: 2;
-        margin-top: 0;
-      }
-
-      .experience-place {
-        grid-column: 2;
-      }
-
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-
       .social-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .social-link {
-        min-height: 150px;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .social-link:nth-child(2) {
-        border-right: none;
-      }
-
-      .social-link:nth-child(3),
-      .social-link:nth-child(4) {
-        border-bottom: none;
-      }
-
-      .social-link:nth-child(4) {
-        border-right: none;
-      }
-
-      .footer-top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .footer-right {
-        text-align: left;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .intro-logo {
-        width: 280px;
-        max-width: 82vw;
-      }
-
-      .whatsapp {
-        right: 17px;
-        bottom: 17px;
-      }
-
-      .whatsapp-popup {
-        right: 65px;
+      .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
       }
 
       .tech-gear {
@@ -1116,37 +929,144 @@
       }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 800px) {
 
-      .hero-logo {
-        width: 92vw;
+      .topbar-nav {
+        display: none;
       }
 
-      .hero-kicker {
-        font-size: 8px;
-        letter-spacing: .14em;
+      .hero {
+        min-height: 650px;
       }
 
-      .section-inner {
-        width: 90vw;
+      .hero-content {
+        padding-bottom: 40px;
+      }
+
+      .hero-bottom {
+        margin-top: 30px;
+      }
+
+      .hero-description {
+        max-width: 300px;
+        font-size: 11px;
+      }
+
+      .scroll-label {
+        display: none;
+      }
+
+      .about,
+      .music,
+      .experience,
+      .gallery,
+      .social,
+      .booking,
+      .tech {
+        padding: 100px 0;
+      }
+
+      .music-header {
+        display: block;
+      }
+
+      .music-link {
+        display: inline-block;
+        margin-top: 30px;
+      }
+
+      /* EXPERIENCE MOBILE */
+
+      .experience-item {
+        grid-template-columns: 40px 1fr;
+        gap: 18px;
+        padding: 25px 0;
+      }
+
+      .experience-number {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+      }
+
+      .experience-city {
+        grid-column: 2;
+        font-size: clamp(27px, 8vw, 42px);
+        line-height: .92;
+      }
+
+      .experience-place {
+        grid-column: 2;
+        font-size: 11px;
+        margin-top: 5px;
+      }
+
+      .booking-content {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
       }
 
       .social-grid {
         grid-template-columns: 1fr;
       }
 
-      .social-link {
-        border-right: none !important;
-        border-bottom: 1px solid var(--line) !important;
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .social-link:last-child {
-        border-bottom: none !important;
+      .footer-copy {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .intro-logo {
+        width: 280px;
+        max-width: 82vw;
+      }
+
+      .section-inner,
+      .hero-content,
+      .footer-inner {
+        width: calc(100% - 30px);
+      }
+
+      .hero-logo {
+        width: min(600px, 90vw);
+        margin: 0 auto;
+      }
+
+      .hero-kicker {
+        font-size: 9px;
+        margin-bottom: 20px;
+      }
+
+      .hero-description {
+        font-size: 10px;
+      }
+
+      .stat {
+        padding: 40px 25px;
       }
 
       .tech-gear img {
         width: 120%;
         transform: scale(1.02);
+      }
+
+      .whatsapp {
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .whatsapp-button {
+        width: 54px;
+        height: 54px;
       }
     }
   </style>
@@ -1154,244 +1074,213 @@
 
 <body class="intro-active">
 
-  <!-- INTRO -->
+  <!-- =========================
+       INTRO
+  ========================= -->
 
   <div class="intro" id="intro">
-
     <img
       src="./intro-logo.png"
       alt="Nahuel Kinder"
       class="intro-logo"
     />
-
   </div>
 
-  <!-- ENCABEZADO -->
+  <!-- =========================
+       TOPBAR
+  ========================= -->
 
-  <header>
+  <header class="topbar">
 
-    <div class="header-brand">
+    <div class="topbar-brand">
       PRESS KIT OFICIAL
     </div>
 
-    <nav class="header-nav">
-
-      <a href="#about">
-        Sobre mí
-      </a>
-
-      <a href="#music">
-        Música
-      </a>
-
-      <a href="#experience">
-        Experiencia
-      </a>
-
-      <a href="#gallery">
-        Galería
-      </a>
-
-      <a href="#booking">
-        Contrataciones
-      </a>
-
+    <nav class="topbar-nav">
+      <a href="#about">Sobre mí</a>
+      <a href="#music">Música</a>
+      <a href="#experience">Experiencia</a>
+      <a href="#gallery">Galería</a>
+      <a href="#booking">Contrataciones</a>
     </nav>
 
   </header>
 
-  <!-- HERO -->
+  <!-- =========================
+       HERO
+  ========================= -->
 
-  <section class="hero">
+  <main>
 
-    <img
-      src="./main-photo.jpg"
-      alt="Nahuel Kinder"
-      class="hero-bg"
-      id="heroBg"
-    />
-
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-
-      <div class="hero-kicker reveal">
-        DJ · Remixer · Productor · Open Format
-      </div>
+    <section class="hero" id="home">
 
       <img
-        src="./nahuel%20kinder%20png%20logo.png"
+        src="./main-photo.jpg"
         alt="Nahuel Kinder"
-        class="hero-logo reveal"
+        class="hero-bg"
+        id="heroBg"
       />
 
-    </div>
+      <div class="hero-overlay"></div>
 
-    <div class="hero-bottom">
+      <div class="hero-content">
 
-      <div class="hero-location">
-        Argentina 🇦🇷
-      </div>
-
-      <div class="hero-scroll">
-        Deslizá
-        <span></span>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- MARQUEE -->
-
-  <div class="marquee">
-
-    <div class="marquee-track">
-
-      <div class="marquee-content">
-
-        <span>DJ</span>
-        <span class="dot">✦</span>
-
-        <span>Remixer</span>
-        <span class="dot">✦</span>
-
-        <span>Productor</span>
-        <span class="dot">✦</span>
-
-        <span>Open Format</span>
-        <span class="dot">✦</span>
-
-        <span>DJ</span>
-        <span class="dot">✦</span>
-
-        <span>Remixer</span>
-        <span class="dot">✦</span>
-
-        <span>Productor</span>
-        <span class="dot">✦</span>
-
-        <span>Open Format</span>
-        <span class="dot">✦</span>
-
-      </div>
-
-      <div class="marquee-content">
-
-        <span>DJ</span>
-        <span class="dot">✦</span>
-
-        <span>Remixer</span>
-        <span class="dot">✦</span>
-
-        <span>Productor</span>
-        <span class="dot">✦</span>
-
-        <span>Open Format</span>
-        <span class="dot">✦</span>
-
-        <span>DJ</span>
-        <span class="dot">✦</span>
-
-        <span>Remixer</span>
-        <span class="dot">✦</span>
-
-        <span>Productor</span>
-        <span class="dot">✦</span>
-
-        <span>Open Format</span>
-        <span class="dot">✦</span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- SOBRE MÍ -->
-
-  <section class="about" id="about">
-
-    <div class="section-inner">
-
-      <div class="about-grid">
-
-        <div class="about-image-wrap reveal">
-
-          <img
-            src="./about-photo.jpg"
-            alt="Nahuel Kinder DJ"
-            class="about-image"
-          />
-
+        <div class="hero-kicker reveal">
+          DJ · Remixer · Productor · Open Format
         </div>
 
-        <div class="about-copy reveal">
+        <img
+          src="./nahuel%20kinder%20png%20logo.png"
+          alt="Nahuel Kinder"
+          class="hero-logo reveal"
+        />
 
-          <div class="section-label">
-            01 / Sobre mí
-          </div>
+        <div class="hero-bottom reveal">
 
-          <h2>
-            Más que<br />
-            música.
-          </h2>
-
-          <p>
-            Nahuel Kinderknecht, destacado DJ/Productor Open Format Argentino
-            y artista de @soulmusikrecords, con una avalada trayectoria en su
-            país 🇦🇷. Actualmente tocando y produciendo remix, solo y con
-            distintos artistas reconocidos del rubro. Su música y producciones
-            lograron superar las 2.000.000 de reproducciones en plataformas
-            digitales.
+          <p class="hero-description">
+            DJ, Remixer y Productor Open Format Argentino.
+            Música, energía y una identidad propia detrás de cada presentación.
           </p>
+
+          <div class="scroll-label">
+            Deslizá
+          </div>
 
         </div>
 
       </div>
 
+    </section>
+
+    <!-- =========================
+         MARQUEE
+    ========================= -->
+
+    <div class="marquee">
+
+      <div class="marquee-track">
+
+        <span class="marquee-item">DJ</span>
+        <span class="marquee-dot">✦</span>
+
+        <span class="marquee-item">Remixer</span>
+        <span class="marquee-dot">✦</span>
+
+        <span class="marquee-item">Productor</span>
+        <span class="marquee-dot">✦</span>
+
+        <span class="marquee-item">Open Format</span>
+        <span class="marquee-dot">✦</span>
+
+        <span class="marquee-item">DJ</span>
+        <span class="marquee-dot">✦</span>
+
+        <span class="marquee-item">Remixer</span>
+        <span class="marquee-dot">✦</span>
+
+        <span class="marquee-item">Productor</span>
+        <span class="marquee-dot">✦</span>
+
+        <span class="marquee-item">Open Format</span>
+        <span class="marquee-dot">✦</span>
+
+      </div>
+
     </div>
 
-  </section>
+    <!-- =========================
+         ABOUT
+    ========================= -->
 
-  <!-- MÚSICA -->
+    <section class="about" id="about">
 
-  <section class="music" id="music">
+      <div class="section-inner">
 
-    <div class="section-inner">
+        <div class="about-grid">
 
-      <div class="music-grid">
+          <div>
 
-        <div class="reveal">
+            <div class="section-label reveal">
+              01 / Sobre mí
+            </div>
 
-          <div class="section-label">
-            02 / Música
+            <h2 class="section-title reveal">
+              Sobre<br />
+              mí.
+            </h2>
+
+            <div class="about-copy reveal">
+
+              <p>
+                Nahuel Kinderknecht, destacado DJ/Productor Open Format
+                Argentino y artista de @soulmusikrecords, con una avalada
+                trayectoria en su país 🇦🇷.
+              </p>
+
+              <p>
+                Actualmente tocando y produciendo remix, solo y con distintos
+                artistas reconocidos del rubro. Su música y producciones
+                lograron superar las 2.000.000 de reproducciones en
+                plataformas digitales.
+              </p>
+
+            </div>
+
           </div>
 
-          <h2 class="music-title">
-            Escuchá<br />
-            ahora.
-          </h2>
+          <div class="about-image-wrap reveal">
 
-          <p class="music-description">
-            Escuchá producciones, remixes y música de Nahuel Kinder
-            en plataformas digitales.
-          </p>
+            <img
+              src="./about-photo.jpg"
+              alt="Nahuel Kinder DJ"
+              class="about-image"
+            />
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         MUSIC
+    ========================= -->
+
+    <section class="music" id="music">
+
+      <div class="section-inner">
+
+        <div class="music-header">
+
+          <div>
+
+            <div class="section-label reveal">
+              02 / Música
+            </div>
+
+            <h2 class="section-title reveal">
+              Escuchá<br />
+              ahora.
+            </h2>
+
+          </div>
 
           <a
+            class="music-link reveal"
             href="https://open.spotify.com/intl-es/artist/6BHzE0aDmQphuuaDTkfJtu?si=ciqs4476SbGrGxKes0zyWw"
             target="_blank"
-            class="music-button"
+            rel="noopener noreferrer"
           >
-            Artista en Spotify →
+            Artista en Spotify ↗
           </a>
 
         </div>
 
-        <div class="reveal">
+        <div class="music-player reveal">
 
           <iframe
-            class="spotify-frame"
             src="https://open.spotify.com/embed/track/2XkaQhLNsaWKJkosmUEk95?utm_source=generator&theme=0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
@@ -1401,430 +1290,385 @@
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+    <!-- =========================
+         STATS
+    ========================= -->
 
-  <!-- ESTADÍSTICAS -->
+    <section class="stats">
 
-  <section class="stats">
+      <div class="section-inner">
 
-    <div class="section-inner">
+        <div class="stats-grid">
 
-      <div class="stats-grid">
+          <div class="stat reveal">
 
-        <div class="stat reveal">
+            <div class="stat-number">
+              +180K
+            </div>
 
-          <div class="stat-number">
-            +180K
+            <div class="stat-label">
+              Oyentes mensuales
+            </div>
+
           </div>
 
-          <div class="stat-label">
-            Oyentes mensuales
+          <div class="stat reveal">
+
+            <div class="stat-number">
+              +2M
+            </div>
+
+            <div class="stat-label">
+              Reproducciones
+            </div>
+
           </div>
 
-        </div>
+          <div class="stat reveal">
 
-        <div class="stat reveal">
+            <div class="stat-number">
+              ARG
+            </div>
 
-          <div class="stat-number">
-            +2M
-          </div>
+            <div class="stat-label">
+              Argentina
+            </div>
 
-          <div class="stat-label">
-            Reproducciones
-          </div>
-
-        </div>
-
-        <div class="stat reveal">
-
-          <div class="stat-number">
-            ARG
-          </div>
-
-          <div class="stat-label">
-            Argentina
           </div>
 
         </div>
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+    <!-- =========================
+         EXPERIENCE
+    ========================= -->
 
-  <!-- EXPERIENCIA -->
+    <section class="experience" id="experience">
 
-  <section class="experience" id="experience">
+      <div class="section-inner">
 
-    <div class="section-inner">
+        <div class="experience-header">
 
-      <div class="experience-header">
+          <div>
 
-        <div>
+            <div class="section-label">
+              03 / Experiencia
+            </div>
 
-          <div class="section-label">
-            03 / Experiencia
+            <h2 class="section-title">
+              Eventos<br />
+              destacados.
+            </h2>
+
           </div>
 
-          <h2 class="section-title">
-            Eventos<br />
-            destacados.
+        </div>
+
+        <div class="experience-list">
+
+          <div class="experience-item reveal">
+            <div class="experience-number">01</div>
+            <div class="experience-city">
+              Buenos Aires, Palermo Soho
+            </div>
+            <div class="experience-place">
+              Podestá
+            </div>
+          </div>
+
+          <div class="experience-item reveal">
+            <div class="experience-number">02</div>
+            <div class="experience-city">
+              Rosario, Santa Fe
+            </div>
+            <div class="experience-place">
+              Bound
+            </div>
+          </div>
+
+          <div class="experience-item reveal">
+            <div class="experience-number">03</div>
+            <div class="experience-city">
+              Rosario, Santa Fe
+            </div>
+            <div class="experience-place">
+              La Isla
+            </div>
+          </div>
+
+          <div class="experience-item reveal">
+            <div class="experience-number">04</div>
+            <div class="experience-city">
+              Concordia, Entre Ríos
+            </div>
+            <div class="experience-place">
+              Bonzo Costanera
+            </div>
+          </div>
+
+          <div class="experience-item reveal">
+            <div class="experience-number">05</div>
+            <div class="experience-city">
+              Villaguay, Entre Ríos
+            </div>
+            <div class="experience-place">
+              Santo Grial
+            </div>
+          </div>
+
+          <div class="experience-item reveal">
+            <div class="experience-number">06</div>
+            <div class="experience-city">
+              Villaguay, Entre Ríos
+            </div>
+            <div class="experience-place">
+              Navidad
+            </div>
+          </div>
+
+          <div class="experience-item reveal">
+            <div class="experience-number">07</div>
+            <div class="experience-city">
+              San Salvador, Entre Ríos
+            </div>
+            <div class="experience-place">
+              + 200 Fechas
+            </div>
+          </div>
+
+          <div class="experience-item reveal">
+            <div class="experience-number">08</div>
+            <div class="experience-city">
+              Villa Clara, Entre Ríos
+            </div>
+            <div class="experience-place">
+              Favela
+            </div>
+          </div>
+
+          <div class="experience-item reveal">
+            <div class="experience-number">09</div>
+            <div class="experience-city">
+              Villa Elisa, Entre Ríos
+            </div>
+            <div class="experience-place">
+              Entre Ríos
+            </div>
+          </div>
+
+          <div class="experience-item reveal">
+            <div class="experience-number">10</div>
+            <div class="experience-city">
+              Entre otras ciudades
+            </div>
+            <div class="experience-place">
+              Argentina
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         GALLERY
+    ========================= -->
+
+    <section class="gallery" id="gallery">
+
+      <div class="section-inner">
+
+        <div class="gallery-header">
+
+          <div class="section-label reveal">
+            04 / Galería
+          </div>
+
+          <h2 class="section-title reveal">
+            Archivo<br />
+            visual.
           </h2>
 
         </div>
 
-      </div>
+        <div class="gallery-grid">
 
-      <div class="experience-list">
-
-        <div class="experience-item reveal">
-
-          <div class="experience-number">
-            01
+          <div class="gallery-item reveal">
+            <img
+              src="./gallery-01.jpg"
+              alt="Nahuel Kinder - presentación"
+            />
           </div>
 
-          <div class="experience-city">
-            Buenos Aires
+          <div class="gallery-item reveal">
+            <img
+              src="./gallery-02.jpg"
+              alt="Nahuel Kinder - DJ"
+            />
           </div>
 
-          <div class="experience-place">
-            Podestá · Palermo Soho
+          <div class="gallery-item reveal">
+            <img
+              src="./gallery-03.jpg"
+              alt="Nahuel Kinder - evento"
+            />
           </div>
 
-        </div>
-
-        <div class="experience-item reveal">
-
-          <div class="experience-number">
-            02
-          </div>
-
-          <div class="experience-city">
-            Rosario
-          </div>
-
-          <div class="experience-place">
-            Bound
-          </div>
-
-        </div>
-
-        <div class="experience-item reveal">
-
-          <div class="experience-number">
-            03
-          </div>
-
-          <div class="experience-city">
-            Rosario
-          </div>
-
-          <div class="experience-place">
-            La Isla
-          </div>
-
-        </div>
-
-        <div class="experience-item reveal">
-
-          <div class="experience-number">
-            04
-          </div>
-
-          <div class="experience-city">
-            Concordia
-          </div>
-
-          <div class="experience-place">
-            Bonzo Costanera
-          </div>
-
-        </div>
-
-        <div class="experience-item reveal">
-
-          <div class="experience-number">
-            05
-          </div>
-
-          <div class="experience-city">
-            Villaguay
-          </div>
-
-          <div class="experience-place">
-            Santo Grial
-          </div>
-
-        </div>
-
-        <div class="experience-item reveal">
-
-          <div class="experience-number">
-            06
-          </div>
-
-          <div class="experience-city">
-            Villaguay
-          </div>
-
-          <div class="experience-place">
-            Navidad
-          </div>
-
-        </div>
-
-        <div class="experience-item reveal">
-
-          <div class="experience-number">
-            07
-          </div>
-
-          <div class="experience-city">
-            San Salvador · Entre Ríos
-          </div>
-
-          <div class="experience-place">
-            —
-          </div>
-
-        </div>
-
-        <div class="experience-item reveal">
-
-          <div class="experience-number">
-            08
-          </div>
-
-          <div class="experience-city">
-            Villa Clara · Entre Ríos
-          </div>
-
-          <div class="experience-place">
-            —
-          </div>
-
-        </div>
-
-        <div class="experience-item reveal">
-
-          <div class="experience-number">
-            09
-          </div>
-
-          <div class="experience-city">
-            Villa Elisa · Entre Ríos
-          </div>
-
-          <div class="experience-place">
-            —
+          <div class="gallery-item reveal">
+            <img
+              src="./gallery-04.jpg"
+              alt="Nahuel Kinder - presentación"
+            />
           </div>
 
         </div>
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+    <!-- =========================
+         SOCIAL
+    ========================= -->
 
-  <!-- GALERÍA -->
+    <section class="social" id="social">
 
-  <section class="gallery" id="gallery">
+      <div class="section-inner">
 
-    <div class="section-inner">
+        <div class="social-header">
 
-      <div class="gallery-header reveal">
-
-        <div class="section-label">
-          04 / Galería
-        </div>
-
-        <h2 class="section-title">
-          Archivo<br />
-          visual.
-        </h2>
-
-      </div>
-
-      <div class="gallery-grid">
-
-        <div class="gallery-item reveal">
-
-          <img
-            src="./gallery-01.jpg"
-            alt="Nahuel Kinder"
-          />
-
-        </div>
-
-        <div class="gallery-item reveal">
-
-          <img
-            src="./gallery-02.jpg"
-            alt="Nahuel Kinder"
-          />
-
-        </div>
-
-        <div class="gallery-item reveal">
-
-          <img
-            src="./gallery-03.jpg"
-            alt="Nahuel Kinder"
-          />
-
-        </div>
-
-        <div class="gallery-item reveal">
-
-          <img
-            src="./gallery-04.jpg"
-            alt="Nahuel Kinder"
-          />
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- REDES -->
-
-  <section class="social">
-
-    <div class="section-inner">
-
-      <div class="social-header reveal">
-
-        <div class="section-label">
-          05 / Redes
-        </div>
-
-        <h2 class="section-title">
-          Seguime.
-        </h2>
-
-      </div>
-
-      <div class="social-grid">
-
-        <a
-          href="https://www.instagram.com/nahuelkinderknecht/"
-          target="_blank"
-          class="social-link reveal"
-        >
-
-          <div class="social-name">
-            Instagram
+          <div class="section-label reveal">
+            05 / Redes
           </div>
 
-          <div class="social-handle">
-            @nahuelkinderknecht
-          </div>
-
-        </a>
-
-        <a
-          href="https://open.spotify.com/intl-es/artist/6BHzE0aDmQphuuaDTkfJtu?si=ciqs4476SbGrGxKes0zyWw"
-          target="_blank"
-          class="social-link reveal"
-        >
-
-          <div class="social-name">
-            Spotify
-          </div>
-
-          <div class="social-handle">
-            Nahuel Kinder
-          </div>
-
-        </a>
-
-        <a
-          href="https://www.youtube.com/@nahuelkinder"
-          target="_blank"
-          class="social-link reveal"
-        >
-
-          <div class="social-name">
-            YouTube
-          </div>
-
-          <div class="social-handle">
-            @nahuelkinder
-          </div>
-
-        </a>
-
-        <a
-          href="https://www.tiktok.com/@nahuelkin_"
-          target="_blank"
-          class="social-link reveal"
-        >
-
-          <div class="social-name">
-            TikTok
-          </div>
-
-          <div class="social-handle">
-            @nahuelkin_
-          </div>
-
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTRATACIONES -->
-
-  <section class="booking" id="booking">
-
-    <div class="section-inner">
-
-      <div class="booking-grid">
-
-        <div class="reveal">
-
-          <div class="section-label">
-            06 / Contrataciones
-          </div>
-
-          <h2 class="booking-title">
-            ¡Trabajemos!
+          <h2 class="section-title reveal">
+            Seguime.
           </h2>
 
         </div>
 
-        <div class="reveal">
+        <div class="social-grid">
 
-          <p class="booking-copy">
-            Para fechas, eventos, presentaciones, colaboraciones
-            y propuestas profesionales.
+          <a
+            href="https://www.instagram.com/nahuelkinderknecht/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card reveal"
+          >
+
+            <div class="social-name">
+              Instagram
+            </div>
+
+            <div class="social-handle">
+              @nahuelkinderknecht ↗
+            </div>
+
+          </a>
+
+          <a
+            href="https://open.spotify.com/intl-es/artist/6BHzE0aDmQphuuaDTkfJtu?si=ciqs4476SbGrGxKes0zyWw"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card reveal"
+          >
+
+            <div class="social-name">
+              Spotify
+            </div>
+
+            <div class="social-handle">
+              Nahuel Kinder ↗
+            </div>
+
+          </a>
+
+          <a
+            href="https://www.youtube.com/@nahuelkinder"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card reveal"
+          >
+
+            <div class="social-name">
+              YouTube
+            </div>
+
+            <div class="social-handle">
+              @nahuelkinder ↗
+            </div>
+
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@nahuelkin_"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-card reveal"
+          >
+
+            <div class="social-name">
+              TikTok
+            </div>
+
+            <div class="social-handle">
+              @nahuelkin_ ↗
+            </div>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         BOOKING
+    ========================= -->
+
+    <section class="booking" id="booking">
+
+      <div class="section-inner">
+
+        <div class="section-label reveal">
+          06 / Contrataciones
+        </div>
+
+        <h2 class="booking-title reveal">
+          ¡Trabajemos!
+        </h2>
+
+        <div class="booking-content">
+
+          <p class="booking-text reveal">
+            ¿Querés contar con Nahuel Kinder para tu próximo evento?
+            Contactate para consultar disponibilidad, fechas y propuestas.
           </p>
 
           <div class="booking-links">
 
             <a
               href="mailto:Nahuelkinder@gmail.com"
-              class="booking-button primary"
+              class="booking-link reveal"
             >
-              Email
+              Nahuelkinder@gmail.com ↗
             </a>
 
             <a
               href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
               target="_blank"
-              class="booking-button"
+              rel="noopener noreferrer"
+              class="booking-link reveal"
             >
-              WhatsApp
+              WhatsApp ↗
             </a>
 
           </div>
@@ -1833,150 +1677,127 @@
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+    <!-- =========================
+         TECH RIDER
+    ========================= -->
 
-  <!-- EQUIPAMIENTO -->
+    <section class="tech" id="tech">
 
-  <section class="tech">
+      <div class="section-inner">
 
-    <div class="section-inner">
+        <div class="tech-grid">
 
-      <div class="tech-grid">
+          <div>
 
-        <div class="reveal">
+            <div class="section-label reveal">
+              07 / Equipamiento
+            </div>
 
-          <div class="section-label">
-            07 / Equipamiento
+            <h2 class="tech-title reveal">
+              Equipamiento<br />
+              DJ.
+            </h2>
+
           </div>
 
-          <h2 class="tech-title">
-            Equipamiento<br />
-            DJ.
-          </h2>
+          <div class="tech-gear reveal">
 
-          <p class="tech-copy">
-            Equipamiento utilizado para las presentaciones.
-          </p>
+            <img
+              src="./ddj-flx10.png"
+              alt="Pioneer DDJ-FLX10"
+            />
 
-        </div>
-
-        <div class="tech-gear reveal">
-
-          <img
-            src="./ddj-flx10.png"
-            alt="Pioneer DDJ-FLX10"
-          />
+          </div>
 
         </div>
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+  </main>
 
-  <!-- FOOTER -->
+  <!-- =========================
+       FOOTER
+  ========================= -->
 
   <footer>
 
-    <div class="section-inner">
+    <div class="footer-inner">
 
-      <div class="footer-top">
+      <img
+        src="./nahuel%20kinder%20png%20logo.png"
+        alt="Nahuel Kinder"
+        class="footer-logo"
+      />
 
-        <img
-          src="./nahuel%20kinder%20png%20logo.png"
-          alt="Nahuel Kinder"
-          class="footer-logo"
-        />
-
-        <div class="footer-right">
-
-          <p>
-            DJ · Remixer · Productor · Open Format
-          </p>
-
-          <p>
-            Argentina 🇦🇷
-          </p>
-
-        </div>
-
-      </div>
-
-      <div class="footer-bottom">
-
-        <span>
-          © 2026 Nahuel Kinder
-        </span>
-
-        <span>
-          Press Kit Oficial
-        </span>
-
+      <div class="footer-copy">
+        Press Kit Oficial · Argentina
       </div>
 
     </div>
 
   </footer>
 
-  <!-- WHATSAPP -->
+  <!-- =========================
+       WHATSAPP
+  ========================= -->
 
   <div class="whatsapp">
 
-    <div
-      class="whatsapp-popup"
-      id="whatsappPopup"
-    >
+    <div class="whatsapp-popup" id="whatsappPopup">
       Contratá a Nahuel Kinder por acá!
     </div>
 
     <a
       href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
       target="_blank"
+      rel="noopener noreferrer"
       class="whatsapp-button"
       aria-label="Contactar por WhatsApp"
     >
 
       <svg
-        viewBox="0 0 24 24"
+        viewBox="0 0 32 32"
         xmlns="http://www.w3.org/2000/svg"
       >
-
-        <path d="M20.52 3.48A11.8 11.8 0 0 0 12.09 0C5.56 0 .25 5.31.25 11.84c0 2.09.55 4.13 1.6 5.93L.16 24l6.37-1.67a11.82 11.82 0 0 0 5.56 1.41h.01c6.52 0 11.83-5.31 11.83-11.84 0-3.16-1.23-6.13-3.41-8.42ZM12.1 21.78h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.78.99 1.01-3.68-.23-.38a9.89 9.89 0 0 1-1.52-5.28C2.16 6.38 6.62 1.92 12.09 1.92c2.65 0 5.14 1.03 7.01 2.91a9.85 9.85 0 0 1 2.9 7.02c0 5.48-4.45 9.93-9.9 9.93Zm5.45-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.67-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.21 5.08 4.5.71.31 1.27.5 1.7.64.72.23 1.37.2 1.88.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
-
+        <path d="M19.11 17.23c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.34-.79-.7-1.32-1.56-1.47-1.82-.15-.27-.02-.41.11-.54.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.63 1.11 2.81c.14.18 1.93 2.95 4.68 4.14.65.28 1.16.45 1.56.58.65.21 1.24.18 1.7.11.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+        <path d="M16.03 3.2c-7.08 0-12.84 5.75-12.84 12.82 0 2.26.59 4.47 1.71 6.42L3.1 28.8l6.52-1.71a12.83 12.83 0 0 0 6.41 1.72h.01c7.07 0 12.82-5.75 12.82-12.82S23.1 3.2 16.03 3.2zm0 23.47h-.01c-2 0-3.96-.54-5.67-1.56l-.41-.24-3.87 1.02 1.03-3.77-.27-.39a10.62 10.62 0 0 1-1.63-5.71c0-5.87 4.78-10.65 10.66-10.65 2.84 0 5.52 1.11 7.53 3.12a10.59 10.59 0 0 1 3.11 7.54c0 5.87-4.78 10.64-10.65 10.64z"/>
       </svg>
 
     </a>
 
   </div>
 
-  <!-- LIGHTBOX -->
+  <!-- =========================
+       LIGHTBOX
+  ========================= -->
 
-  <div
-    class="lightbox"
-    id="lightbox"
-  >
+  <div class="lightbox" id="lightbox">
 
-    <div
-      class="lightbox-close"
-      id="lightboxClose"
-    >
+    <div class="lightbox-close" id="lightboxClose">
       ×
     </div>
 
     <img
-      id="lightboxImage"
       src=""
       alt="Imagen ampliada"
+      id="lightboxImage"
     />
 
   </div>
 
+  <!-- =========================
+       JAVASCRIPT
+  ========================= -->
+
   <script>
 
-    /* INTRO */
+    /* =========================
+       INTRO
+    ========================= */
 
     window.addEventListener("load", () => {
 
@@ -1985,59 +1806,53 @@
         const intro = document.getElementById("intro");
 
         if (intro) {
-          intro.style.opacity = "0";
-          intro.style.transition = "opacity .7s ease";
+          intro.classList.add("hide");
         }
 
         document.body.classList.remove("intro-active");
-
-        setTimeout(() => {
-
-          if (intro) {
-            intro.remove();
-          }
-
-        }, 750);
 
       }, 3300);
 
     });
 
-    /* ANIMACIONES AL HACER SCROLL */
 
-    const revealElements =
-      document.querySelectorAll(".reveal");
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
 
-    const revealObserver =
-      new IntersectionObserver(
-        (entries) => {
+    const revealElements = document.querySelectorAll(".reveal");
 
-          entries.forEach((entry) => {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
 
-            if (entry.isIntersecting) {
+        entries.forEach((entry) => {
 
-              entry.target.classList.add("visible");
+          if (entry.isIntersecting) {
 
-              revealObserver.unobserve(entry.target);
+            entry.target.classList.add("visible");
 
-            }
+            revealObserver.unobserve(entry.target);
 
-          });
+          }
 
-        },
-        {
-          threshold: .12
-        }
-      );
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
 
     revealElements.forEach((element) => {
       revealObserver.observe(element);
     });
 
-    /* PARALLAX DEL HERO */
 
-    const heroBg =
-      document.getElementById("heroBg");
+    /* =========================
+       HERO PARALLAX
+    ========================= */
+
+    const heroBg = document.getElementById("heroBg");
 
     window.addEventListener("scroll", () => {
 
@@ -2048,13 +1863,16 @@
       if (scrollY < window.innerHeight) {
 
         heroBg.style.transform =
-          `scale(1.05) translateY(${scrollY * .12}px)`;
+          `scale(1.05) translateY(${scrollY * 0.08}px)`;
 
       }
 
     });
 
-    /* POPUP WHATSAPP */
+
+    /* =========================
+       WHATSAPP POPUP
+    ========================= */
 
     const whatsappPopup =
       document.getElementById("whatsappPopup");
@@ -2066,21 +1884,19 @@
       whatsappPopup.classList.add("show");
 
       setTimeout(() => {
-
         whatsappPopup.classList.remove("show");
-
       }, 4500);
 
     }
 
-    setTimeout(showWhatsappPopup, 5000);
+    setTimeout(showWhatsappPopup, 6000);
 
     setInterval(showWhatsappPopup, 18000);
 
-    /* LIGHTBOX */
 
-    const galleryItems =
-      document.querySelectorAll(".gallery-item");
+    /* =========================
+       LIGHTBOX
+    ========================= */
 
     const lightbox =
       document.getElementById("lightbox");
@@ -2091,18 +1907,17 @@
     const lightboxClose =
       document.getElementById("lightboxClose");
 
-    galleryItems.forEach((item) => {
+    const galleryImages =
+      document.querySelectorAll(".gallery-item img");
 
-      item.addEventListener("click", () => {
 
-        const image =
-          item.querySelector("img");
+    galleryImages.forEach((image) => {
 
-        if (!image) return;
+      image.addEventListener("click", () => {
 
         lightboxImage.src = image.src;
 
-        lightbox.classList.add("active");
+        lightbox.classList.add("open");
 
         document.body.style.overflow = "hidden";
 
@@ -2110,18 +1925,21 @@
 
     });
 
+
     function closeLightbox() {
 
-      lightbox.classList.remove("active");
+      lightbox.classList.remove("open");
 
       document.body.style.overflow = "";
 
     }
 
+
     lightboxClose.addEventListener(
       "click",
       closeLightbox
     );
+
 
     lightbox.addEventListener(
       "click",
@@ -2134,14 +1952,12 @@
       }
     );
 
+
     document.addEventListener(
       "keydown",
       (event) => {
 
-        if (
-          event.key === "Escape" &&
-          lightbox.classList.contains("active")
-        ) {
+        if (event.key === "Escape") {
           closeLightbox();
         }
 
