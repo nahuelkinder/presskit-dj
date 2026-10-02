@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Press Kit — DJ</title>
+
+  <meta
+    name="description"
+    content="Press Kit oficial — DJ, Remixer & Producer"
+  >
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #070707;
+      color: #f2f2f2;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================= */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+      opacity: 0.035;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+
+    .ambient {
+      position: fixed;
+      width: 650px;
+      height: 650px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(255,255,255,.045),
+        transparent 65%
+      );
+      filter: blur(30px);
+      pointer-events: none;
+      z-index: -1;
+      animation: ambientMove 14s ease-in-out infinite alternate;
+    }
+
+    .ambient.one {
+      top: -250px;
+      left: -200px;
+    }
+
+    .ambient.two {
+      right: -250px;
+      top: 40%;
+      animation-delay: -5s;
+    }
+
+    @keyframes ambientMove {
+      from {
+        transform: translate3d(-20px, -10px, 0) scale(1);
+      }
+      to {
+        transform: translate3d(30px, 40px, 0) scale(1.08);
+      }
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 24px 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(
+        to bottom,
+        rgba(7,7,7,.88),
+        transparent
+      );
+      backdrop-filter: blur(4px);
+    }
+
+    .nav-logo {
+      font-size: 12px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 11px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #9b9b9b;
+    }
+
+    .nav-links a {
+      transition: color .3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 110px 5vw 70px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .08;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 90%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(1250px, 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      animation: heroIn 1.1s cubic-bezier(.2,.7,.2,1) forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    @keyframes heroIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .eyebrow {
+      color: #858585;
+      font-size: 11px;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .hero-title {
+      font-size: clamp(58px, 9vw, 145px);
+      line-height: .82;
+      letter-spacing: -.065em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .hero-title span {
+      display: block;
+      color: #777;
+      font-weight: 300;
+    }
+
+    .hero-subtitle {
+      margin-top: 32px;
+      color: #a4a4a4;
+      font-size: 13px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+
+    .hero-actions {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 15px 23px;
+      border: 1px solid #343434;
+      background: rgba(255,255,255,.025);
+      color: #fff;
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      transition:
+        transform .35s ease,
+        background .35s ease,
+        border-color .35s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      background: #fff;
+      color: #080808;
+      border-color: #fff;
+    }
+
+    .hero-image {
+      position: relative;
+      height: min(72vh, 760px);
+      min-height: 480px;
+      overflow: hidden;
+      background: #101010;
+      border: 1px solid #262626;
+      animation: imageIn 1.3s cubic-bezier(.2,.7,.2,1) .15s forwards;
+      opacity: 0;
+      transform: translateY(30px) scale(.97);
+    }
+
+    @keyframes imageIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .hero-image::before {
+      content: "YOUR PHOTO";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #444;
+      font-size: 11px;
+      letter-spacing: .35em;
+      z-index: 0;
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          135deg,
+          transparent 30%,
+          rgba(255,255,255,.045),
+          transparent 70%
+        );
+      transform: translateX(-100%);
+      animation: imageShine 7s ease-in-out infinite;
+    }
+
+    @keyframes imageShine {
+      0%, 60% {
+        transform: translateX(-100%);
+      }
+      85%, 100% {
+        transform: translateX(100%);
+      }
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 130px 5vw;
+      position: relative;
+    }
+
+    .section-inner {
+      width: min(1250px, 100%);
+      margin: auto;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: .3em;
+      color: #666;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: clamp(40px, 6vw, 85px);
+      letter-spacing: -.055em;
+      line-height: .9;
+      text-transform: uppercase;
+      margin-bottom: 55px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .7fr 1.3fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .about-number {
+      font-size: 150px;
+      line-height: .7;
+      color: #171717;
+      font-weight: 800;
+    }
+
+    .about-text {
+      color: #aaa;
+      font-size: 19px;
+      line-height: 1.8;
+      max-width: 760px;
+    }
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      padding: 55px 30px;
+      border-right: 1px solid #222;
+      transition: background .4s ease;
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat:hover {
+      background: rgba(255,255,255,.025);
+    }
+
+    .stat-number {
+      font-size: clamp(35px, 4vw, 62px);
+      letter-spacing: -.05em;
+      font-weight: 700;
+    }
+
+    .stat-label {
+      margin-top: 12px;
+      color: #666;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       MUSIC
+    ========================= */
+
+    .music-list {
+      border-top: 1px solid #252525;
+    }
+
+    .track {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      align-items: center;
+      gap: 30px;
+      padding: 28px 0;
+      border-bottom: 1px solid #252525;
+      transition:
+        padding .35s ease,
+        background .35s ease;
+    }
+
+    .track:hover {
+      padding-left: 15px;
+      padding-right: 15px;
+      background: rgba(255,255,255,.025);
+    }
+
+    .track-number {
+      color: #555;
+      font-size: 11px;
+    }
+
+    .track-name {
+      font-size: 18px;
+      letter-spacing: -.02em;
+    }
+
+    .track-type {
+      color: #666;
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       EXPERIENCE
+    ========================= */
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 130px 1fr auto;
+      gap: 30px;
+      padding: 28px 0;
+      border-bottom: 1px solid #252525;
+    }
+
+    .experience-year {
+      color: #666;
+      font-size: 12px;
+    }
+
+    .experience-name {
+      font-size: 21px;
+    }
+
+    .experience-place {
+      color: #666;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+    }
+
+    /* =========================
+       GALLERY
+    ========================= */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1 / 1;
+      background: #111;
+      border: 1px solid #222;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item::before {
+      content: "PHOTO";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+      font-size: 10px;
+      letter-spacing: .3em;
+    }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        transparent,
+        rgba(255,255,255,.08),
+        transparent
+      );
+      transform: translateX(-100%);
+      transition: transform .7s ease;
+    }
+
+    .gallery-item:hover::after {
+      transform: translateX(100%);
+    }
+
+    /* =========================
+       BOOKING
+    ========================= */
+
+    .booking {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    .booking-content {
+      width: min(900px, 100%);
+      margin: auto;
+    }
+
+    .booking-title {
+      font-size: clamp(55px, 9vw, 125px);
+      line-height: .82;
+      letter-spacing: -.07em;
+      text-transform: uppercase;
+    }
+
+    .booking-title span {
+      color: #555;
+    }
+
+    .booking-text {
+      margin: 35px auto;
+      max-width: 550px;
+      color: #888;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 40px 5vw;
+      border-top: 1px solid #222;
+      display: flex;
+      justify-content: space-between;
+      color: #555;
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      filter: blur(6px);
+      transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.2,.7,.2,1),
+        filter .9s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .hero-image {
+        height: 65vh;
+        min-height: 420px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-number {
+        font-size: 90px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat:nth-child(2) {
+        border-right: none;
+      }
+
+      .stat {
+        border-bottom: 1px solid #222;
+      }
+
+      .experience-item {
+        grid-template-columns: 80px 1fr;
+      }
+
+      .experience-place {
+        grid-column: 2;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      section {
+        padding: 95px 6vw;
+      }
+    }
+
+    @media (max-width: 520px) {
+
+      .hero-title {
+        font-size: 55px;
+      }
+
+      .hero-image {
+        min-height: 390px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        border-right: none;
+      }
+
+      .track {
+        grid-template-columns: 35px 1fr;
+        gap: 15px;
+      }
+
+      .track-type {
+        grid-column: 2;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .booking-title {
+        font-size: 60px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="ambient one"></div>
+  <div class="ambient two"></div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">
+      PRESS KIT
+    </div>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#music">Music</a>
+      <a href="#experience">Experience</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#booking">Booking</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+
+    <div class="hero-grid"></div>
+
+    <div class="hero-content">
+
+      <div class="hero-copy">
+
+        <div class="eyebrow">
+          Official Press Kit
+        </div>
+
+        <h1 class="hero-title">
+          DJ
+          <span>Artist</span>
+        </h1>
+
+        <div class="hero-subtitle">
+          DJ · Remixer · Producer
+        </div>
+
+        <div class="hero-actions">
+          <a href="#music" class="btn">
+            Escuchar música
+          </a>
+
+          <a href="#booking" class="btn">
+            Booking
+          </a>
+        </div>
+
+      </div>
+
+      <div class="hero-image">
+        <!-- TU FOTO PRINCIPAL VA ACÁ DESPUÉS -->
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <div class="section-inner reveal">
+
+      <div class="section-label">
+        01 — About
+      </div>
+
+      <div class="about-grid">
+
+        <div class="about-number">
+          01
+        </div>
+
+        <div>
+
+          <h2 class="section-title">
+            About
+          </h2>
+
+          <p class="about-text">
+            Biografía del artista.
+            <br><br>
+            Este espacio queda preparado para que después
+            puedas escribir tu historia, trayectoria, estilo
+            musical y toda la información que quieras mostrar
+            en tu Press Kit.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STATS -->
+  <section class="stats">
+
+    <div class="section-inner">
+
+      <div class="stats-grid">
+
+        <div class="stat reveal">
+          <div class="stat-number">
+            +100K
+          </div>
+
+          <div class="stat-label">
+            Oyentes
+          </div>
+        </div>
+
+        <div class="stat reveal">
+          <div class="stat-number">
+            +1M
+          </div>
+
+          <div class="stat-label">
+            Streams
+          </div>
+        </div>
+
+        <div class="stat reveal">
+          <div class="stat-number">
+            00
+          </div>
+
+          <div class="stat-label">
+            Shows
+          </div>
+        </div>
+
+        <div class="stat reveal">
+          <div class="stat-number">
+            00
+          </div>
+
+          <div class="stat-label">
+            Years
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MUSIC -->
+  <section id="music">
+
+    <div class="section-inner">
+
+      <div class="section-label reveal">
+        02 — Music
+      </div>
+
+      <h2 class="section-title reveal">
+        Selected<br>
+        Music
+      </h2>
+
+      <div class="music-list reveal">
+
+        <a href="#" class="track">
+          <div class="track-number">01</div>
+
+          <div class="track-name">
+            Track / Remix Name
+          </div>
+
+          <div class="track-type">
+            Remix
+          </div>
+        </a>
+
+        <a href="#" class="track">
+          <div class="track-number">02</div>
+
+          <div class="track-name">
+            Track / Remix Name
+          </div>
+
+          <div class="track-type">
+            Original
+          </div>
+        </a>
+
+        <a href="#" class="track">
+          <div class="track-number">03</div>
+
+          <div class="track-name">
+            Track / Remix Name
+          </div>
+
+          <div class="track-type">
+            Remix
+          </div>
+        </a>
+
+        <a href="#" class="track">
+          <div class="track-number">04</div>
+
+          <div class="track-name">
+            Track / Remix Name
+          </div>
+
+          <div class="track-type">
+            Original
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+
+    <div class="section-inner">
+
+      <div class="section-label reveal">
+        03 — Experience
+      </div>
+
+      <h2 class="section-title reveal">
+        Selected<br>
+        Experience
+      </h2>
+
+      <div class="reveal">
+
+        <div class="experience-item">
+          <div class="experience-year">
+            2026
+          </div>
+
+          <div class="experience-name">
+            Event / Club Name
+          </div>
+
+          <div class="experience-place">
+            Argentina
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="experience-year">
+            2025
+          </div>
+
+          <div class="experience-name">
+            Event / Club Name
+          </div>
+
+          <div class="experience-place">
+            Argentina
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="experience-year">
+            2024
+          </div>
+
+          <div class="experience-name">
+            Event / Club Name
+          </div>
+
+          <div class="experience-place">
+            Argentina
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- GALLERY -->
+  <section id="gallery">
+
+    <div class="section-inner">
+
+      <div class="section-label reveal">
+        04 — Gallery
+      </div>
+
+      <h2 class="section-title reveal">
+        Visual<br>
+        Archive
+      </h2>
+
+      <div class="gallery reveal">
+
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+        <div class="gallery-item"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BOOKING -->
+  <section id="booking" class="booking">
+
+    <div class="booking-content reveal">
+
+      <div class="section-label">
+        05 — Booking
+      </div>
+
+      <h2 class="booking-title">
+        Let's<br>
+        <span>Work</span>
+      </h2>
+
+      <p class="booking-text">
+        Para contrataciones, eventos, bookings y colaboraciones,
+        contactame a través de mis canales oficiales.
+      </p>
+
+      <div class="hero-actions" style="justify-content:center;">
+
+        <a href="#" class="btn">
+          Instagram
+        </a>
+
+        <a href="#" class="btn">
+          Spotify
+        </a>
+
+        <a href="#" class="btn">
+          YouTube
+        </a>
+
+        <a href="#" class="btn">
+          TikTok
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div>
+      Press Kit — DJ
+    </div>
+
+    <div>
+      © 2026
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach((element) => observer.observe(element));
+
+
+    // Sutil efecto de movimiento en la imagen principal
+    const heroImage = document.querySelector(".hero-image");
+
+    document.addEventListener("mousemove", (event) => {
+
+      if (window.innerWidth < 850) return;
+
+      const x = (event.clientX / window.innerWidth - 0.5) * 8;
+      const y = (event.clientY / window.innerHeight - 0.5) * 8;
+
+      heroImage.style.transform =
+        `translate(${x}px, ${y}px)`;
+    });
+
+  </script>
+
+</body>
+</html>
