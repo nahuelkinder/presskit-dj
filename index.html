@@ -10,8 +10,8 @@
     content="Press Kit Oficial de Nahuel Kinder — DJ, Remixer y Productor Open Format Argentino."
   />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -20,21 +20,21 @@
 
   <style>
     :root {
-      --black: #080808;
-      --black-soft: #101010;
-      --graphite: #171717;
-      --gray: #8b8b8b;
-      --gray-light: #c8c8c8;
-      --white: #f4f4f1;
-      --offwhite: #ededE8;
-      --line: rgba(255,255,255,.12);
-      --line-dark: rgba(0,0,0,.12);
+      --black: #070707;
+      --black-2: #0d0d0d;
+      --black-3: #121212;
+      --graphite: #181818;
+      --gray-dark: #2a2a2a;
+      --gray: #777;
+      --gray-light: #aaa;
+      --white: #f1f1ee;
+      --line: rgba(255,255,255,.10);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -148,11 +148,12 @@
       z-index: 500;
       padding: 18px 34px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      background: rgba(8,8,8,.72);
+      justify-content: space-between;
+      background: rgba(7,7,7,.68);
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
     .nav-logo {
@@ -162,16 +163,16 @@
 
     .nav-links {
       display: flex;
-      gap: 26px;
       align-items: center;
-      font-size: 11px;
+      gap: 27px;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      color: #aaa;
+      letter-spacing: .17em;
+      color: #888;
     }
 
     .nav-links a {
-      transition: color .3s ease;
+      transition: color .25s ease;
     }
 
     .nav-links a:hover {
@@ -188,34 +189,34 @@
     }
 
     .section-number {
-      font-size: 11px;
-      letter-spacing: .2em;
+      margin-bottom: 22px;
+      font-size: 10px;
       text-transform: uppercase;
-      color: #777;
-      margin-bottom: 20px;
+      letter-spacing: .22em;
+      color: #666;
     }
 
     .section-title {
       font-family: "Archivo Black", sans-serif;
-      text-transform: uppercase;
-      font-size: clamp(42px, 7vw, 105px);
-      line-height: .9;
+      font-size: clamp(44px, 7vw, 105px);
+      line-height: .88;
       letter-spacing: -.055em;
+      text-transform: uppercase;
     }
 
     .eyebrow {
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: .2em;
-      color: #888;
+      color: #777;
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(35px);
+      transform: translateY(30px);
       transition:
-        opacity .9s ease,
-        transform .9s cubic-bezier(.16,1,.3,1);
+        opacity .85s ease,
+        transform .85s cubic-bezier(.16,1,.3,1);
     }
 
     .reveal.visible {
@@ -244,7 +245,7 @@
       object-fit: cover;
       object-position: center;
       filter: grayscale(100%) contrast(1.12);
-      opacity: .52;
+      opacity: .48;
       transform: scale(1.05);
       transition: transform .2s linear;
     }
@@ -255,8 +256,8 @@
       background:
         linear-gradient(
           to bottom,
-          rgba(0,0,0,.3),
-          rgba(0,0,0,.15) 35%,
+          rgba(0,0,0,.20),
+          rgba(0,0,0,.12) 35%,
           rgba(0,0,0,.92) 100%
         );
     }
@@ -265,7 +266,7 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      padding: 150px 7vw 70px;
+      padding: 150px 7vw 68px;
     }
 
     .hero-logo {
@@ -274,42 +275,42 @@
     }
 
     .hero-kicker {
-      font-size: 11px;
-      letter-spacing: .24em;
+      margin-bottom: 17px;
+      font-size: 10px;
       text-transform: uppercase;
-      color: #aaa;
-      margin-bottom: 18px;
+      letter-spacing: .24em;
+      color: #999;
     }
 
     .hero-title {
       font-family: "Archivo Black", sans-serif;
-      text-transform: uppercase;
-      font-size: clamp(60px, 12vw, 190px);
+      font-size: clamp(62px, 12vw, 190px);
       line-height: .78;
-      letter-spacing: -.07em;
-      max-width: 1200px;
+      letter-spacing: -.075em;
+      text-transform: uppercase;
     }
 
     .hero-bottom {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-top: 65px;
+      margin-top: 62px;
       gap: 30px;
     }
 
-    .hero-location {
-      font-size: 12px;
-      color: #aaa;
-      letter-spacing: .12em;
+    .hero-location,
+    .scroll-label {
+      font-size: 10px;
       text-transform: uppercase;
+      letter-spacing: .16em;
+    }
+
+    .hero-location {
+      color: #999;
     }
 
     .scroll-label {
-      font-size: 10px;
-      color: #888;
-      letter-spacing: .2em;
-      text-transform: uppercase;
+      color: #666;
     }
 
     /* =========================
@@ -319,24 +320,24 @@
     .marquee {
       overflow: hidden;
       white-space: nowrap;
-      background: var(--offwhite);
-      color: #090909;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #000;
-      padding: 22px 0;
+      background: #0d0d0d;
+      color: #777;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 21px 0;
     }
 
     .marquee-track {
       display: inline-block;
-      animation: marquee 24s linear infinite;
+      animation: marquee 25s linear infinite;
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(28px, 4vw, 58px);
+      font-size: clamp(27px, 4vw, 55px);
       text-transform: uppercase;
-      letter-spacing: -.03em;
+      letter-spacing: -.035em;
     }
 
     .marquee-track span {
-      margin-right: 50px;
+      margin-right: 55px;
     }
 
     @keyframes marquee {
@@ -376,19 +377,19 @@
     }
 
     .about-copy h2 {
+      margin: 18px 0 34px;
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(42px, 5vw, 76px);
-      line-height: .92;
-      letter-spacing: -.05em;
+      font-size: clamp(42px, 5vw, 75px);
+      line-height: .9;
+      letter-spacing: -.055em;
       text-transform: uppercase;
-      margin-bottom: 35px;
     }
 
     .about-copy p {
-      color: #aaa;
-      font-size: 17px;
-      line-height: 1.8;
       max-width: 650px;
+      color: #999;
+      font-size: 16px;
+      line-height: 1.85;
     }
 
     /* =========================
@@ -396,8 +397,7 @@
     ========================= */
 
     .music {
-      background: var(--offwhite);
-      color: #080808;
+      background: #101010;
     }
 
     .music-grid {
@@ -407,41 +407,44 @@
       align-items: center;
     }
 
-    .music .section-number,
-    .music .eyebrow {
-      color: #777;
-    }
-
     .music-title {
+      margin: 18px 0 30px;
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(48px, 7vw, 105px);
       line-height: .86;
-      text-transform: uppercase;
       letter-spacing: -.06em;
-      margin-bottom: 30px;
+      text-transform: uppercase;
     }
 
     .music-copy {
-      color: #555;
-      line-height: 1.7;
       max-width: 500px;
+      color: #888;
+      line-height: 1.7;
+      font-size: 14px;
     }
 
     .spotify-frame {
       width: 100%;
       min-height: 352px;
       border: 0;
-      border-radius: 14px;
+      border-radius: 12px;
+      opacity: .95;
     }
 
     .spotify-link {
       display: inline-flex;
       margin-top: 25px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      border-bottom: 1px solid #222;
       padding-bottom: 7px;
+      border-bottom: 1px solid #555;
+      color: #aaa;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      transition: color .25s ease;
+    }
+
+    .spotify-link:hover {
+      color: #fff;
     }
 
     /* =========================
@@ -449,7 +452,7 @@
     ========================= */
 
     .stats {
-      background: var(--black-soft);
+      background: #0b0b0b;
     }
 
     .stats-grid {
@@ -471,14 +474,14 @@
     .stat-number {
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(48px, 7vw, 105px);
-      letter-spacing: -.06em;
       line-height: .85;
+      letter-spacing: -.065em;
     }
 
     .stat-label {
       margin-top: 20px;
-      color: #888;
-      font-size: 11px;
+      color: #666;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: .18em;
     }
@@ -500,10 +503,10 @@
     }
 
     .experience-subtitle {
-      color: #777;
-      font-size: 13px;
-      max-width: 260px;
-      line-height: 1.6;
+      max-width: 270px;
+      color: #666;
+      font-size: 12px;
+      line-height: 1.7;
     }
 
     .event-list {
@@ -512,39 +515,42 @@
 
     .event {
       display: grid;
-      grid-template-columns: 90px 1fr 1fr;
-      gap: 30px;
+      grid-template-columns: 85px 1fr 1fr;
       align-items: center;
+      gap: 30px;
       padding: 27px 0;
       border-bottom: 1px solid var(--line);
-      transition: padding .35s ease;
+      transition:
+        padding .3s ease,
+        background .3s ease;
     }
 
     .event:hover {
       padding-left: 15px;
       padding-right: 15px;
-      background: rgba(255,255,255,.025);
+      background: rgba(255,255,255,.018);
     }
 
     .event-number {
-      color: #666;
-      font-size: 11px;
+      color: #555;
+      font-size: 10px;
       letter-spacing: .15em;
     }
 
     .event-name {
       font-family: "Archivo Black", sans-serif;
+      font-size: clamp(24px, 3vw, 43px);
+      line-height: .9;
+      letter-spacing: -.045em;
       text-transform: uppercase;
-      font-size: clamp(23px, 3vw, 42px);
-      letter-spacing: -.04em;
     }
 
     .event-place {
       text-align: right;
-      color: #888;
-      font-size: 12px;
+      color: #777;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: .1em;
+      letter-spacing: .12em;
     }
 
     /* =========================
@@ -552,37 +558,35 @@
     ========================= */
 
     .media {
-      background: var(--offwhite);
-      color: #080808;
-    }
-
-    .media .section-number {
-      color: #777;
+      background: #0c0c0c;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 17px;
       margin-top: 65px;
     }
 
     .gallery-item {
       overflow: hidden;
-      background: #d8d8d4;
+      background: #151515;
+      border: 1px solid rgba(255,255,255,.06);
     }
 
     .gallery-item img {
       width: 100%;
-      height: 100%;
       aspect-ratio: 1.15;
       object-fit: cover;
       filter: grayscale(100%);
-      transition: transform .8s cubic-bezier(.16,1,.3,1);
+      transition:
+        transform .8s cubic-bezier(.16,1,.3,1),
+        filter .5s ease;
     }
 
     .gallery-item:hover img {
       transform: scale(1.045);
+      filter: grayscale(80%);
     }
 
     /* =========================
@@ -590,7 +594,7 @@
     ========================= */
 
     .socials {
-      background: var(--black);
+      background: #080808;
     }
 
     .social-list {
@@ -600,27 +604,31 @@
 
     .social-link {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 32px 0;
+      justify-content: space-between;
+      padding: 31px 0;
       border-bottom: 1px solid var(--line);
-      transition: padding .3s ease;
+      transition:
+        padding .3s ease,
+        background .3s ease;
     }
 
     .social-link:hover {
       padding-left: 15px;
       padding-right: 15px;
+      background: rgba(255,255,255,.015);
     }
 
     .social-name {
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(30px, 5vw, 70px);
+      line-height: .9;
+      letter-spacing: -.055em;
       text-transform: uppercase;
-      letter-spacing: -.05em;
     }
 
     .social-arrow {
-      color: #777;
+      color: #555;
       font-size: 20px;
     }
 
@@ -629,25 +637,20 @@
     ========================= */
 
     .booking {
-      background: var(--offwhite);
-      color: #080808;
+      background: #111;
       min-height: 65vh;
       display: flex;
       align-items: center;
     }
 
-    .booking-inner {
-      width: 100%;
-    }
-
     .booking-title {
+      max-width: 1100px;
+      margin: 25px 0 60px;
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(55px, 10vw, 150px);
       line-height: .82;
+      letter-spacing: -.075em;
       text-transform: uppercase;
-      letter-spacing: -.07em;
-      max-width: 1100px;
-      margin: 25px 0 60px;
     }
 
     .booking-grid {
@@ -658,38 +661,44 @@
     }
 
     .booking-item {
-      border-top: 1px solid var(--line-dark);
       padding-top: 18px;
+      border-top: 1px solid var(--line);
     }
 
     .booking-label {
-      color: #777;
-      font-size: 10px;
+      margin-bottom: 10px;
+      color: #666;
+      font-size: 9px;
       text-transform: uppercase;
       letter-spacing: .18em;
-      margin-bottom: 10px;
     }
 
     .booking-value {
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ddd;
     }
 
     .booking-button {
       display: inline-flex;
       margin-top: 45px;
-      padding: 18px 28px;
-      background: #080808;
-      color: #fff;
-      font-size: 11px;
+      padding: 17px 27px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: #171717;
+      color: #eee;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: .16em;
-      transition: transform .3s ease, background .3s ease;
+      transition:
+        background .3s ease,
+        border-color .3s ease,
+        transform .3s ease;
     }
 
     .booking-button:hover {
-      transform: translateY(-3px);
       background: #222;
+      border-color: rgba(255,255,255,.35);
+      transform: translateY(-3px);
     }
 
     /* =========================
@@ -697,8 +706,7 @@
     ========================= */
 
     .tech-rider {
-      background: #090909;
-      color: var(--white);
+      background: #080808;
       overflow: hidden;
     }
 
@@ -707,62 +715,73 @@
       justify-content: space-between;
       align-items: flex-end;
       gap: 40px;
-      margin-bottom: 60px;
+      margin-bottom: 55px;
     }
 
     .tech-title {
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(45px, 7vw, 100px);
       line-height: .86;
+      letter-spacing: -.065em;
       text-transform: uppercase;
-      letter-spacing: -.06em;
-      max-width: 900px;
     }
 
     .tech-description {
-      color: #777;
-      font-size: 12px;
+      max-width: 260px;
+      color: #666;
+      font-size: 10px;
       line-height: 1.7;
-      max-width: 250px;
       text-transform: uppercase;
-      letter-spacing: .08em;
+      letter-spacing: .12em;
     }
 
     .tech-product {
       position: relative;
       width: 100%;
-      min-height: 460px;
+      min-height: 430px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 40px;
-      border: 1px solid rgba(255,255,255,.1);
+      justify-content: center;
+      padding: 35px;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
       background:
         radial-gradient(
-          circle at center,
-          rgba(255,255,255,.055),
-          rgba(255,255,255,0) 65%
+          ellipse at center,
+          rgba(255,255,255,.045) 0%,
+          rgba(255,255,255,0) 67%
         );
-      overflow: hidden;
+    }
+
+    .tech-product::before,
+    .tech-product::after {
+      content: "";
+      position: absolute;
+      background: rgba(255,255,255,.055);
     }
 
     .tech-product::before {
-      content: "";
-      position: absolute;
-      width: 65%;
+      width: 100%;
       height: 1px;
       top: 50%;
-      left: 17.5%;
-      background: rgba(255,255,255,.08);
+      left: 0;
+    }
+
+    .tech-product::after {
+      width: 1px;
+      height: 100%;
+      top: 0;
+      left: 50%;
     }
 
     .tech-product img {
       position: relative;
       z-index: 2;
       width: min(100%, 1050px);
-      max-height: 520px;
+      max-height: 510px;
       object-fit: contain;
-      filter: drop-shadow(0 25px 35px rgba(0,0,0,.55));
+      filter: drop-shadow(0 25px 35px rgba(0,0,0,.6));
       transition: transform .7s cubic-bezier(.16,1,.3,1);
     }
 
@@ -771,11 +790,12 @@
     }
 
     .tech-product-name {
-      margin-top: 25px;
+      margin-top: 24px;
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(25px, 4vw, 48px);
+      line-height: .9;
+      letter-spacing: -.045em;
       text-transform: uppercase;
-      letter-spacing: -.04em;
     }
 
     /* =========================
@@ -789,13 +809,13 @@
       z-index: 800;
       width: 58px;
       height: 58px;
-      border-radius: 50%;
-      background: #f1f1ed;
-      color: #080808;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      border-radius: 50%;
+      background: #eee;
+      color: #080808;
+      box-shadow: 0 12px 40px rgba(0,0,0,.4);
       transition: transform .3s ease;
     }
 
@@ -813,17 +833,18 @@
       right: 25px;
       bottom: 94px;
       z-index: 799;
-      background: #f1f1ed;
-      color: #111;
+      max-width: 270px;
       padding: 13px 17px;
-      font-size: 11px;
+      background: #eee;
+      color: #111;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: .08em;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
       opacity: 0;
       transform: translateY(10px);
       pointer-events: none;
       transition: all .35s ease;
-      box-shadow: 0 10px 30px rgba(0,0,0,.3);
     }
 
     .whatsapp-popup.show {
@@ -843,8 +864,8 @@
 
     .footer-top {
       display: flex;
-      justify-content: space-between;
       align-items: flex-start;
+      justify-content: space-between;
       gap: 40px;
       padding-bottom: 80px;
     }
@@ -854,21 +875,22 @@
     }
 
     .footer-text {
-      color: #666;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .12em;
+      color: #555;
+      font-size: 9px;
       line-height: 1.8;
       text-align: right;
+      text-transform: uppercase;
+      letter-spacing: .15em;
     }
 
     .footer-bottom {
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
-      color: #555;
-      font-size: 9px;
+      gap: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: #444;
+      font-size: 8px;
       text-transform: uppercase;
       letter-spacing: .15em;
     }
@@ -878,6 +900,7 @@
     ========================= */
 
     @media (max-width: 900px) {
+
       .topbar {
         padding: 16px 22px;
       }
@@ -933,6 +956,7 @@
     ========================= */
 
     @media (max-width: 600px) {
+
       .intro-logo {
         width: 280px;
         max-width: 82vw;
@@ -975,9 +999,9 @@
       }
 
       .hero-bottom {
-        margin-top: 40px;
-        align-items: flex-start;
         flex-direction: column;
+        align-items: flex-start;
+        margin-top: 40px;
         gap: 20px;
       }
 
@@ -1041,7 +1065,6 @@
       .whatsapp-popup {
         right: 18px;
         bottom: 84px;
-        max-width: 230px;
       }
 
       .footer-top {
@@ -1063,10 +1086,7 @@
 
 <body class="intro-active">
 
-  <!-- =========================
-       INTRO
-  ========================= -->
-
+  <!-- INTRO -->
   <div class="intro" id="intro">
     <img
       src="./intro-logo.png"
@@ -1077,11 +1097,9 @@
 
   <div class="grain"></div>
 
-  <!-- =========================
-       NAV
-  ========================= -->
-
+  <!-- NAV -->
   <header class="topbar">
+
     <a href="#top">
       <img
         src="./nahuel%20kinder%20png%20logo.png"
@@ -1097,14 +1115,12 @@
       <a href="#booking">Booking</a>
       <a href="#tech-rider">Rider</a>
     </nav>
+
   </header>
 
   <main id="top">
 
-    <!-- =========================
-         HERO
-    ========================= -->
-
+    <!-- HERO -->
     <section class="hero">
 
       <img
@@ -1129,11 +1145,12 @@
         </div>
 
         <h1 class="hero-title reveal">
-          Nahuel<br />
+          Nahuel<br>
           Kinder
         </h1>
 
         <div class="hero-bottom reveal">
+
           <div class="hero-location">
             Argentina · DJ Press Kit
           </div>
@@ -1141,17 +1158,18 @@
           <div class="scroll-label">
             Scroll to explore ↓
           </div>
+
         </div>
 
       </div>
+
     </section>
 
-    <!-- =========================
-         MARQUEE
-    ========================= -->
-
+    <!-- MARQUEE -->
     <div class="marquee">
+
       <div class="marquee-track">
+
         <span>DJ</span>
         <span>Remixer</span>
         <span>Producer</span>
@@ -1163,13 +1181,12 @@
         <span>Producer</span>
         <span>Open Format</span>
         <span>Argentina</span>
+
       </div>
+
     </div>
 
-    <!-- =========================
-         ABOUT
-    ========================= -->
-
+    <!-- ABOUT -->
     <section class="about" id="about">
 
       <div class="section-number reveal">
@@ -1179,11 +1196,13 @@
       <div class="about-grid">
 
         <div class="reveal">
+
           <img
             src="./about-photo.jpg"
             alt="Nahuel Kinder"
             class="about-image"
           />
+
         </div>
 
         <div class="about-copy reveal">
@@ -1208,12 +1227,10 @@
         </div>
 
       </div>
+
     </section>
 
-    <!-- =========================
-         MUSIC
-    ========================= -->
-
+    <!-- MUSIC -->
     <section class="music" id="music">
 
       <div class="section-number reveal">
@@ -1229,7 +1246,7 @@
           </div>
 
           <h2 class="music-title">
-            Music<br />
+            Music<br>
             & Remixes
           </h2>
 
@@ -1260,12 +1277,10 @@
         </div>
 
       </div>
+
     </section>
 
-    <!-- =========================
-         STATS
-    ========================= -->
-
+    <!-- STATS -->
     <section class="stats">
 
       <div class="section-number reveal">
@@ -1275,6 +1290,7 @@
       <div class="stats-grid reveal">
 
         <div class="stat">
+
           <div class="stat-number">
             +180K
           </div>
@@ -1282,9 +1298,11 @@
           <div class="stat-label">
             Oyentes mensuales
           </div>
+
         </div>
 
         <div class="stat">
+
           <div class="stat-number">
             +2M
           </div>
@@ -1292,9 +1310,11 @@
           <div class="stat-label">
             Reproducciones
           </div>
+
         </div>
 
         <div class="stat">
+
           <div class="stat-number">
             ARG
           </div>
@@ -1302,15 +1322,14 @@
           <div class="stat-label">
             Argentina
           </div>
+
         </div>
 
       </div>
+
     </section>
 
-    <!-- =========================
-         EXPERIENCE
-    ========================= -->
-
+    <!-- EXPERIENCE -->
     <section class="experience" id="experience">
 
       <div class="section-number reveal">
@@ -1320,7 +1339,7 @@
       <div class="experience-head">
 
         <h2 class="section-title reveal">
-          Ciudades<br />
+          Ciudades<br>
           y escenarios
         </h2>
 
@@ -1387,12 +1406,10 @@
         </div>
 
       </div>
+
     </section>
 
-    <!-- =========================
-         MEDIA
-    ========================= -->
-
+    <!-- MEDIA -->
     <section class="media">
 
       <div class="section-number reveal">
@@ -1410,7 +1427,7 @@
             src="./gallery-01.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
-          />
+          >
         </div>
 
         <div class="gallery-item reveal">
@@ -1418,7 +1435,7 @@
             src="./gallery-02.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
-          />
+          >
         </div>
 
         <div class="gallery-item reveal">
@@ -1426,7 +1443,7 @@
             src="./gallery-03.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
-          />
+          >
         </div>
 
         <div class="gallery-item reveal">
@@ -1434,16 +1451,14 @@
             src="./gallery-04.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
-          />
+          >
         </div>
 
       </div>
+
     </section>
 
-    <!-- =========================
-         SOCIALS
-    ========================= -->
-
+    <!-- SOCIALS -->
     <section class="socials">
 
       <div class="section-number reveal">
@@ -1497,12 +1512,10 @@
         </a>
 
       </div>
+
     </section>
 
-    <!-- =========================
-         BOOKING
-    ========================= -->
-
+    <!-- BOOKING -->
     <section class="booking" id="booking">
 
       <div class="booking-inner">
@@ -1512,13 +1525,14 @@
         </div>
 
         <h2 class="booking-title reveal">
-          Let's<br />
+          Let's<br>
           work
         </h2>
 
         <div class="booking-grid">
 
           <div class="booking-item reveal">
+
             <div class="booking-label">
               Email
             </div>
@@ -1526,9 +1540,11 @@
             <div class="booking-value">
               Nahuelkinder@gmail.com
             </div>
+
           </div>
 
           <div class="booking-item reveal">
+
             <div class="booking-label">
               WhatsApp
             </div>
@@ -1536,6 +1552,7 @@
             <div class="booking-value">
               +54 9 345 414 1714
             </div>
+
           </div>
 
         </div>
@@ -1550,12 +1567,10 @@
         </a>
 
       </div>
+
     </section>
 
-    <!-- =========================
-         TECH RIDER
-    ========================= -->
-
+    <!-- TECH RIDER -->
     <section class="tech-rider" id="tech-rider">
 
       <div class="section-number reveal">
@@ -1565,7 +1580,7 @@
       <div class="tech-head">
 
         <h2 class="tech-title reveal">
-          Pioneer<br />
+          Pioneer<br>
           DDJ-FLX10
         </h2>
 
@@ -1581,7 +1596,7 @@
           src="./ddj-flx10.png"
           alt="Pioneer DDJ-FLX10"
           loading="lazy"
-        />
+        >
 
       </div>
 
@@ -1593,14 +1608,12 @@
 
   </main>
 
-  <!-- =========================
-       WHATSAPP
-  ========================= -->
-
+  <!-- WHATSAPP POPUP -->
   <div class="whatsapp-popup" id="whatsappPopup">
     Contratá a Nahuel Kinder por acá!
   </div>
 
+  <!-- WHATSAPP -->
   <a
     href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
     target="_blank"
@@ -1623,10 +1636,7 @@
 
   </a>
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
+  <!-- FOOTER -->
   <footer>
 
     <div class="footer-top">
@@ -1635,10 +1645,10 @@
         src="./nahuel%20kinder%20png%20logo.png"
         alt="Nahuel Kinder"
         class="footer-logo"
-      />
+      >
 
       <div class="footer-text">
-        DJ · Remixer · Producer · Open Format<br />
+        DJ · Remixer · Producer · Open Format<br>
         Argentina
       </div>
 
@@ -1652,6 +1662,7 @@
   </footer>
 
   <script>
+
     /* =========================
        INTRO
     ========================= */
@@ -1672,25 +1683,30 @@
        SCROLL REVEAL
     ========================= */
 
-    const revealElements = document.querySelectorAll(".reveal");
+    const revealElements =
+      document.querySelectorAll(".reveal");
 
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
+    const revealObserver =
+      new IntersectionObserver(
+        (entries) => {
 
-        entries.forEach((entry) => {
+          entries.forEach((entry) => {
 
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-          }
+            if (entry.isIntersecting) {
 
-        });
+              entry.target.classList.add("visible");
 
-      },
-      {
-        threshold: 0.12
-      }
-    );
+              revealObserver.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
 
     revealElements.forEach((element) => {
       revealObserver.observe(element);
@@ -1723,7 +1739,8 @@
        HERO PARALLAX
     ========================= */
 
-    const heroBg = document.getElementById("heroBg");
+    const heroBg =
+      document.getElementById("heroBg");
 
     window.addEventListener("scroll", () => {
 
@@ -1732,12 +1749,16 @@
       const scrollY = window.scrollY;
 
       if (scrollY < window.innerHeight) {
+
         heroBg.style.transform =
           `scale(1.05) translateY(${scrollY * 0.08}px)`;
+
       }
 
     });
+
   </script>
 
 </body>
 </html>
+```
