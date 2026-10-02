@@ -268,11 +268,13 @@
       padding: 150px 7vw 70px;
     }
 
-    /* LOGO CENTRADO CON LA IDENTIDAD DEBAJO */
+    /* LOGO COMO IDENTIDAD PRINCIPAL */
 
     .hero-logo {
-      width: 270px;
-      margin: 0 auto 30px;
+      width: 430px;
+      max-width: 72vw;
+      height: auto;
+      margin: 0 auto;
     }
 
     .hero-kicker {
@@ -280,17 +282,12 @@
       letter-spacing: .24em;
       text-transform: uppercase;
       color: #aaa;
-      margin-bottom: 18px;
+      margin-bottom: 28px;
       text-align: center;
     }
 
     .hero-title {
-      font-family: "Archivo Black", sans-serif;
-      text-transform: uppercase;
-      font-size: clamp(60px, 12vw, 190px);
-      line-height: .78;
-      letter-spacing: -.07em;
-      max-width: 1200px;
+      display: none;
     }
 
     .hero-bottom {
@@ -1135,22 +1132,24 @@
       }
 
       .hero-logo {
-        width: 185px;
-        margin: 0 auto 25px;
+        width: 300px;
+        max-width: 82vw;
+        margin: 0 auto;
       }
 
       .hero-kicker {
         font-size: 9px;
         letter-spacing: .18em;
         white-space: nowrap;
+        margin-bottom: 22px;
       }
 
       .hero-title {
-        font-size: clamp(54px, 18vw, 100px);
+        display: none;
       }
 
       .hero-bottom {
-        margin-top: 40px;
+        margin-top: 55px;
         align-items: flex-start;
         flex-direction: column;
         gap: 20px;
@@ -1333,17 +1332,17 @@
 
       <div class="hero-content">
 
+        <div class="hero-kicker reveal">
+          DJ · Remixer · Producer · Open Format
+        </div>
+
         <img
           src="./nahuel%20kinder%20png%20logo.png"
           alt="Nahuel Kinder"
           class="hero-logo reveal"
         />
 
-        <div class="hero-kicker reveal">
-          DJ · Remixer · Producer · Open Format
-        </div>
-
-        <h1 class="hero-title reveal">
+        <h1 class="hero-title">
           Nahuel<br />
           Kinder
         </h1>
