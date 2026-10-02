@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>DJ PRESS KIT</title>
-  <meta
-    name="description"
-    content="DJ · Remixer · Producer — Official Press Kit"
-  />
+  <title>NAHUEL KINDER — DJ</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    :root {
+      --black: #050505;
+      --white: #f3f3f0;
+      --gray: #8b8b88;
+      --line: #252525;
+    }
 
     * {
       margin: 0;
@@ -21,13 +24,13 @@
 
     html {
       scroll-behavior: smooth;
-      background: #080808;
+      background: var(--black);
     }
 
     body {
-      background: #080808;
-      color: #f4f4f4;
-      font-family: "Inter", Arial, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      font-family: "Inter", sans-serif;
       overflow-x: hidden;
     }
 
@@ -36,126 +39,96 @@
       text-decoration: none;
     }
 
-    button {
-      font-family: inherit;
-    }
-
     /* =========================
-       LOADER
+       GRAIN
     ========================= */
 
-    .loader {
+    body::before {
+      content: "";
       position: fixed;
       inset: 0;
-      background: #080808;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 1s ease, visibility 1s ease;
-    }
-
-    .loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .loader-number {
-      font-size: clamp(40px, 8vw, 100px);
-      font-weight: 800;
-      letter-spacing: -0.08em;
-    }
-
-    /* =========================
-       CURSOR
-    ========================= */
-
-    .cursor {
-      position: fixed;
-      width: 12px;
-      height: 12px;
-      border: 1px solid rgba(255,255,255,.7);
-      border-radius: 50%;
       pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition:
-        width .25s ease,
-        height .25s ease,
-        background .25s ease;
-      mix-blend-mode: difference;
+      z-index: 9999;
+      opacity: .035;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grain .2s steps(2) infinite;
     }
 
-    .cursor.big {
-      width: 60px;
-      height: 60px;
-      background: #fff;
-    }
-
-    @media (max-width: 800px) {
-      .cursor {
-        display: none;
-      }
+    @keyframes grain {
+      0% { transform: translate(0,0); }
+      25% { transform: translate(2%,-2%); }
+      50% { transform: translate(-2%,2%); }
+      75% { transform: translate(2%,2%); }
+      100% { transform: translate(-2%,-2%); }
     }
 
     /* =========================
-       HEADER
+       TOP BAR
     ========================= */
 
-    header {
+    .topbar {
       position: fixed;
+      z-index: 1000;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000;
-      padding: 26px 34px;
+      height: 72px;
+
+      padding: 0 28px;
+
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      mix-blend-mode: difference;
+      align-items: center;
+
+      border-bottom: 1px solid rgba(255,255,255,.12);
+
+      background: rgba(5,5,5,.75);
+      backdrop-filter: blur(15px);
     }
 
-    .logo {
-      font-size: 14px;
+    .brand {
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: .12em;
       text-transform: uppercase;
     }
 
-    nav {
+    .menu {
       display: flex;
-      gap: 28px;
+      gap: 25px;
     }
 
-    nav a {
-      font-size: 11px;
+    .menu a {
+      font-size: 10px;
+      letter-spacing: .15em;
       text-transform: uppercase;
-      letter-spacing: .12em;
-      position: relative;
+      color: #aaa;
+      transition: .3s;
     }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0;
-      height: 1px;
-      background: white;
-      transition: width .3s ease;
+    .menu a:hover {
+      color: white;
     }
 
-    nav a:hover::after {
-      width: 100%;
+    .menu-button {
+      display: none;
+      font-size: 11px;
+      letter-spacing: .15em;
     }
 
-    @media (max-width: 700px) {
-      header {
-        padding: 20px;
+    @media(max-width: 700px) {
+
+      .menu {
+        display: none;
       }
 
-      nav {
-        display: none;
+      .menu-button {
+        display: block;
+      }
+
+      .topbar {
+        padding: 0 18px;
       }
     }
 
@@ -164,46 +137,39 @@
     ========================= */
 
     .hero {
-      min-height: 100svh;
+      height: 100svh;
+      min-height: 650px;
       position: relative;
+      overflow: hidden;
+
       display: flex;
       align-items: flex-end;
-      overflow: hidden;
-      padding: 40px;
-      background: #111;
+
+      padding: 30px;
     }
 
-    .hero-image {
+    .hero-bg {
       position: absolute;
       inset: 0;
+
       background:
         linear-gradient(
-          to bottom,
-          rgba(0,0,0,.05),
-          rgba(0,0,0,.15) 40%,
-          rgba(0,0,0,.85)
+          180deg,
+          rgba(0,0,0,.15),
+          rgba(0,0,0,.2) 35%,
+          rgba(0,0,0,.92)
         ),
         url("https://images.unsplash.com/photo-1571266028243-d220c9c3b3c1?auto=format&fit=crop&w=2200&q=90")
         center / cover;
+
+      filter: grayscale(100%) contrast(1.15);
+
       transform: scale(1.04);
-      transition: transform 1.5s cubic-bezier(.2,.7,.2,1);
+      transition: transform 1.5s ease;
     }
 
-    .hero:hover .hero-image {
+    .hero:hover .hero-bg {
       transform: scale(1.08);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        120deg,
-        rgba(0,0,0,.25),
-        transparent 40%,
-        rgba(0,0,0,.35)
-      );
-      pointer-events: none;
     }
 
     .hero-content {
@@ -212,68 +178,165 @@
       width: 100%;
     }
 
-    .hero-small {
-      font-size: 11px;
+    .hero-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      font-size: 9px;
       letter-spacing: .2em;
       text-transform: uppercase;
+
+      color: #bbb;
+
       margin-bottom: 18px;
-      opacity: .7;
     }
 
-    .hero-title {
-      font-size: clamp(70px, 14vw, 220px);
-      line-height: .78;
+    .hero-name {
+      font-family: "Archivo Black", sans-serif;
+
+      font-size: clamp(75px, 15vw, 220px);
+
+      line-height: .75;
+
       letter-spacing: -.09em;
-      font-weight: 800;
+
       text-transform: uppercase;
-      max-width: 1300px;
+
+      max-width: 1500px;
+    }
+
+    .hero-name span {
+      display: block;
+      margin-left: 9vw;
     }
 
     .hero-bottom {
-      margin-top: 35px;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+
+      margin-top: 35px;
+    }
+
+    .hero-description {
+      max-width: 320px;
+
       font-size: 11px;
+      line-height: 1.6;
+
+      color: #aaa;
+
       text-transform: uppercase;
-      letter-spacing: .12em;
+      letter-spacing: .08em;
     }
 
-    .scroll {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .hero-scroll {
+      font-size: 9px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
     }
 
-    .scroll-line {
-      width: 50px;
-      height: 1px;
-      background: white;
-      opacity: .6;
+    @media(max-width: 700px) {
+
+      .hero {
+        padding: 20px;
+      }
+
+      .hero-name {
+        font-size: 21vw;
+      }
+
+      .hero-name span {
+        margin-left: 5vw;
+      }
+
+      .hero-description {
+        max-width: 220px;
+      }
     }
 
     /* =========================
-       SECTIONS
+       MARQUEE
+    ========================= */
+
+    .marquee {
+      overflow: hidden;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      padding: 18px 0;
+
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+
+      animation: marquee 18s linear infinite;
+    }
+
+    .marquee span {
+      font-family: "Archivo Black", sans-serif;
+
+      font-size: clamp(30px, 5vw, 75px);
+
+      letter-spacing: -.05em;
+
+      margin-right: 50px;
+
+      text-transform: uppercase;
+    }
+
+    .marquee .outline {
+      color: transparent;
+      -webkit-text-stroke: 1px #777;
+    }
+
+    @keyframes marquee {
+
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+
+    }
+
+    /* =========================
+       SECTION
     ========================= */
 
     section {
-      padding: 150px 5vw;
-      position: relative;
+      padding: 130px 5vw;
     }
 
-    .section-label {
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      margin-bottom: 70px;
+    }
+
+    .section-number {
       font-size: 10px;
+      color: #666;
       letter-spacing: .2em;
-      text-transform: uppercase;
-      opacity: .45;
-      margin-bottom: 60px;
     }
 
     .section-title {
-      font-size: clamp(45px, 8vw, 120px);
-      line-height: .88;
-      letter-spacing: -.07em;
-      font-weight: 700;
+      font-family: "Archivo Black", sans-serif;
+
+      font-size: clamp(55px, 9vw, 140px);
+
+      line-height: .82;
+
+      letter-spacing: -.08em;
+
       text-transform: uppercase;
     }
 
@@ -283,166 +346,269 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1.3fr;
+      grid-template-columns: 1fr 1fr;
+
       gap: 10vw;
-      align-items: start;
+
+      align-items: center;
+    }
+
+    .about-image {
+      height: 700px;
+
+      background:
+        linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,.2)),
+        url("https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1400&q=90")
+        center / cover;
+
+      filter: grayscale(100%) contrast(1.1);
+
+      transition: .8s;
+    }
+
+    .about-image:hover {
+      filter: grayscale(0%) contrast(1.1);
+      transform: scale(.98);
     }
 
     .about-text {
-      font-size: clamp(22px, 3vw, 45px);
-      line-height: 1.05;
-      letter-spacing: -.04em;
-      max-width: 800px;
+      font-size: clamp(25px, 3vw, 48px);
+
+      line-height: 1.02;
+
+      letter-spacing: -.05em;
     }
 
-    .about-copy {
-      margin-top: 80px;
-      max-width: 550px;
-      color: #999;
+    .about-small {
+      margin-top: 50px;
+
+      color: #777;
+
+      font-size: 13px;
+
       line-height: 1.7;
-      font-size: 14px;
+
+      max-width: 480px;
     }
 
-    @media (max-width: 800px) {
+    @media(max-width: 800px) {
+
       .about-grid {
         grid-template-columns: 1fr;
-        gap: 60px;
       }
 
-      .about-copy {
-        margin-top: 40px;
+      .about-image {
+        height: 500px;
       }
     }
 
     /* =========================
-       IMAGE
+       PLAYER
     ========================= */
 
-    .big-image {
-      width: 100%;
-      height: 75vh;
-      min-height: 500px;
-      background:
-        linear-gradient(rgba(0,0,0,.05), rgba(0,0,0,.2)),
-        url("https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=2000&q=90")
-        center / cover;
-      filter: grayscale(100%);
-      transition: filter .7s ease, transform 1s ease;
+    .player {
+      border: 1px solid var(--line);
+
+      padding: 35px;
+
+      background: #090909;
+
+      position: relative;
       overflow: hidden;
     }
 
-    .big-image:hover {
-      filter: grayscale(0%);
-      transform: scale(.985);
-    }
+    .player::before {
+      content: "";
 
-    /* =========================
-       MUSIC
-    ========================= */
+      position: absolute;
 
-    .music-list {
-      border-top: 1px solid #292929;
-    }
+      width: 500px;
+      height: 500px;
 
-    .track {
-      display: grid;
-      grid-template-columns: 70px 1fr 150px 50px;
-      align-items: center;
-      gap: 20px;
-      padding: 25px 0;
-      border-bottom: 1px solid #292929;
-      transition: padding .4s ease, background .4s ease;
-    }
-
-    .track:hover {
-      padding-left: 25px;
-      background: #0e0e0e;
-    }
-
-    .track-number {
-      color: #555;
-      font-size: 12px;
-    }
-
-    .track-name {
-      font-size: clamp(18px, 2.2vw, 30px);
-      letter-spacing: -.04em;
-    }
-
-    .track-type {
-      color: #666;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-    }
-
-    .play {
-      width: 38px;
-      height: 38px;
-      border: 1px solid #555;
       border-radius: 50%;
+
+      background: #222;
+
+      filter: blur(120px);
+
+      opacity: .35;
+
+      right: -250px;
+      top: -250px;
+    }
+
+    .player-top {
+      display: flex;
+      justify-content: space-between;
+
+      font-size: 9px;
+      letter-spacing: .15em;
+
+      color: #777;
+
+      text-transform: uppercase;
+    }
+
+    .player-main {
+      display: grid;
+
+      grid-template-columns: 180px 1fr;
+
+      gap: 40px;
+
+      align-items: center;
+
+      margin-top: 60px;
+    }
+
+    .cover {
+      width: 180px;
+      aspect-ratio: 1;
+
+      background:
+        linear-gradient(135deg,#292929,#090909);
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       font-size: 10px;
-      transition: .3s;
+      color: #777;
+
+      text-align: center;
     }
 
-    .track:hover .play {
-      background: white;
-      color: black;
+    .track-title {
+      font-family: "Archivo Black", sans-serif;
+
+      font-size: clamp(35px, 5vw, 75px);
+
+      line-height: .9;
+
+      letter-spacing: -.07em;
+
+      text-transform: uppercase;
     }
 
-    @media (max-width: 700px) {
-      .track {
-        grid-template-columns: 35px 1fr 35px;
+    .track-info {
+      color: #666;
+
+      font-size: 10px;
+
+      letter-spacing: .15em;
+
+      margin-top: 18px;
+
+      text-transform: uppercase;
+    }
+
+    .wave {
+      display: flex;
+      align-items: center;
+
+      gap: 4px;
+
+      height: 80px;
+
+      margin-top: 50px;
+    }
+
+    .bar {
+      flex: 1;
+
+      background: #555;
+
+      height: 20%;
+
+      animation: wave 1s ease-in-out infinite alternate;
+    }
+
+    .bar:nth-child(2n) {
+      animation-delay: -.3s;
+    }
+
+    .bar:nth-child(3n) {
+      animation-delay: -.6s;
+    }
+
+    @keyframes wave {
+
+      from {
+        height: 15%;
       }
 
-      .track-type {
-        display: none;
+      to {
+        height: 90%;
+      }
+
+    }
+
+    @media(max-width: 650px) {
+
+      .player {
+        padding: 20px;
+      }
+
+      .player-main {
+        grid-template-columns: 100px 1fr;
+        gap: 20px;
+      }
+
+      .cover {
+        width: 100px;
       }
     }
 
     /* =========================
-       STATS
+       NUMBERS
     ========================= */
 
-    .stats {
+    .numbers {
       display: grid;
+
       grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid #292929;
-      border-bottom: 1px solid #292929;
+
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
-    .stat {
-      padding: 50px 20px;
-      border-right: 1px solid #292929;
+    .number {
+      padding: 45px 20px;
+
+      border-right: 1px solid var(--line);
     }
 
-    .stat:last-child {
+    .number:last-child {
       border-right: none;
     }
 
-    .stat-number {
-      font-size: clamp(40px, 6vw, 90px);
+    .number-value {
+      font-family: "Archivo Black", sans-serif;
+
+      font-size: clamp(45px, 6vw, 90px);
+
       letter-spacing: -.08em;
-      font-weight: 700;
     }
 
-    .stat-label {
-      margin-top: 20px;
+    .number-label {
       color: #666;
-      font-size: 10px;
-      letter-spacing: .15em;
+
+      font-size: 9px;
+
       text-transform: uppercase;
+
+      letter-spacing: .18em;
+
+      margin-top: 15px;
     }
 
-    @media (max-width: 700px) {
-      .stats {
+    @media(max-width: 700px) {
+
+      .numbers {
         grid-template-columns: 1fr 1fr;
       }
 
-      .stat:nth-child(2) {
+      .number:nth-child(2) {
         border-right: none;
       }
     }
@@ -451,46 +617,58 @@
        EVENTS
     ========================= */
 
-    .events {
-      border-top: 1px solid #292929;
-    }
-
     .event {
       display: grid;
-      grid-template-columns: 120px 1fr 180px;
+
+      grid-template-columns: 100px 1fr 180px;
+
       gap: 30px;
-      padding: 30px 0;
-      border-bottom: 1px solid #292929;
+
       align-items: center;
-      transition: .35s;
+
+      padding: 28px 0;
+
+      border-bottom: 1px solid var(--line);
+
+      transition: .4s;
     }
 
     .event:hover {
-      padding-left: 20px;
-      background: #0e0e0e;
+      padding-left: 25px;
+      background: #090909;
     }
 
     .event-date {
-      font-size: 11px;
+      font-size: 10px;
       color: #666;
-      text-transform: uppercase;
     }
 
     .event-name {
-      font-size: clamp(22px, 3vw, 40px);
-      letter-spacing: -.05em;
+      font-family: "Archivo Black", sans-serif;
+
+      font-size: clamp(25px, 4vw, 55px);
+
+      letter-spacing: -.06em;
+
+      text-transform: uppercase;
     }
 
     .event-place {
       text-align: right;
-      font-size: 11px;
-      color: #777;
+
+      color: #666;
+
+      font-size: 9px;
+
+      letter-spacing: .15em;
+
       text-transform: uppercase;
     }
 
-    @media (max-width: 700px) {
+    @media(max-width: 700px) {
+
       .event {
-        grid-template-columns: 80px 1fr;
+        grid-template-columns: 70px 1fr;
       }
 
       .event-place {
@@ -504,64 +682,58 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns: 1.4fr .8fr;
+
       gap: 15px;
     }
 
-    .gallery-item {
-      overflow: hidden;
-      position: relative;
-      min-height: 450px;
-      background: #151515;
-    }
+    .photo {
+      min-height: 650px;
 
-    .gallery-item:nth-child(2) {
-      margin-top: 100px;
-    }
-
-    .gallery-item:nth-child(3) {
-      margin-top: -60px;
-    }
-
-    .gallery-image {
-      width: 100%;
-      height: 100%;
-      min-height: 450px;
       background-size: cover;
       background-position: center;
+
       filter: grayscale(100%);
-      transition: transform 1s cubic-bezier(.2,.7,.2,1), filter .7s ease;
+
+      transition:
+        filter .7s ease,
+        transform 1s ease;
     }
 
-    .gallery-item:hover .gallery-image {
-      transform: scale(1.06);
+    .photo:hover {
       filter: grayscale(0%);
+      transform: scale(.98);
     }
 
-    .gallery-1 {
-      background-image: url("https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1400&q=90");
+    .photo.one {
+      background-image:
+        url("https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1600&q=90");
     }
 
-    .gallery-2 {
-      background-image: url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1400&q=90");
+    .photo.two {
+      background-image:
+        url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=90");
+      min-height: 450px;
     }
 
-    .gallery-3 {
-      background-image: url("https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?auto=format&fit=crop&w=1400&q=90");
+    .photo.three {
+      background-image:
+        url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=90");
+      min-height: 450px;
+      margin-top: 200px;
     }
 
-    .gallery-4 {
-      background-image: url("https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1400&q=90");
-    }
+    @media(max-width: 700px) {
 
-    @media (max-width: 700px) {
       .gallery {
         grid-template-columns: 1fr;
       }
 
-      .gallery-item,
-      .gallery-item:nth-child(2),
-      .gallery-item:nth-child(3) {
+      .photo,
+      .photo.two,
+      .photo.three {
+        min-height: 500px;
         margin-top: 0;
       }
     }
@@ -570,22 +742,28 @@
        SOCIAL
     ========================= */
 
-    .social-grid {
+    .socials {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid #292929;
+
+      grid-template-columns: repeat(4,1fr);
+
+      border-top: 1px solid var(--line);
     }
 
     .social {
-      min-height: 180px;
-      border-right: 1px solid #292929;
-      border-bottom: 1px solid #292929;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
+      padding: 45px 20px;
+
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+
+      font-family: "Archivo Black", sans-serif;
+
+      font-size: clamp(18px, 2.5vw, 30px);
+
       text-transform: uppercase;
-      letter-spacing: .1em;
+
+      letter-spacing: -.04em;
+
       transition: .4s;
     }
 
@@ -594,12 +772,13 @@
     }
 
     .social:hover {
-      background: white;
+      background: var(--white);
       color: black;
     }
 
-    @media (max-width: 700px) {
-      .social-grid {
+    @media(max-width:700px) {
+
+      .socials {
         grid-template-columns: 1fr 1fr;
       }
 
@@ -613,29 +792,39 @@
     ========================= */
 
     .booking {
-      min-height: 80vh;
+      min-height: 85vh;
+
       display: flex;
       flex-direction: column;
+
       justify-content: space-between;
     }
 
     .booking-title {
-      font-size: clamp(65px, 13vw, 190px);
-      line-height: .8;
+      font-family: "Archivo Black", sans-serif;
+
+      font-size: clamp(65px, 13vw, 200px);
+
+      line-height: .72;
+
       letter-spacing: -.1em;
+
       text-transform: uppercase;
-      font-weight: 800;
     }
 
-    .booking-mail {
-      font-size: clamp(22px, 4vw, 55px);
+    .booking-link {
+      font-size: clamp(22px, 4vw, 50px);
+
       letter-spacing: -.05em;
+
       border-bottom: 1px solid #555;
+
       width: fit-content;
-      transition: border-color .3s;
+
+      transition: .3s;
     }
 
-    .booking-mail:hover {
+    .booking-link:hover {
       border-color: white;
     }
 
@@ -644,14 +833,21 @@
     ========================= */
 
     footer {
-      padding: 30px 5vw;
-      border-top: 1px solid #292929;
+      padding: 25px 5vw;
+
+      border-top: 1px solid var(--line);
+
       display: flex;
+
       justify-content: space-between;
-      font-size: 10px;
+
       color: #555;
+
+      font-size: 9px;
+
+      letter-spacing: .18em;
+
       text-transform: uppercase;
-      letter-spacing: .15em;
     }
 
     /* =========================
@@ -660,421 +856,566 @@
 
     .reveal {
       opacity: 0;
-      transform: translateY(60px);
-      filter: blur(8px);
+
+      transform: translateY(45px);
+
+      filter: blur(7px);
+
       transition:
         opacity 1s ease,
         transform 1s cubic-bezier(.2,.7,.2,1),
         filter 1s ease;
     }
 
-    .reveal.visible {
+    .reveal.show {
       opacity: 1;
+
       transform: translateY(0);
+
       filter: blur(0);
     }
 
-    /* =========================
-       GRAIN
-    ========================= */
-
-    .grain {
-      position: fixed;
-      inset: -50%;
-      width: 200%;
-      height: 200%;
-      pointer-events: none;
-      z-index: 9997;
-      opacity: .035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-      animation: grain .25s steps(2) infinite;
-    }
-
-    @keyframes grain {
-      0% { transform: translate(0,0); }
-      25% { transform: translate(2%,-2%); }
-      50% { transform: translate(-2%,2%); }
-      75% { transform: translate(2%,2%); }
-      100% { transform: translate(-2%,-2%); }
-    }
   </style>
 </head>
 
 <body>
 
-  <div class="loader">
-    <div class="loader-number">00</div>
-  </div>
+  <!-- HEADER -->
 
-  <div class="grain"></div>
-  <div class="cursor"></div>
+  <header class="topbar">
 
-  <header>
-    <a href="#" class="logo">YOUR LOGO</a>
+    <div class="brand">
+      YOUR LOGO
+    </div>
 
-    <nav>
+    <nav class="menu">
+
       <a href="#about">About</a>
       <a href="#music">Music</a>
       <a href="#events">Events</a>
       <a href="#media">Media</a>
       <a href="#booking">Booking</a>
+
     </nav>
+
+    <div class="menu-button">
+      MENU
+    </div>
+
   </header>
+
 
   <!-- HERO -->
 
-  <main>
+  <section class="hero">
 
-    <section class="hero">
+    <div class="hero-bg"></div>
 
-      <div class="hero-image"></div>
+    <div class="hero-content reveal">
 
-      <div class="hero-content reveal">
+      <div class="hero-meta">
 
-        <div class="hero-small">
+        <span>
           DJ · REMIXER · PRODUCER
+        </span>
+
+        <span>
+          ARGENTINA / 2026
+        </span>
+
+      </div>
+
+      <h1 class="hero-name">
+        NAHUEL
+        <span>KINDER</span>
+      </h1>
+
+      <div class="hero-bottom">
+
+        <div class="hero-description">
+          OFFICIAL PRESS KIT
+          <br>
+          MUSIC · EVENTS · MEDIA
         </div>
 
-        <h1 class="hero-title">
-          YOUR<br>
-          NAME
-        </h1>
-
-        <div class="hero-bottom">
-          <div>
-            BASED IN ARGENTINA
-          </div>
-
-          <div class="scroll">
-            <span class="scroll-line"></span>
-            SCROLL TO EXPLORE
-          </div>
+        <div class="hero-scroll">
+          SCROLL ↓
         </div>
 
       </div>
 
-    </section>
+    </div>
 
-    <!-- ABOUT -->
+  </section>
 
-    <section id="about">
 
-      <div class="section-label reveal">
+  <!-- MARQUEE -->
+
+  <div class="marquee">
+
+    <div class="marquee-track">
+
+      <span>DJ</span>
+      <span class="outline">REMIXER</span>
+      <span>PRODUCER</span>
+      <span class="outline">DJ</span>
+      <span>REMIXER</span>
+      <span class="outline">PRODUCER</span>
+
+    </div>
+
+  </div>
+
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="section-head reveal">
+
+      <div class="section-number">
         01 / ABOUT
       </div>
 
-      <div class="about-grid">
-
-        <h2 class="section-title reveal">
-          ABOUT<br>
-          THE<br>
-          ARTIST
-        </h2>
-
-        <div class="reveal">
-
-          <div class="about-text">
-            DJ, remixer and music creator.
-            A sound built around energy,
-            movement and emotion.
-          </div>
-
-          <div class="about-copy">
-            YOUR BIO HERE.  
-            Escribí acá tu historia, trayectoria,
-            estilo musical y todo lo que quieras
-            comunicar profesionalmente.
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- BIG IMAGE -->
-
-    <section style="padding-top:0;">
-
-      <div class="big-image reveal"></div>
-
-    </section>
-
-    <!-- MUSIC -->
-
-    <section id="music">
-
-      <div class="section-label reveal">
-        02 / MUSIC
-      </div>
-
-      <h2 class="section-title reveal">
-        SELECTED<br>
-        MUSIC
-      </h2>
-
-      <div class="music-list" style="margin-top:100px;">
-
-        <div class="track reveal">
-          <div class="track-number">01</div>
-          <div class="track-name">TRACK NAME</div>
-          <div class="track-type">REMIX · 2026</div>
-          <div class="play">▶</div>
-        </div>
-
-        <div class="track reveal">
-          <div class="track-number">02</div>
-          <div class="track-name">TRACK NAME</div>
-          <div class="track-type">ORIGINAL · 2026</div>
-          <div class="play">▶</div>
-        </div>
-
-        <div class="track reveal">
-          <div class="track-number">03</div>
-          <div class="track-name">TRACK NAME</div>
-          <div class="track-type">REMIX · 2025</div>
-          <div class="play">▶</div>
-        </div>
-
-        <div class="track reveal">
-          <div class="track-number">04</div>
-          <div class="track-name">TRACK NAME</div>
-          <div class="track-type">MASHUP · 2025</div>
-          <div class="play">▶</div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- STATS -->
-
-    <section>
-
-      <div class="section-label reveal">
-        03 / NUMBERS
-      </div>
-
-      <div class="stats reveal">
-
-        <div class="stat">
-          <div class="stat-number">100K+</div>
-          <div class="stat-label">Spotify Listeners</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-number">1M+</div>
-          <div class="stat-label">Streams</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-number">00</div>
-          <div class="stat-label">Releases</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-number">00</div>
-          <div class="stat-label">Events</div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- EVENTS -->
-
-    <section id="events">
-
-      <div class="section-label reveal">
-        04 / EXPERIENCE
-      </div>
-
-      <h2 class="section-title reveal">
-        EVENTS
-      </h2>
-
-      <div class="events" style="margin-top:100px;">
-
-        <div class="event reveal">
-          <div class="event-date">2026</div>
-          <div class="event-name">EVENT NAME</div>
-          <div class="event-place">LOCATION</div>
-        </div>
-
-        <div class="event reveal">
-          <div class="event-date">2026</div>
-          <div class="event-name">EVENT NAME</div>
-          <div class="event-place">LOCATION</div>
-        </div>
-
-        <div class="event reveal">
-          <div class="event-date">2025</div>
-          <div class="event-name">EVENT NAME</div>
-          <div class="event-place">LOCATION</div>
-        </div>
-
-        <div class="event reveal">
-          <div class="event-date">2025</div>
-          <div class="event-name">EVENT NAME</div>
-          <div class="event-place">LOCATION</div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- MEDIA -->
-
-    <section id="media">
-
-      <div class="section-label reveal">
-        05 / MEDIA
-      </div>
-
-      <h2 class="section-title reveal">
-        VISUAL<br>
-        ARCHIVE
-      </h2>
-
-      <div class="gallery" style="margin-top:100px;">
-
-        <div class="gallery-item reveal">
-          <div class="gallery-image gallery-1"></div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <div class="gallery-image gallery-2"></div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <div class="gallery-image gallery-3"></div>
-        </div>
-
-        <div class="gallery-item reveal">
-          <div class="gallery-image gallery-4"></div>
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- SOCIAL -->
-
-    <section>
-
-      <div class="section-label reveal">
-        06 / CONNECT
-      </div>
-
-      <div class="social-grid reveal">
-
-        <a class="social" href="#" target="_blank">
-          Instagram
-        </a>
-
-        <a class="social" href="#" target="_blank">
-          Spotify
-        </a>
-
-        <a class="social" href="#" target="_blank">
-          YouTube
-        </a>
-
-        <a class="social" href="#" target="_blank">
-          TikTok
-        </a>
-
-      </div>
-
-    </section>
-
-    <!-- BOOKING -->
-
-    <section id="booking" class="booking">
-
       <div>
-
-        <div class="section-label reveal">
-          07 / BOOKING
-        </div>
-
-        <h2 class="booking-title reveal">
-          LET'S<br>
-          WORK<br>
-          TOGETHER
-        </h2>
-
+        ARTIST PROFILE
       </div>
+
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-image reveal"></div>
 
       <div class="reveal">
 
-        <div class="section-label">
-          CONTACT
-        </div>
+        <h2 class="section-title">
+          ABOUT
+        </h2>
 
-        <a
-          href="mailto:booking@example.com"
-          class="booking-mail"
-        >
-          booking@example.com
-        </a>
+        <p class="about-text" style="margin-top:50px;">
+          DJ, remixer and music creator.
+          Sound, energy and movement.
+        </p>
+
+        <p class="about-small">
+          ACÁ VA TU BIOGRAFÍA PROFESIONAL.
+          PODÉS CONTAR TU HISTORIA, TU ESTILO,
+          TU TRAYECTORIA Y TODO LO QUE QUIERAS
+          DESTACAR COMO ARTISTA.
+        </p>
 
       </div>
 
-    </section>
+    </div>
 
-  </main>
+  </section>
+
+
+  <!-- MUSIC -->
+
+  <section id="music">
+
+    <div class="section-head reveal">
+
+      <div class="section-number">
+        02 / MUSIC
+      </div>
+
+      <div>
+        SELECTED WORK
+      </div>
+
+    </div>
+
+    <h2 class="section-title reveal">
+      MUSIC
+    </h2>
+
+    <div class="player reveal" style="margin-top:80px;">
+
+      <div class="player-top">
+
+        <span>
+          NOW PLAYING
+        </span>
+
+        <span>
+          01 / 04
+        </span>
+
+      </div>
+
+      <div class="player-main">
+
+        <div class="cover">
+          COVER<br>
+          ARTWORK
+        </div>
+
+        <div>
+
+          <div class="track-title">
+            YOUR<br>
+            TRACK
+          </div>
+
+          <div class="track-info">
+            ORIGINAL / REMIX / MASHUP
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="wave">
+
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NUMBERS -->
+
+  <section>
+
+    <div class="section-head reveal">
+
+      <div class="section-number">
+        03 / NUMBERS
+      </div>
+
+      <div>
+        SELECTED DATA
+      </div>
+
+    </div>
+
+    <div class="numbers reveal">
+
+      <div class="number">
+
+        <div class="number-value">
+          100K+
+        </div>
+
+        <div class="number-label">
+          Spotify Listeners
+        </div>
+
+      </div>
+
+      <div class="number">
+
+        <div class="number-value">
+          1M+
+        </div>
+
+        <div class="number-label">
+          Streams
+        </div>
+
+      </div>
+
+      <div class="number">
+
+        <div class="number-value">
+          00
+        </div>
+
+        <div class="number-label">
+          Releases
+        </div>
+
+      </div>
+
+      <div class="number">
+
+        <div class="number-value">
+          00
+        </div>
+
+        <div class="number-label">
+          Events
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EVENTS -->
+
+  <section id="events">
+
+    <div class="section-head reveal">
+
+      <div class="section-number">
+        04 / EVENTS
+      </div>
+
+      <div>
+        LIVE EXPERIENCE
+      </div>
+
+    </div>
+
+    <h2 class="section-title reveal">
+      EVENTS
+    </h2>
+
+    <div style="margin-top:80px;">
+
+      <div class="event reveal">
+
+        <div class="event-date">
+          2026
+        </div>
+
+        <div class="event-name">
+          EVENT NAME
+        </div>
+
+        <div class="event-place">
+          ARGENTINA
+        </div>
+
+      </div>
+
+      <div class="event reveal">
+
+        <div class="event-date">
+          2026
+        </div>
+
+        <div class="event-name">
+          EVENT NAME
+        </div>
+
+        <div class="event-place">
+          ARGENTINA
+        </div>
+
+      </div>
+
+      <div class="event reveal">
+
+        <div class="event-date">
+          2025
+        </div>
+
+        <div class="event-name">
+          EVENT NAME
+        </div>
+
+        <div class="event-place">
+          ARGENTINA
+        </div>
+
+      </div>
+
+      <div class="event reveal">
+
+        <div class="event-date">
+          2025
+        </div>
+
+        <div class="event-name">
+          EVENT NAME
+        </div>
+
+        <div class="event-place">
+          ARGENTINA
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MEDIA -->
+
+  <section id="media">
+
+    <div class="section-head reveal">
+
+      <div class="section-number">
+        05 / MEDIA
+      </div>
+
+      <div>
+        VISUAL ARCHIVE
+      </div>
+
+    </div>
+
+    <h2 class="section-title reveal">
+      MEDIA
+    </h2>
+
+    <div class="gallery" style="margin-top:80px;">
+
+      <div class="photo one reveal"></div>
+
+      <div>
+
+        <div class="photo two reveal"></div>
+
+        <div class="photo three reveal"></div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SOCIAL -->
+
+  <section>
+
+    <div class="section-head reveal">
+
+      <div class="section-number">
+        06 / SOCIAL
+      </div>
+
+      <div>
+        FOLLOW
+      </div>
+
+    </div>
+
+    <div class="socials reveal">
+
+      <a href="#" class="social">
+        Instagram
+      </a>
+
+      <a href="#" class="social">
+        Spotify
+      </a>
+
+      <a href="#" class="social">
+        YouTube
+      </a>
+
+      <a href="#" class="social">
+        TikTok
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- BOOKING -->
+
+  <section id="booking" class="booking">
+
+    <div>
+
+      <div class="section-number reveal">
+        07 / BOOKING
+      </div>
+
+      <h2 class="booking-title reveal" style="margin-top:50px;">
+        BOOK<br>
+        NAHUEL
+      </h2>
+
+    </div>
+
+    <div class="reveal">
+
+      <div style="
+        font-size:10px;
+        color:#666;
+        letter-spacing:.18em;
+        margin-bottom:15px;
+        text-transform:uppercase;
+      ">
+        CONTACT
+      </div>
+
+      <a
+        href="mailto:booking@example.com"
+        class="booking-link"
+      >
+        booking@example.com
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
 
   <footer>
-    <span>© 2026 YOUR NAME</span>
-    <span>DJ · REMIXER · PRODUCER</span>
+
+    <span>
+      © 2026 NAHUEL KINDER
+    </span>
+
+    <span>
+      DJ · REMIXER · PRODUCER
+    </span>
+
   </footer>
 
+
   <script>
-
-    /* LOADER */
-
-    let number = 0;
-
-    const loaderNumber = document.querySelector(".loader-number");
-    const loader = document.querySelector(".loader");
-
-    const counter = setInterval(() => {
-
-      number += Math.floor(Math.random() * 8) + 4;
-
-      if (number >= 100) {
-        number = 100;
-        clearInterval(counter);
-
-        setTimeout(() => {
-          loader.classList.add("hidden");
-        }, 300);
-      }
-
-      loaderNumber.textContent =
-        String(number).padStart(2, "0");
-
-    }, 35);
-
 
     /* SCROLL REVEAL */
 
     const observer = new IntersectionObserver(
-      (entries) => {
+
+      entries => {
 
         entries.forEach(entry => {
 
           if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
+
+            entry.target.classList.add("show");
+
           }
 
         });
 
       },
+
       {
-        threshold: .12
+        threshold: 0.12
       }
+
     );
 
     document
@@ -1082,50 +1423,28 @@
       .forEach(el => observer.observe(el));
 
 
-    /* CURSOR */
-
-    const cursor = document.querySelector(".cursor");
-
-    document.addEventListener("mousemove", e => {
-
-      cursor.style.left = e.clientX + "px";
-      cursor.style.top = e.clientY + "px";
-
-    });
-
-    document
-      .querySelectorAll("a, .track, .gallery-item")
-      .forEach(el => {
-
-        el.addEventListener("mouseenter", () => {
-          cursor.classList.add("big");
-        });
-
-        el.addEventListener("mouseleave", () => {
-          cursor.classList.remove("big");
-        });
-
-      });
-
-
     /* HERO PARALLAX */
 
-    const heroImage = document.querySelector(".hero-image");
+    const heroBg =
+      document.querySelector(".hero-bg");
 
-    document.addEventListener("mousemove", e => {
+    document.addEventListener(
+      "mousemove",
+      e => {
 
-      if (window.innerWidth < 800) return;
+        if (window.innerWidth < 800) return;
 
-      const x =
-        (e.clientX / window.innerWidth - .5) * 12;
+        const x =
+          (e.clientX / window.innerWidth - .5) * 12;
 
-      const y =
-        (e.clientY / window.innerHeight - .5) * 12;
+        const y =
+          (e.clientY / window.innerHeight - .5) * 12;
 
-      heroImage.style.transform =
-        `scale(1.08) translate(${x}px, ${y}px)`;
+        heroBg.style.transform =
+          `scale(1.08) translate(${x}px, ${y}px)`;
 
-    });
+      }
+    );
 
   </script>
 
