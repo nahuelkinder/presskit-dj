@@ -10,8 +10,8 @@
     content="Press Kit Oficial de Nahuel Kinder — DJ, Remixer y Productor Open Format Argentino."
   />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
     href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -20,21 +20,21 @@
 
   <style>
     :root {
-      --black: #070707;
-      --black-2: #0d0d0d;
-      --black-3: #121212;
-      --graphite: #181818;
-      --gray-dark: #2a2a2a;
-      --gray: #777;
-      --gray-light: #aaa;
-      --white: #f1f1ee;
-      --line: rgba(255,255,255,.10);
+      --black: #080808;
+      --black-soft: #101010;
+      --graphite: #171717;
+      --gray: #8b8b8b;
+      --gray-light: #c8c8c8;
+      --white: #f4f4f1;
+      --offwhite: #ededE8;
+      --line: rgba(255,255,255,.12);
+      --line-dark: rgba(0,0,0,.12);
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
@@ -148,12 +148,11 @@
       z-index: 500;
       padding: 18px 34px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      background: rgba(7,7,7,.68);
+      align-items: center;
+      background: rgba(8,8,8,.72);
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
     .nav-logo {
@@ -163,16 +162,16 @@
 
     .nav-links {
       display: flex;
+      gap: 26px;
       align-items: center;
-      gap: 27px;
-      font-size: 10px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .17em;
-      color: #888;
+      letter-spacing: .16em;
+      color: #aaa;
     }
 
     .nav-links a {
-      transition: color .25s ease;
+      transition: color .3s ease;
     }
 
     .nav-links a:hover {
@@ -189,34 +188,34 @@
     }
 
     .section-number {
-      margin-bottom: 22px;
-      font-size: 10px;
+      font-size: 11px;
+      letter-spacing: .2em;
       text-transform: uppercase;
-      letter-spacing: .22em;
-      color: #666;
+      color: #777;
+      margin-bottom: 20px;
     }
 
     .section-title {
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(44px, 7vw, 105px);
-      line-height: .88;
-      letter-spacing: -.055em;
       text-transform: uppercase;
+      font-size: clamp(42px, 7vw, 105px);
+      line-height: .9;
+      letter-spacing: -.055em;
     }
 
     .eyebrow {
-      font-size: 10px;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: .2em;
-      color: #777;
+      color: #888;
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(35px);
       transition:
-        opacity .85s ease,
-        transform .85s cubic-bezier(.16,1,.3,1);
+        opacity .9s ease,
+        transform .9s cubic-bezier(.16,1,.3,1);
     }
 
     .reveal.visible {
@@ -245,7 +244,7 @@
       object-fit: cover;
       object-position: center;
       filter: grayscale(100%) contrast(1.12);
-      opacity: .48;
+      opacity: .52;
       transform: scale(1.05);
       transition: transform .2s linear;
     }
@@ -256,8 +255,8 @@
       background:
         linear-gradient(
           to bottom,
-          rgba(0,0,0,.20),
-          rgba(0,0,0,.12) 35%,
+          rgba(0,0,0,.3),
+          rgba(0,0,0,.15) 35%,
           rgba(0,0,0,.92) 100%
         );
     }
@@ -266,7 +265,7 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      padding: 150px 7vw 68px;
+      padding: 150px 7vw 70px;
     }
 
     .hero-logo {
@@ -275,42 +274,42 @@
     }
 
     .hero-kicker {
-      margin-bottom: 17px;
-      font-size: 10px;
-      text-transform: uppercase;
+      font-size: 11px;
       letter-spacing: .24em;
-      color: #999;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 18px;
     }
 
     .hero-title {
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(62px, 12vw, 190px);
-      line-height: .78;
-      letter-spacing: -.075em;
       text-transform: uppercase;
+      font-size: clamp(60px, 12vw, 190px);
+      line-height: .78;
+      letter-spacing: -.07em;
+      max-width: 1200px;
     }
 
     .hero-bottom {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-top: 62px;
+      margin-top: 65px;
       gap: 30px;
     }
 
-    .hero-location,
+    .hero-location {
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
     .scroll-label {
       font-size: 10px;
+      color: #888;
+      letter-spacing: .2em;
       text-transform: uppercase;
-      letter-spacing: .16em;
-    }
-
-    .hero-location {
-      color: #999;
-    }
-
-    .scroll-label {
-      color: #666;
     }
 
     /* =========================
@@ -320,24 +319,24 @@
     .marquee {
       overflow: hidden;
       white-space: nowrap;
-      background: #0d0d0d;
-      color: #777;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      padding: 21px 0;
+      background: var(--offwhite);
+      color: #090909;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      padding: 22px 0;
     }
 
     .marquee-track {
       display: inline-block;
-      animation: marquee 25s linear infinite;
+      animation: marquee 24s linear infinite;
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(27px, 4vw, 55px);
+      font-size: clamp(28px, 4vw, 58px);
       text-transform: uppercase;
-      letter-spacing: -.035em;
+      letter-spacing: -.03em;
     }
 
     .marquee-track span {
-      margin-right: 55px;
+      margin-right: 50px;
     }
 
     @keyframes marquee {
@@ -365,11 +364,19 @@
       align-items: center;
     }
 
+    /*
+      FOTO COMPLETA:
+      Se elimina el recorte anterior y se respeta
+      la proporción original de la imagen.
+    */
+
     .about-image {
       width: 100%;
-      aspect-ratio: .82;
-      object-fit: cover;
+      height: auto;
+      object-fit: contain;
       filter: grayscale(100%);
+      animation: photoColorCycle 10s ease-in-out infinite;
+      transform-origin: center;
     }
 
     .about-copy {
@@ -377,19 +384,47 @@
     }
 
     .about-copy h2 {
-      margin: 18px 0 34px;
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(42px, 5vw, 75px);
-      line-height: .9;
-      letter-spacing: -.055em;
+      font-size: clamp(42px, 5vw, 76px);
+      line-height: .92;
+      letter-spacing: -.05em;
       text-transform: uppercase;
+      margin-bottom: 35px;
     }
 
     .about-copy p {
+      color: #aaa;
+      font-size: 17px;
+      line-height: 1.8;
       max-width: 650px;
-      color: #999;
-      font-size: 16px;
-      line-height: 1.85;
+    }
+
+    /* =========================
+       FOTO COLOR / BLANCO Y NEGRO
+    ========================= */
+
+    @keyframes photoColorCycle {
+
+      0% {
+        filter: grayscale(100%);
+      }
+
+      25% {
+        filter: grayscale(100%);
+      }
+
+      50% {
+        filter: grayscale(0%);
+      }
+
+      75% {
+        filter: grayscale(0%);
+      }
+
+      100% {
+        filter: grayscale(100%);
+      }
+
     }
 
     /* =========================
@@ -397,7 +432,8 @@
     ========================= */
 
     .music {
-      background: #101010;
+      background: var(--offwhite);
+      color: #080808;
     }
 
     .music-grid {
@@ -407,44 +443,41 @@
       align-items: center;
     }
 
+    .music .section-number,
+    .music .eyebrow {
+      color: #777;
+    }
+
     .music-title {
-      margin: 18px 0 30px;
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(48px, 7vw, 105px);
       line-height: .86;
-      letter-spacing: -.06em;
       text-transform: uppercase;
+      letter-spacing: -.06em;
+      margin-bottom: 30px;
     }
 
     .music-copy {
-      max-width: 500px;
-      color: #888;
+      color: #555;
       line-height: 1.7;
-      font-size: 14px;
+      max-width: 500px;
     }
 
     .spotify-frame {
       width: 100%;
       min-height: 352px;
       border: 0;
-      border-radius: 12px;
-      opacity: .95;
+      border-radius: 14px;
     }
 
     .spotify-link {
       display: inline-flex;
       margin-top: 25px;
-      padding-bottom: 7px;
-      border-bottom: 1px solid #555;
-      color: #aaa;
-      font-size: 10px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .16em;
-      transition: color .25s ease;
-    }
-
-    .spotify-link:hover {
-      color: #fff;
+      letter-spacing: .15em;
+      border-bottom: 1px solid #222;
+      padding-bottom: 7px;
     }
 
     /* =========================
@@ -452,7 +485,7 @@
     ========================= */
 
     .stats {
-      background: #0b0b0b;
+      background: var(--black-soft);
     }
 
     .stats-grid {
@@ -474,14 +507,14 @@
     .stat-number {
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(48px, 7vw, 105px);
+      letter-spacing: -.06em;
       line-height: .85;
-      letter-spacing: -.065em;
     }
 
     .stat-label {
       margin-top: 20px;
-      color: #666;
-      font-size: 10px;
+      color: #888;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: .18em;
     }
@@ -503,10 +536,10 @@
     }
 
     .experience-subtitle {
-      max-width: 270px;
-      color: #666;
-      font-size: 12px;
-      line-height: 1.7;
+      color: #777;
+      font-size: 13px;
+      max-width: 260px;
+      line-height: 1.6;
     }
 
     .event-list {
@@ -515,42 +548,39 @@
 
     .event {
       display: grid;
-      grid-template-columns: 85px 1fr 1fr;
-      align-items: center;
+      grid-template-columns: 90px 1fr 1fr;
       gap: 30px;
+      align-items: center;
       padding: 27px 0;
       border-bottom: 1px solid var(--line);
-      transition:
-        padding .3s ease,
-        background .3s ease;
+      transition: padding .35s ease;
     }
 
     .event:hover {
       padding-left: 15px;
       padding-right: 15px;
-      background: rgba(255,255,255,.018);
+      background: rgba(255,255,255,.025);
     }
 
     .event-number {
-      color: #555;
-      font-size: 10px;
+      color: #666;
+      font-size: 11px;
       letter-spacing: .15em;
     }
 
     .event-name {
       font-family: "Archivo Black", sans-serif;
-      font-size: clamp(24px, 3vw, 43px);
-      line-height: .9;
-      letter-spacing: -.045em;
       text-transform: uppercase;
+      font-size: clamp(23px, 3vw, 42px);
+      letter-spacing: -.04em;
     }
 
     .event-place {
       text-align: right;
-      color: #777;
-      font-size: 10px;
+      color: #888;
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: .12em;
+      letter-spacing: .1em;
     }
 
     /* =========================
@@ -558,35 +588,71 @@
     ========================= */
 
     .media {
-      background: #0c0c0c;
+      background: var(--offwhite);
+      color: #080808;
+    }
+
+    .media .section-number {
+      color: #777;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 17px;
+      gap: 18px;
       margin-top: 65px;
     }
 
     .gallery-item {
       overflow: hidden;
-      background: #151515;
-      border: 1px solid rgba(255,255,255,.06);
+      background: #d8d8d4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
+    /*
+      Antes:
+      height: 100%;
+      aspect-ratio: 1.15;
+      object-fit: cover;
+
+      Eso hacía que las fotos se cortaran.
+
+      Ahora se respeta completamente la imagen original.
+    */
 
     .gallery-item img {
       width: 100%;
-      aspect-ratio: 1.15;
-      object-fit: cover;
+      height: auto;
+      aspect-ratio: auto;
+      object-fit: contain;
       filter: grayscale(100%);
+      animation: photoColorCycle 10s ease-in-out infinite;
       transition:
-        transform .8s cubic-bezier(.16,1,.3,1),
-        filter .5s ease;
+        transform .8s cubic-bezier(.16,1,.3,1);
+    }
+
+    /* Cambio desfasado entre fotografías */
+
+    .gallery-item:nth-child(1) img {
+      animation-delay: 0s;
+    }
+
+    .gallery-item:nth-child(2) img {
+      animation-delay: -2.5s;
+    }
+
+    .gallery-item:nth-child(3) img {
+      animation-delay: -5s;
+    }
+
+    .gallery-item:nth-child(4) img {
+      animation-delay: -7.5s;
     }
 
     .gallery-item:hover img {
       transform: scale(1.045);
-      filter: grayscale(80%);
     }
 
     /* =========================
@@ -594,7 +660,7 @@
     ========================= */
 
     .socials {
-      background: #080808;
+      background: var(--black);
     }
 
     .social-list {
@@ -604,31 +670,27 @@
 
     .social-link {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 31px 0;
+      align-items: center;
+      padding: 32px 0;
       border-bottom: 1px solid var(--line);
-      transition:
-        padding .3s ease,
-        background .3s ease;
+      transition: padding .3s ease;
     }
 
     .social-link:hover {
       padding-left: 15px;
       padding-right: 15px;
-      background: rgba(255,255,255,.015);
     }
 
     .social-name {
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(30px, 5vw, 70px);
-      line-height: .9;
-      letter-spacing: -.055em;
       text-transform: uppercase;
+      letter-spacing: -.05em;
     }
 
     .social-arrow {
-      color: #555;
+      color: #777;
       font-size: 20px;
     }
 
@@ -637,20 +699,25 @@
     ========================= */
 
     .booking {
-      background: #111;
+      background: var(--offwhite);
+      color: #080808;
       min-height: 65vh;
       display: flex;
       align-items: center;
     }
 
+    .booking-inner {
+      width: 100%;
+    }
+
     .booking-title {
-      max-width: 1100px;
-      margin: 25px 0 60px;
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(55px, 10vw, 150px);
       line-height: .82;
-      letter-spacing: -.075em;
       text-transform: uppercase;
+      letter-spacing: -.07em;
+      max-width: 1100px;
+      margin: 25px 0 60px;
     }
 
     .booking-grid {
@@ -661,44 +728,38 @@
     }
 
     .booking-item {
+      border-top: 1px solid var(--line-dark);
       padding-top: 18px;
-      border-top: 1px solid var(--line);
     }
 
     .booking-label {
-      margin-bottom: 10px;
-      color: #666;
-      font-size: 9px;
+      color: #777;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: .18em;
+      margin-bottom: 10px;
     }
 
     .booking-value {
-      font-size: 16px;
-      font-weight: 500;
-      color: #ddd;
+      font-size: 18px;
+      font-weight: 600;
     }
 
     .booking-button {
       display: inline-flex;
       margin-top: 45px;
-      padding: 17px 27px;
-      border: 1px solid rgba(255,255,255,.18);
-      background: #171717;
-      color: #eee;
-      font-size: 10px;
+      padding: 18px 28px;
+      background: #080808;
+      color: #fff;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: .16em;
-      transition:
-        background .3s ease,
-        border-color .3s ease,
-        transform .3s ease;
+      transition: transform .3s ease, background .3s ease;
     }
 
     .booking-button:hover {
-      background: #222;
-      border-color: rgba(255,255,255,.35);
       transform: translateY(-3px);
+      background: #222;
     }
 
     /* =========================
@@ -706,7 +767,8 @@
     ========================= */
 
     .tech-rider {
-      background: #080808;
+      background: #090909;
+      color: var(--white);
       overflow: hidden;
     }
 
@@ -715,73 +777,62 @@
       justify-content: space-between;
       align-items: flex-end;
       gap: 40px;
-      margin-bottom: 55px;
+      margin-bottom: 60px;
     }
 
     .tech-title {
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(45px, 7vw, 100px);
       line-height: .86;
-      letter-spacing: -.065em;
       text-transform: uppercase;
+      letter-spacing: -.06em;
+      max-width: 900px;
     }
 
     .tech-description {
-      max-width: 260px;
-      color: #666;
-      font-size: 10px;
+      color: #777;
+      font-size: 12px;
       line-height: 1.7;
+      max-width: 250px;
       text-transform: uppercase;
-      letter-spacing: .12em;
+      letter-spacing: .08em;
     }
 
     .tech-product {
       position: relative;
       width: 100%;
-      min-height: 430px;
+      min-height: 460px;
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 35px;
-      overflow: hidden;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      align-items: center;
+      padding: 40px;
+      border: 1px solid rgba(255,255,255,.1);
       background:
         radial-gradient(
-          ellipse at center,
-          rgba(255,255,255,.045) 0%,
-          rgba(255,255,255,0) 67%
+          circle at center,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,0) 65%
         );
-    }
-
-    .tech-product::before,
-    .tech-product::after {
-      content: "";
-      position: absolute;
-      background: rgba(255,255,255,.055);
+      overflow: hidden;
     }
 
     .tech-product::before {
-      width: 100%;
+      content: "";
+      position: absolute;
+      width: 65%;
       height: 1px;
       top: 50%;
-      left: 0;
-    }
-
-    .tech-product::after {
-      width: 1px;
-      height: 100%;
-      top: 0;
-      left: 50%;
+      left: 17.5%;
+      background: rgba(255,255,255,.08);
     }
 
     .tech-product img {
       position: relative;
       z-index: 2;
       width: min(100%, 1050px);
-      max-height: 510px;
+      max-height: 520px;
       object-fit: contain;
-      filter: drop-shadow(0 25px 35px rgba(0,0,0,.6));
+      filter: drop-shadow(0 25px 35px rgba(0,0,0,.55));
       transition: transform .7s cubic-bezier(.16,1,.3,1);
     }
 
@@ -790,12 +841,11 @@
     }
 
     .tech-product-name {
-      margin-top: 24px;
+      margin-top: 25px;
       font-family: "Archivo Black", sans-serif;
       font-size: clamp(25px, 4vw, 48px);
-      line-height: .9;
-      letter-spacing: -.045em;
       text-transform: uppercase;
+      letter-spacing: -.04em;
     }
 
     /* =========================
@@ -809,13 +859,13 @@
       z-index: 800;
       width: 58px;
       height: 58px;
+      border-radius: 50%;
+      background: #f1f1ed;
+      color: #080808;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%;
-      background: #eee;
-      color: #080808;
-      box-shadow: 0 12px 40px rgba(0,0,0,.4);
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
       transition: transform .3s ease;
     }
 
@@ -833,18 +883,17 @@
       right: 25px;
       bottom: 94px;
       z-index: 799;
-      max-width: 270px;
-      padding: 13px 17px;
-      background: #eee;
+      background: #f1f1ed;
       color: #111;
-      font-size: 10px;
+      padding: 13px 17px;
+      font-size: 11px;
       text-transform: uppercase;
       letter-spacing: .08em;
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
       opacity: 0;
       transform: translateY(10px);
       pointer-events: none;
       transition: all .35s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
     }
 
     .whatsapp-popup.show {
@@ -864,8 +913,8 @@
 
     .footer-top {
       display: flex;
-      align-items: flex-start;
       justify-content: space-between;
+      align-items: flex-start;
       gap: 40px;
       padding-bottom: 80px;
     }
@@ -875,22 +924,21 @@
     }
 
     .footer-text {
-      color: #555;
-      font-size: 9px;
+      color: #666;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
       line-height: 1.8;
       text-align: right;
-      text-transform: uppercase;
-      letter-spacing: .15em;
     }
 
     .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
       padding-top: 20px;
       border-top: 1px solid var(--line);
-      color: #444;
-      font-size: 8px;
+      display: flex;
+      justify-content: space-between;
+      color: #555;
+      font-size: 9px;
       text-transform: uppercase;
       letter-spacing: .15em;
     }
@@ -999,9 +1047,9 @@
       }
 
       .hero-bottom {
-        flex-direction: column;
-        align-items: flex-start;
         margin-top: 40px;
+        align-items: flex-start;
+        flex-direction: column;
         gap: 20px;
       }
 
@@ -1065,6 +1113,7 @@
       .whatsapp-popup {
         right: 18px;
         bottom: 84px;
+        max-width: 230px;
       }
 
       .footer-top {
@@ -1086,7 +1135,10 @@
 
 <body class="intro-active">
 
-  <!-- INTRO -->
+  <!-- =========================
+       INTRO
+  ========================= -->
+
   <div class="intro" id="intro">
     <img
       src="./intro-logo.png"
@@ -1097,9 +1149,11 @@
 
   <div class="grain"></div>
 
-  <!-- NAV -->
-  <header class="topbar">
+  <!-- =========================
+       NAV
+  ========================= -->
 
+  <header class="topbar">
     <a href="#top">
       <img
         src="./nahuel%20kinder%20png%20logo.png"
@@ -1115,12 +1169,14 @@
       <a href="#booking">Booking</a>
       <a href="#tech-rider">Rider</a>
     </nav>
-
   </header>
 
   <main id="top">
 
-    <!-- HERO -->
+    <!-- =========================
+         HERO
+    ========================= -->
+
     <section class="hero">
 
       <img
@@ -1145,7 +1201,7 @@
         </div>
 
         <h1 class="hero-title reveal">
-          Nahuel<br>
+          Nahuel<br />
           Kinder
         </h1>
 
@@ -1162,10 +1218,12 @@
         </div>
 
       </div>
-
     </section>
 
-    <!-- MARQUEE -->
+    <!-- =========================
+         MARQUEE
+    ========================= -->
+
     <div class="marquee">
 
       <div class="marquee-track">
@@ -1183,10 +1241,12 @@
         <span>Argentina</span>
 
       </div>
-
     </div>
 
-    <!-- ABOUT -->
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
     <section class="about" id="about">
 
       <div class="section-number reveal">
@@ -1227,10 +1287,12 @@
         </div>
 
       </div>
-
     </section>
 
-    <!-- MUSIC -->
+    <!-- =========================
+         MUSIC
+    ========================= -->
+
     <section class="music" id="music">
 
       <div class="section-number reveal">
@@ -1246,7 +1308,7 @@
           </div>
 
           <h2 class="music-title">
-            Music<br>
+            Music<br />
             & Remixes
           </h2>
 
@@ -1277,10 +1339,12 @@
         </div>
 
       </div>
-
     </section>
 
-    <!-- STATS -->
+    <!-- =========================
+         STATS
+    ========================= -->
+
     <section class="stats">
 
       <div class="section-number reveal">
@@ -1326,10 +1390,12 @@
         </div>
 
       </div>
-
     </section>
 
-    <!-- EXPERIENCE -->
+    <!-- =========================
+         EXPERIENCE
+    ========================= -->
+
     <section class="experience" id="experience">
 
       <div class="section-number reveal">
@@ -1339,7 +1405,7 @@
       <div class="experience-head">
 
         <h2 class="section-title reveal">
-          Ciudades<br>
+          Ciudades<br />
           y escenarios
         </h2>
 
@@ -1406,10 +1472,12 @@
         </div>
 
       </div>
-
     </section>
 
-    <!-- MEDIA -->
+    <!-- =========================
+         MEDIA
+    ========================= -->
+
     <section class="media">
 
       <div class="section-number reveal">
@@ -1423,42 +1491,52 @@
       <div class="gallery">
 
         <div class="gallery-item reveal">
+
           <img
             src="./gallery-01.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
-          >
+          />
+
         </div>
 
         <div class="gallery-item reveal">
+
           <img
             src="./gallery-02.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
-          >
+          />
+
         </div>
 
         <div class="gallery-item reveal">
+
           <img
             src="./gallery-03.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
-          >
+          />
+
         </div>
 
         <div class="gallery-item reveal">
+
           <img
             src="./gallery-04.jpg"
             alt="Nahuel Kinder"
             loading="lazy"
-          >
+          />
+
         </div>
 
       </div>
-
     </section>
 
-    <!-- SOCIALS -->
+    <!-- =========================
+         SOCIALS
+    ========================= -->
+
     <section class="socials">
 
       <div class="section-number reveal">
@@ -1512,10 +1590,12 @@
         </a>
 
       </div>
-
     </section>
 
-    <!-- BOOKING -->
+    <!-- =========================
+         BOOKING
+    ========================= -->
+
     <section class="booking" id="booking">
 
       <div class="booking-inner">
@@ -1525,7 +1605,7 @@
         </div>
 
         <h2 class="booking-title reveal">
-          Let's<br>
+          Let's<br />
           work
         </h2>
 
@@ -1567,10 +1647,12 @@
         </a>
 
       </div>
-
     </section>
 
-    <!-- TECH RIDER -->
+    <!-- =========================
+         TECH RIDER
+    ========================= -->
+
     <section class="tech-rider" id="tech-rider">
 
       <div class="section-number reveal">
@@ -1580,7 +1662,7 @@
       <div class="tech-head">
 
         <h2 class="tech-title reveal">
-          Pioneer<br>
+          Pioneer<br />
           DDJ-FLX10
         </h2>
 
@@ -1596,7 +1678,7 @@
           src="./ddj-flx10.png"
           alt="Pioneer DDJ-FLX10"
           loading="lazy"
-        >
+        />
 
       </div>
 
@@ -1608,12 +1690,14 @@
 
   </main>
 
-  <!-- WHATSAPP POPUP -->
+  <!-- =========================
+       WHATSAPP
+  ========================= -->
+
   <div class="whatsapp-popup" id="whatsappPopup">
     Contratá a Nahuel Kinder por acá!
   </div>
 
-  <!-- WHATSAPP -->
   <a
     href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
     target="_blank"
@@ -1630,13 +1714,19 @@
       stroke-linecap="round"
       stroke-linejoin="round"
     >
+
       <path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L4 20l1.1-4.1A8.5 8.5 0 1 1 21 11.5Z"></path>
+
       <path d="M8.7 8.7c.2-.5.4-.5.7-.5h.5c.2 0 .4.1.5.4l.6 1.4c.1.2.1.4-.1.6l-.5.6c-.1.1-.1.3 0 .5.3.6 1.1 1.7 2.6 2.3.2.1.4.1.5-.1l.6-.7c.2-.2.4-.2.6-.1l1.4.7c.2.1.3.3.2.6-.2.8-.9 1.4-1.7 1.5-.5.1-1.1 0-1.7-.2-1-.4-2.2-1.1-3.2-2.1-1-1-1.7-2.2-2-3.2-.2-.7-.2-1.3 0-1.7Z"></path>
+
     </svg>
 
   </a>
 
-  <!-- FOOTER -->
+  <!-- =========================
+       FOOTER
+  ========================= -->
+
   <footer>
 
     <div class="footer-top">
@@ -1645,10 +1735,10 @@
         src="./nahuel%20kinder%20png%20logo.png"
         alt="Nahuel Kinder"
         class="footer-logo"
-      >
+      />
 
       <div class="footer-text">
-        DJ · Remixer · Producer · Open Format<br>
+        DJ · Remixer · Producer · Open Format<br />
         Argentina
       </div>
 
@@ -1672,8 +1762,10 @@
       const intro = document.getElementById("intro");
 
       setTimeout(() => {
+
         intro.classList.add("hidden");
         document.body.classList.remove("intro-active");
+
       }, 3300);
 
     });
@@ -1688,6 +1780,7 @@
 
     const revealObserver =
       new IntersectionObserver(
+
         (entries) => {
 
           entries.forEach((entry) => {
@@ -1703,13 +1796,17 @@
           });
 
         },
+
         {
           threshold: 0.12
         }
+
       );
 
     revealElements.forEach((element) => {
+
       revealObserver.observe(element);
+
     });
 
 
@@ -1725,7 +1822,9 @@
       whatsappPopup.classList.add("show");
 
       setTimeout(() => {
+
         whatsappPopup.classList.remove("show");
+
       }, 4500);
 
     }
@@ -1737,6 +1836,7 @@
 
     /* =========================
        HERO PARALLAX
+       NO SE MODIFICA EL COLOR
     ========================= */
 
     const heroBg =
@@ -1761,4 +1861,3 @@
 
 </body>
 </html>
-```
