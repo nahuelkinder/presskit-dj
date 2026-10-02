@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Nahuel Kinder — Press Kit Oficial</title>
-
   <meta
     name="description"
     content="Press Kit Oficial de Nahuel Kinder — DJ, Remixer y Productor Open Format Argentino."
   />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
     href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -20,20 +19,31 @@
   />
 
   <style>
+    :root {
+      --black: #080808;
+      --black-soft: #101010;
+      --graphite: #171717;
+      --gray: #8b8b8b;
+      --gray-light: #c8c8c8;
+      --white: #f4f4f1;
+      --offwhite: #ededE8;
+      --line: rgba(255,255,255,.12);
+      --line-dark: rgba(0,0,0,.12);
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
       scroll-behavior: smooth;
-      background: #050505;
     }
 
     body {
-      background: #050505;
-      color: #f2f2f2;
+      background: var(--black);
+      color: var(--white);
       font-family: "Inter", sans-serif;
       overflow-x: hidden;
     }
@@ -52,11 +62,6 @@
       max-width: 100%;
     }
 
-    ::selection {
-      background: #fff;
-      color: #000;
-    }
-
     /* =========================
        INTRO
     ========================= */
@@ -64,42 +69,28 @@
     .intro {
       position: fixed;
       inset: 0;
-      z-index: 99999;
-      background: #050505;
+      z-index: 9999;
+      background: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      transition: opacity .7s ease, visibility .7s ease;
     }
 
-    .intro::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(255,255,255,.035),
-          transparent 45%
-        );
+    .intro.hidden {
+      opacity: 0;
+      visibility: hidden;
       pointer-events: none;
     }
 
     .intro-logo {
-      position: relative;
-      z-index: 2;
       width: 360px;
       max-width: 78vw;
       height: auto;
-
       opacity: 0;
       transform: scale(.45);
-
       animation:
-        introLogo
-        3.2s
-        cubic-bezier(.16,1,.3,1)
-        forwards;
+        introLogo 3.2s cubic-bezier(.16,1,.3,1) forwards;
     }
 
     @keyframes introLogo {
@@ -130,22 +121,6 @@
       }
     }
 
-    .intro.hide {
-      pointer-events: none;
-      animation: introFade .8s ease forwards;
-    }
-
-    @keyframes introFade {
-      from {
-        opacity: 1;
-      }
-
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
     /* =========================
        GRAIN
     ========================= */
@@ -153,15 +128,16 @@
     .grain {
       position: fixed;
       inset: 0;
-      z-index: 9990;
+      z-index: 100;
       pointer-events: none;
-      opacity: .045;
+      opacity: .035;
       background-image:
         url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+      mix-blend-mode: soft-light;
     }
 
     /* =========================
-       HEADER
+       NAV
     ========================= */
 
     .topbar {
@@ -169,21 +145,14 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 86px;
-
-      z-index: 1000;
-
+      z-index: 500;
+      padding: 18px 34px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-
-      padding: 0 48px;
-
-      background: rgba(5,5,5,.62);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-
+      align-items: center;
+      background: rgba(8,8,8,.72);
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
     .nav-logo {
@@ -193,93 +162,53 @@
 
     .nav-links {
       display: flex;
+      gap: 26px;
       align-items: center;
-      gap: 32px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: #aaa;
     }
 
     .nav-links a {
-      position: relative;
-
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-
-      color: rgba(255,255,255,.62);
-
       transition: color .3s ease;
-    }
-
-    .nav-links a::after {
-      content: "";
-
-      position: absolute;
-      left: 0;
-      bottom: -7px;
-
-      width: 0;
-      height: 1px;
-
-      background: #fff;
-
-      transition: width .3s ease;
     }
 
     .nav-links a:hover {
       color: #fff;
     }
 
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
     /* =========================
        GENERAL
     ========================= */
 
-    .section {
+    section {
       position: relative;
-      padding: 150px 7vw;
-      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 120px 7vw;
     }
 
-    .section-label {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-
-      margin-bottom: 45px;
-
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .28em;
+    .section-number {
+      font-size: 11px;
+      letter-spacing: .2em;
       text-transform: uppercase;
-
-      color: rgba(255,255,255,.45);
-    }
-
-    .section-label::before {
-      content: "";
-      width: 34px;
-      height: 1px;
-      background: rgba(255,255,255,.45);
+      color: #777;
+      margin-bottom: 20px;
     }
 
     .section-title {
       font-family: "Archivo Black", sans-serif;
       text-transform: uppercase;
-      font-size: clamp(48px, 8vw, 125px);
+      font-size: clamp(42px, 7vw, 105px);
       line-height: .9;
       letter-spacing: -.055em;
     }
 
-    .muted {
-      color: rgba(255,255,255,.55);
+    .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: #888;
     }
-
-    /* =========================
-       REVEAL
-    ========================= */
 
     .reveal {
       opacity: 0;
@@ -299,140 +228,88 @@
     ========================= */
 
     .hero {
-      position: relative;
       min-height: 100vh;
-
+      padding: 0;
       display: flex;
       align-items: flex-end;
-
-      padding:
-        150px
-        7vw
-        75px;
-
       overflow: hidden;
+      background: #050505;
     }
 
-    .hero-photo {
+    .hero-bg {
       position: absolute;
       inset: 0;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0,0,0,.88) 0%,
-          rgba(0,0,0,.55) 42%,
-          rgba(0,0,0,.18) 100%
-        ),
-        linear-gradient(
-          0deg,
-          rgba(0,0,0,.9) 0%,
-          transparent 50%
-        ),
-        url("./main-photo.jpg")
-        center center / cover no-repeat;
-
-      transform: scale(1.04);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: grayscale(100%) contrast(1.12);
+      opacity: .52;
+      transform: scale(1.05);
       transition: transform .2s linear;
     }
 
-    .hero-photo::after {
-      content: "";
-
+    .hero-overlay {
       position: absolute;
       inset: 0;
-
       background:
         linear-gradient(
-          120deg,
-          transparent 0%,
-          rgba(255,255,255,.035) 45%,
-          transparent 70%
+          to bottom,
+          rgba(0,0,0,.3),
+          rgba(0,0,0,.15) 35%,
+          rgba(0,0,0,.92) 100%
         );
     }
 
     .hero-content {
       position: relative;
-      z-index: 3;
-
+      z-index: 2;
       width: 100%;
-    }
-
-    .hero-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-
-      margin-bottom: 50px;
-    }
-
-    .hero-location {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-
-      color: rgba(255,255,255,.65);
-    }
-
-    .hero-number {
-      font-family: "Archivo Black", sans-serif;
-      font-size: 13px;
-      color: rgba(255,255,255,.3);
+      padding: 150px 7vw 70px;
     }
 
     .hero-logo {
       width: 270px;
-      height: auto;
+      margin-bottom: 42px;
+    }
 
-      margin-bottom: 32px;
-
-      filter: drop-shadow(0 20px 45px rgba(0,0,0,.5));
+    .hero-kicker {
+      font-size: 11px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 18px;
     }
 
     .hero-title {
       font-family: "Archivo Black", sans-serif;
-
-      font-size: clamp(76px, 13vw, 205px);
-      line-height: .78;
-      letter-spacing: -.075em;
-
       text-transform: uppercase;
+      font-size: clamp(60px, 12vw, 190px);
+      line-height: .78;
+      letter-spacing: -.07em;
+      max-width: 1200px;
     }
 
     .hero-bottom {
       display: flex;
-      align-items: flex-end;
       justify-content: space-between;
-
-      margin-top: 60px;
+      align-items: flex-end;
+      margin-top: 65px;
+      gap: 30px;
     }
 
-    .hero-description {
-      max-width: 450px;
-
-      font-size: 14px;
-      line-height: 1.8;
-
-      color: rgba(255,255,255,.65);
-    }
-
-    .scroll-indicator {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-
-      font-size: 9px;
-      letter-spacing: .22em;
+    .hero-location {
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: .12em;
       text-transform: uppercase;
-
-      color: rgba(255,255,255,.45);
     }
 
-    .scroll-line {
-      width: 55px;
-      height: 1px;
-      background: rgba(255,255,255,.35);
+    .scroll-label {
+      font-size: 10px;
+      color: #888;
+      letter-spacing: .2em;
+      text-transform: uppercase;
     }
 
     /* =========================
@@ -441,33 +318,25 @@
 
     .marquee {
       overflow: hidden;
-
-      border-top: 1px solid rgba(255,255,255,.08);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-
-      padding: 23px 0;
-
-      background: #080808;
+      white-space: nowrap;
+      background: var(--offwhite);
+      color: #090909;
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      padding: 22px 0;
     }
 
     .marquee-track {
-      display: flex;
-      width: max-content;
-
-      animation: marquee 28s linear infinite;
+      display: inline-block;
+      animation: marquee 24s linear infinite;
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(28px, 4vw, 58px);
+      text-transform: uppercase;
+      letter-spacing: -.03em;
     }
 
-    .marquee span {
-      font-family: "Archivo Black", sans-serif;
-
-      font-size: clamp(24px, 4vw, 48px);
-
-      text-transform: uppercase;
-      letter-spacing: -.04em;
-
-      padding-right: 55px;
-
-      color: rgba(255,255,255,.8);
+    .marquee-track span {
+      margin-right: 50px;
     }
 
     @keyframes marquee {
@@ -484,155 +353,95 @@
        ABOUT
     ========================= */
 
+    .about {
+      background: var(--black);
+    }
+
     .about-grid {
       display: grid;
-      grid-template-columns: .85fr 1.15fr;
+      grid-template-columns: 1fr 1fr;
       gap: 9vw;
-
       align-items: center;
     }
 
-    .about-photo-wrap {
-      position: relative;
-      overflow: hidden;
-
-      background: #111;
-    }
-
-    .about-photo-wrap::after {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          140deg,
-          transparent 55%,
-          rgba(255,255,255,.07)
-        );
-
-      pointer-events: none;
-    }
-
-    .about-photo {
+    .about-image {
       width: 100%;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: .82;
       object-fit: cover;
-
       filter: grayscale(100%);
-      transition:
-        transform .8s cubic-bezier(.16,1,.3,1),
-        filter .8s ease;
-    }
-
-    .about-photo-wrap:hover .about-photo {
-      transform: scale(1.04);
-      filter: grayscale(20%);
     }
 
     .about-copy {
-      max-width: 690px;
+      max-width: 650px;
     }
 
     .about-copy h2 {
       font-family: "Archivo Black", sans-serif;
-
-      font-size: clamp(44px, 6vw, 90px);
-      line-height: .94;
-
+      font-size: clamp(42px, 5vw, 76px);
+      line-height: .92;
+      letter-spacing: -.05em;
       text-transform: uppercase;
-      letter-spacing: -.055em;
-
-      margin-bottom: 40px;
+      margin-bottom: 35px;
     }
 
     .about-copy p {
+      color: #aaa;
       font-size: 17px;
-      line-height: 1.9;
-
-      color: rgba(255,255,255,.64);
-
-      margin-bottom: 28px;
-    }
-
-    .about-signature {
-      margin-top: 50px;
-
-      font-family: "Archivo Black", sans-serif;
-      font-size: 22px;
-
-      text-transform: uppercase;
-      letter-spacing: -.03em;
+      line-height: 1.8;
+      max-width: 650px;
     }
 
     /* =========================
        MUSIC
     ========================= */
 
-    .music-section {
-      background: #080808;
+    .music {
+      background: var(--offwhite);
+      color: #080808;
     }
 
-    .music-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-
-      gap: 40px;
-
-      margin-bottom: 70px;
+    .music-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 8vw;
+      align-items: center;
     }
 
-    .music-description {
-      max-width: 390px;
-
-      font-size: 14px;
-      line-height: 1.8;
-
-      color: rgba(255,255,255,.52);
+    .music .section-number,
+    .music .eyebrow {
+      color: #777;
     }
 
-    .spotify-box {
+    .music-title {
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(48px, 7vw, 105px);
+      line-height: .86;
+      text-transform: uppercase;
+      letter-spacing: -.06em;
+      margin-bottom: 30px;
+    }
+
+    .music-copy {
+      color: #555;
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    .spotify-frame {
       width: 100%;
-      max-width: 850px;
-
-      margin: 0 auto;
-
-      border: 1px solid rgba(255,255,255,.12);
-
-      background: #111;
-
-      box-shadow:
-        0 40px 100px rgba(0,0,0,.35);
-    }
-
-    .spotify-box iframe {
-      display: block;
-      width: 100%;
-      height: 352px;
+      min-height: 352px;
       border: 0;
+      border-radius: 14px;
     }
 
     .spotify-link {
       display: inline-flex;
-      align-items: center;
-      gap: 12px;
-
-      margin-top: 28px;
-
+      margin-top: 25px;
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
       text-transform: uppercase;
-
-      color: rgba(255,255,255,.7);
-
-      transition: color .25s ease;
-    }
-
-    .spotify-link:hover {
-      color: #fff;
+      letter-spacing: .15em;
+      border-bottom: 1px solid #222;
+      padding-bottom: 7px;
     }
 
     /* =========================
@@ -640,23 +449,19 @@
     ========================= */
 
     .stats {
+      background: var(--black-soft);
+    }
+
+    .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-
-      border-top: 1px solid rgba(255,255,255,.1);
-      border-bottom: 1px solid rgba(255,255,255,.1);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
     }
 
     .stat {
-      min-height: 300px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      padding: 45px;
-
-      border-right: 1px solid rgba(255,255,255,.1);
+      padding: 55px 35px;
+      border-right: 1px solid var(--line);
     }
 
     .stat:last-child {
@@ -665,233 +470,158 @@
 
     .stat-number {
       font-family: "Archivo Black", sans-serif;
-
       font-size: clamp(48px, 7vw, 105px);
-      line-height: .85;
       letter-spacing: -.06em;
-
-      margin-bottom: 24px;
+      line-height: .85;
     }
 
     .stat-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .2em;
+      margin-top: 20px;
+      color: #888;
+      font-size: 11px;
       text-transform: uppercase;
-
-      color: rgba(255,255,255,.4);
+      letter-spacing: .18em;
     }
 
     /* =========================
        EXPERIENCE
     ========================= */
 
-    .experience-list {
-      margin-top: 80px;
-
-      border-top: 1px solid rgba(255,255,255,.1);
+    .experience {
+      background: #111;
     }
 
-    .experience-item {
+    .experience-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+      margin-bottom: 75px;
+    }
+
+    .experience-subtitle {
+      color: #777;
+      font-size: 13px;
+      max-width: 260px;
+      line-height: 1.6;
+    }
+
+    .event-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .event {
       display: grid;
-      grid-template-columns: 80px 1fr 1fr;
-
+      grid-template-columns: 90px 1fr 1fr;
+      gap: 30px;
       align-items: center;
-
-      min-height: 105px;
-
-      border-bottom: 1px solid rgba(255,255,255,.1);
-
-      transition:
-        background .3s ease,
-        padding .3s ease;
+      padding: 27px 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding .35s ease;
     }
 
-    .experience-item:hover {
-      background: rgba(255,255,255,.025);
+    .event:hover {
       padding-left: 15px;
       padding-right: 15px;
+      background: rgba(255,255,255,.025);
     }
 
     .event-number {
-      font-size: 10px;
+      color: #666;
+      font-size: 11px;
       letter-spacing: .15em;
-      color: rgba(255,255,255,.3);
     }
 
     .event-name {
       font-family: "Archivo Black", sans-serif;
-
-      font-size: clamp(25px, 4vw, 54px);
-      line-height: 1;
-
       text-transform: uppercase;
-      letter-spacing: -.045em;
+      font-size: clamp(23px, 3vw, 42px);
+      letter-spacing: -.04em;
     }
 
     .event-place {
-      justify-self: end;
-
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-
-      color: rgba(255,255,255,.45);
-
       text-align: right;
+      color: #888;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
     }
 
     /* =========================
        MEDIA
     ========================= */
 
-    .media-section {
-      background: #080808;
+    .media {
+      background: var(--offwhite);
+      color: #080808;
+    }
+
+    .media .section-number {
+      color: #777;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-
-      gap: 12px;
-
-      margin-top: 70px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 65px;
     }
 
     .gallery-item {
-      position: relative;
-
       overflow: hidden;
-
-      background: #111;
-    }
-
-    .gallery-item:nth-child(1) {
-      grid-column: span 7;
-    }
-
-    .gallery-item:nth-child(2) {
-      grid-column: span 5;
-    }
-
-    .gallery-item:nth-child(3) {
-      grid-column: span 5;
-    }
-
-    .gallery-item:nth-child(4) {
-      grid-column: span 7;
+      background: #d8d8d4;
     }
 
     .gallery-item img {
       width: 100%;
       height: 100%;
-
-      min-height: 400px;
-
+      aspect-ratio: 1.15;
       object-fit: cover;
-
       filter: grayscale(100%);
-
-      transition:
-        transform .8s cubic-bezier(.16,1,.3,1),
-        filter .8s ease;
+      transition: transform .8s cubic-bezier(.16,1,.3,1);
     }
 
     .gallery-item:hover img {
       transform: scale(1.045);
-      filter: grayscale(15%);
-    }
-
-    .gallery-item::after {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-
-      background:
-        linear-gradient(
-          140deg,
-          transparent 40%,
-          rgba(255,255,255,.08)
-        );
-
-      pointer-events: none;
     }
 
     /* =========================
        SOCIALS
     ========================= */
 
-    .social-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-
-      margin-top: 70px;
-
-      border-top: 1px solid rgba(255,255,255,.1);
+    .socials {
+      background: var(--black);
     }
 
-    .social-card {
-      min-height: 170px;
+    .social-list {
+      margin-top: 65px;
+      border-top: 1px solid var(--line);
+    }
 
+    .social-link {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-
-      padding: 35px 10px 35px 0;
-
-      border-bottom: 1px solid rgba(255,255,255,.1);
-
-      transition:
-        padding .3s ease,
-        background .3s ease;
+      align-items: center;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding .3s ease;
     }
 
-    .social-card:nth-child(odd) {
-      padding-right: 35px;
-      border-right: 1px solid rgba(255,255,255,.1);
-    }
-
-    .social-card:nth-child(even) {
-      padding-left: 35px;
-    }
-
-    .social-card:hover {
+    .social-link:hover {
       padding-left: 15px;
-      padding-right: 20px;
-      background: rgba(255,255,255,.02);
+      padding-right: 15px;
     }
 
     .social-name {
       font-family: "Archivo Black", sans-serif;
-
       font-size: clamp(30px, 5vw, 70px);
-
       text-transform: uppercase;
-      letter-spacing: -.055em;
-    }
-
-    .social-handle {
-      font-size: 10px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-
-      color: rgba(255,255,255,.35);
+      letter-spacing: -.05em;
     }
 
     .social-arrow {
-      font-size: 24px;
-      color: rgba(255,255,255,.4);
-
-      transition:
-        transform .3s ease,
-        color .3s ease;
-    }
-
-    .social-card:hover .social-arrow {
-      transform: translate(5px,-5px);
-      color: #fff;
+      color: #777;
+      font-size: 20px;
     }
 
     /* =========================
@@ -899,83 +629,153 @@
     ========================= */
 
     .booking {
-      min-height: 80vh;
-
+      background: var(--offwhite);
+      color: #080808;
+      min-height: 65vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      background: #f0f0ee;
-      color: #050505;
+      align-items: center;
     }
 
-    .booking .section-label {
-      color: rgba(0,0,0,.45);
-    }
-
-    .booking .section-label::before {
-      background: rgba(0,0,0,.4);
+    .booking-inner {
+      width: 100%;
     }
 
     .booking-title {
       font-family: "Archivo Black", sans-serif;
-
       font-size: clamp(55px, 10vw, 150px);
-      line-height: .84;
-
+      line-height: .82;
       text-transform: uppercase;
       letter-spacing: -.07em;
+      max-width: 1100px;
+      margin: 25px 0 60px;
     }
 
     .booking-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-
-      gap: 60px;
-
-      margin-top: 75px;
+      gap: 20px;
+      max-width: 800px;
     }
 
-    .booking-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
+    .booking-item {
+      border-top: 1px solid var(--line-dark);
+      padding-top: 18px;
     }
 
     .booking-label {
+      color: #777;
       font-size: 10px;
-      font-weight: 700;
-
-      letter-spacing: .2em;
       text-transform: uppercase;
-
-      color: rgba(0,0,0,.42);
+      letter-spacing: .18em;
+      margin-bottom: 10px;
     }
 
-    .booking-link {
+    .booking-value {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .booking-button {
+      display: inline-flex;
+      margin-top: 45px;
+      padding: 18px 28px;
+      background: #080808;
+      color: #fff;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      transition: transform .3s ease, background .3s ease;
+    }
+
+    .booking-button:hover {
+      transform: translateY(-3px);
+      background: #222;
+    }
+
+    /* =========================
+       TECH RIDER
+    ========================= */
+
+    .tech-rider {
+      background: #090909;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .tech-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+
+    .tech-title {
       font-family: "Archivo Black", sans-serif;
+      font-size: clamp(45px, 7vw, 100px);
+      line-height: .86;
+      text-transform: uppercase;
+      letter-spacing: -.06em;
+      max-width: 900px;
+    }
 
-      font-size: clamp(25px, 3vw, 48px);
-      line-height: 1;
+    .tech-description {
+      color: #777;
+      font-size: 12px;
+      line-height: 1.7;
+      max-width: 250px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
 
+    .tech-product {
+      position: relative;
+      width: 100%;
+      min-height: 460px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      border: 1px solid rgba(255,255,255,.1);
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255,255,255,.055),
+          rgba(255,255,255,0) 65%
+        );
+      overflow: hidden;
+    }
+
+    .tech-product::before {
+      content: "";
+      position: absolute;
+      width: 65%;
+      height: 1px;
+      top: 50%;
+      left: 17.5%;
+      background: rgba(255,255,255,.08);
+    }
+
+    .tech-product img {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 1050px);
+      max-height: 520px;
+      object-fit: contain;
+      filter: drop-shadow(0 25px 35px rgba(0,0,0,.55));
+      transition: transform .7s cubic-bezier(.16,1,.3,1);
+    }
+
+    .tech-product:hover img {
+      transform: scale(1.025);
+    }
+
+    .tech-product-name {
+      margin-top: 25px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: clamp(25px, 4vw, 48px);
+      text-transform: uppercase;
       letter-spacing: -.04em;
-
-      word-break: break-word;
-
-      transition: opacity .25s ease;
-    }
-
-    .booking-link:hover {
-      opacity: .55;
-    }
-
-    .booking-note {
-      max-width: 500px;
-
-      font-size: 14px;
-      line-height: 1.8;
-
-      color: rgba(0,0,0,.55);
     }
 
     /* =========================
@@ -984,76 +784,51 @@
 
     .whatsapp {
       position: fixed;
-
-      right: 25px;
-      bottom: 25px;
-
-      z-index: 5000;
-
-      width: 62px;
-      height: 62px;
-
+      right: 24px;
+      bottom: 24px;
+      z-index: 800;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #f1f1ed;
+      color: #080808;
       display: flex;
       align-items: center;
       justify-content: center;
-
-      border-radius: 50%;
-
-      background: #111;
-      color: #fff;
-
-      border: 1px solid rgba(255,255,255,.18);
-
-      box-shadow:
-        0 15px 40px rgba(0,0,0,.45);
-
-      font-size: 26px;
-
-      transition:
-        transform .3s ease,
-        background .3s ease;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+      transition: transform .3s ease;
     }
 
     .whatsapp:hover {
-      transform: translateY(-5px) scale(1.04);
-      background: #181818;
+      transform: scale(1.08);
+    }
+
+    .whatsapp svg {
+      width: 25px;
+      height: 25px;
     }
 
     .whatsapp-popup {
       position: fixed;
-
-      right: 100px;
-      bottom: 33px;
-
-      z-index: 4999;
-
+      right: 25px;
+      bottom: 94px;
+      z-index: 799;
+      background: #f1f1ed;
+      color: #111;
       padding: 13px 17px;
-
-      background: #111;
-      border: 1px solid rgba(255,255,255,.12);
-
-      color: #fff;
-
       font-size: 11px;
-      font-weight: 600;
-
-      letter-spacing: .04em;
-
+      text-transform: uppercase;
+      letter-spacing: .08em;
       opacity: 0;
-      transform: translateX(15px);
-
+      transform: translateY(10px);
       pointer-events: none;
-
-      transition:
-        opacity .4s ease,
-        transform .4s ease;
-
-      white-space: nowrap;
+      transition: all .35s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
     }
 
     .whatsapp-popup.show {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
 
     /* =========================
@@ -1061,71 +836,95 @@
     ========================= */
 
     footer {
-      padding: 30px 7vw;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
       background: #050505;
-
-      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 55px 7vw 30px;
+      border-top: 1px solid var(--line);
     }
 
-    footer span {
-      font-size: 9px;
-      font-weight: 600;
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      padding-bottom: 80px;
+    }
 
-      letter-spacing: .18em;
+    .footer-logo {
+      width: 180px;
+    }
+
+    .footer-text {
+      color: #666;
+      font-size: 11px;
       text-transform: uppercase;
+      letter-spacing: .12em;
+      line-height: 1.8;
+      text-align: right;
+    }
 
-      color: rgba(255,255,255,.32);
+    .footer-bottom {
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      color: #555;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .15em;
     }
 
     /* =========================
        TABLET
     ========================= */
 
-    @media (max-width: 1000px) {
-
+    @media (max-width: 900px) {
       .topbar {
-        padding: 0 30px;
+        padding: 16px 22px;
       }
 
       .nav-links {
-        gap: 18px;
+        gap: 14px;
+        font-size: 9px;
       }
 
-      .hero {
-        padding-left: 5vw;
-        padding-right: 5vw;
+      section {
+        padding: 90px 6vw;
       }
 
-      .section {
-        padding-left: 5vw;
-        padding-right: 5vw;
+      .about-grid,
+      .music-grid {
+        grid-template-columns: 1fr;
+        gap: 55px;
       }
 
-      .about-grid {
-        gap: 50px;
+      .about-image {
+        max-width: 600px;
       }
 
-      .stats {
+      .stats-grid {
         grid-template-columns: 1fr;
       }
 
       .stat {
-        min-height: 220px;
         border-right: 0;
-        border-bottom: 1px solid rgba(255,255,255,.1);
+        border-bottom: 1px solid var(--line);
       }
 
       .stat:last-child {
         border-bottom: 0;
       }
 
-      .booking-grid {
-        grid-template-columns: 1fr;
+      .event {
+        grid-template-columns: 55px 1fr 1fr;
+      }
+
+      .tech-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .tech-product {
+        min-height: 350px;
       }
     }
 
@@ -1133,11 +932,14 @@
        MOBILE
     ========================= */
 
-    @media (max-width: 700px) {
+    @media (max-width: 600px) {
+      .intro-logo {
+        width: 280px;
+        max-width: 82vw;
+      }
 
       .topbar {
-        height: 72px;
-        padding: 0 20px;
+        padding: 14px 18px;
       }
 
       .nav-logo {
@@ -1145,227 +947,115 @@
       }
 
       .nav-links {
-        gap: 12px;
-      }
-
-      .nav-links a {
+        gap: 10px;
         font-size: 8px;
-        letter-spacing: .12em;
+        letter-spacing: .1em;
       }
 
-      .nav-links a:nth-child(n+4) {
+      .nav-links a:nth-child(3),
+      .nav-links a:nth-child(4) {
         display: none;
       }
 
-      .intro-logo {
-        width: 280px;
-        max-width: 82vw;
+      section {
+        padding: 75px 6vw;
       }
 
-      .hero {
-        min-height: 100svh;
-
-        padding:
-          115px
-          22px
-          45px;
-      }
-
-      .hero-photo {
-        background-position: 62% center;
-      }
-
-      .hero-top {
-        margin-bottom: 40px;
+      .hero-content {
+        padding: 130px 6vw 45px;
       }
 
       .hero-logo {
         width: 185px;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
       }
 
       .hero-title {
-        font-size: clamp(64px, 20vw, 110px);
+        font-size: clamp(54px, 18vw, 100px);
       }
 
       .hero-bottom {
-        flex-direction: column;
+        margin-top: 40px;
         align-items: flex-start;
-
-        gap: 35px;
-
-        margin-top: 45px;
-      }
-
-      .hero-description {
-        font-size: 12px;
-        line-height: 1.7;
-        max-width: 340px;
-      }
-
-      .section {
-        padding:
-          95px
-          22px;
-      }
-
-      .section-label {
-        margin-bottom: 30px;
-        font-size: 8px;
-      }
-
-      .section-title {
-        font-size: clamp(45px, 15vw, 80px);
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .about-photo {
-        aspect-ratio: 1 / 1.12;
-      }
-
-      .about-copy h2 {
-        font-size: 45px;
-        margin-bottom: 30px;
+        flex-direction: column;
+        gap: 20px;
       }
 
       .about-copy p {
-        font-size: 14px;
-        line-height: 1.8;
+        font-size: 15px;
       }
 
-      .music-header {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-head {
         flex-direction: column;
         align-items: flex-start;
-        margin-bottom: 45px;
       }
 
-      .spotify-box iframe {
-        height: 352px;
-      }
-
-      .stat {
-        min-height: 190px;
-        padding: 35px 0;
-      }
-
-      .stat-number {
-        font-size: 60px;
-      }
-
-      .experience-list {
-        margin-top: 50px;
-      }
-
-      .experience-item {
-        grid-template-columns: 38px 1fr;
-        min-height: 100px;
+      .event {
+        grid-template-columns: 35px 1fr;
         gap: 10px;
+        padding: 22px 0;
       }
 
       .event-place {
         grid-column: 2;
-        justify-self: start;
-
-        margin-top: -25px;
-
-        font-size: 8px;
         text-align: left;
+        margin-top: -3px;
       }
 
       .event-name {
-        font-size: 30px;
-      }
-
-      .gallery {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 8px;
-        margin-top: 45px;
-      }
-
-      .gallery-item,
-      .gallery-item:nth-child(1),
-      .gallery-item:nth-child(2),
-      .gallery-item:nth-child(3),
-      .gallery-item:nth-child(4) {
-        grid-column: span 1;
-      }
-
-      .gallery-item img {
-        min-height: 360px;
-      }
-
-      .social-grid {
-        grid-template-columns: 1fr;
-        margin-top: 45px;
-      }
-
-      .social-card,
-      .social-card:nth-child(odd),
-      .social-card:nth-child(even) {
-        min-height: 120px;
-
-        padding:
-          25px
-          0;
-
-        border-right: 0;
-      }
-
-      .social-name {
-        font-size: 42px;
-      }
-
-      .social-handle {
-        display: none;
-      }
-
-      .booking {
-        min-height: auto;
-      }
-
-      .booking-title {
-        font-size: 60px;
+        font-size: 27px;
       }
 
       .booking-grid {
-        gap: 45px;
-        margin-top: 55px;
+        grid-template-columns: 1fr;
       }
 
-      .booking-link {
-        font-size: 25px;
+      .booking-title {
+        font-size: 17vw;
       }
 
-      footer {
-        padding: 25px 22px;
+      .tech-product {
+        min-height: 250px;
+        padding: 15px;
+      }
 
-        flex-direction: column;
-        align-items: flex-start;
+      .tech-product img {
+        width: 100%;
+      }
 
-        gap: 10px;
+      .tech-product-name {
+        font-size: 28px;
       }
 
       .whatsapp {
         right: 18px;
         bottom: 18px;
-
-        width: 57px;
-        height: 57px;
+        width: 54px;
+        height: 54px;
       }
 
       .whatsapp-popup {
-        right: 85px;
-        bottom: 28px;
+        right: 18px;
+        bottom: 84px;
+        max-width: 230px;
+      }
 
-        max-width: 210px;
+      .footer-top {
+        flex-direction: column;
+        padding-bottom: 50px;
+      }
 
-        white-space: normal;
+      .footer-text {
+        text-align: left;
+      }
 
-        font-size: 10px;
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
       }
     }
   </style>
@@ -1375,235 +1065,216 @@
 
   <!-- =========================
        INTRO
-  ========================== -->
+  ========================= -->
 
   <div class="intro" id="intro">
-
-    <!-- NUEVO LOGO SOLO PARA LA INTRO -->
     <img
-      class="intro-logo"
       src="./intro-logo.png"
       alt="Nahuel Kinder"
+      class="intro-logo"
     />
-
   </div>
 
   <div class="grain"></div>
 
   <!-- =========================
-       HEADER
-  ========================== -->
+       NAV
+  ========================= -->
 
   <header class="topbar">
-
-    <!-- LOGO ORIGINAL -->
-    <a href="#inicio">
+    <a href="#top">
       <img
-        class="nav-logo"
         src="./nahuel%20kinder%20png%20logo.png"
         alt="Nahuel Kinder"
+        class="nav-logo"
       />
     </a>
 
     <nav class="nav-links">
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#musica">Música</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#media">Media</a>
+      <a href="#about">Bio</a>
+      <a href="#music">Music</a>
+      <a href="#experience">Shows</a>
       <a href="#booking">Booking</a>
+      <a href="#tech-rider">Rider</a>
     </nav>
-
   </header>
 
+  <main id="top">
 
-  <!-- =========================
-       HERO
-  ========================== -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
-  <main>
+    <section class="hero">
 
-    <section class="hero" id="inicio">
+      <img
+        src="./main-photo.jpg"
+        alt="Nahuel Kinder"
+        class="hero-bg"
+        id="heroBg"
+      />
 
-      <div class="hero-photo" id="heroPhoto"></div>
+      <div class="hero-overlay"></div>
 
       <div class="hero-content">
 
-        <div class="hero-top">
-
-          <div class="hero-location">
-            Argentina
-          </div>
-
-          <div class="hero-number">
-            001 / PRESS KIT
-          </div>
-
-        </div>
-
-
-        <!-- LOGO ORIGINAL -->
         <img
-          class="hero-logo"
           src="./nahuel%20kinder%20png%20logo.png"
           alt="Nahuel Kinder"
+          class="hero-logo reveal"
         />
 
+        <div class="hero-kicker reveal">
+          DJ · Remixer · Producer · Open Format
+        </div>
 
-        <h1 class="hero-title">
-          Nahuel<br>
+        <h1 class="hero-title reveal">
+          Nahuel<br />
           Kinder
         </h1>
 
-
-        <div class="hero-bottom">
-
-          <p class="hero-description">
-            DJ / PRODUCTOR · OPEN FORMAT<br>
-            REMIXER · ARGENTINA
-          </p>
-
-          <div class="scroll-indicator">
-            <span class="scroll-line"></span>
-            Scroll para explorar
+        <div class="hero-bottom reveal">
+          <div class="hero-location">
+            Argentina · DJ Press Kit
           </div>
 
+          <div class="scroll-label">
+            Scroll to explore ↓
+          </div>
         </div>
 
       </div>
-
     </section>
-
 
     <!-- =========================
          MARQUEE
-    ========================== -->
+    ========================= -->
 
     <div class="marquee">
-
       <div class="marquee-track">
+        <span>DJ</span>
+        <span>Remixer</span>
+        <span>Producer</span>
+        <span>Open Format</span>
+        <span>Argentina</span>
 
-        <span>DJ · PRODUCTOR · OPEN FORMAT · REMIXER ·</span>
-        <span>DJ · PRODUCTOR · OPEN FORMAT · REMIXER ·</span>
-        <span>DJ · PRODUCTOR · OPEN FORMAT · REMIXER ·</span>
-        <span>DJ · PRODUCTOR · OPEN FORMAT · REMIXER ·</span>
-
+        <span>DJ</span>
+        <span>Remixer</span>
+        <span>Producer</span>
+        <span>Open Format</span>
+        <span>Argentina</span>
       </div>
-
     </div>
 
-
     <!-- =========================
-         SOBRE MI
-    ========================== -->
+         ABOUT
+    ========================= -->
 
-    <section class="section" id="sobre-mi">
+    <section class="about" id="about">
 
-      <div class="section-label reveal">
-        01 / Sobre mí
+      <div class="section-number reveal">
+        01 / About
       </div>
 
       <div class="about-grid">
 
-        <div class="about-photo-wrap reveal">
-
+        <div class="reveal">
           <img
-            class="about-photo"
             src="./about-photo.jpg"
             alt="Nahuel Kinder"
+            class="about-image"
           />
-
         </div>
-
 
         <div class="about-copy reveal">
 
+          <div class="eyebrow">
+            Nahuel Kinderknecht
+          </div>
+
           <h2>
-            DJ.<br>
-            PRODUCTOR.<br>
-            REMIXER.
+            DJ / Productor
           </h2>
 
           <p>
-            Nahuel Kinderknecht, destacado DJ/Productor Open Format Argentino y artista de @soulmusikrecords, con una avalada trayectoria en su país 🇦🇷.
+            Nahuel Kinderknecht, destacado DJ/Productor Open Format Argentino
+            y artista de @soulmusikrecords, con una avalada trayectoria en su
+            país 🇦🇷. Actualmente tocando y produciendo remix, solo y con
+            distintos artistas reconocidos del rubro. Su música y producciones
+            lograron superar las 2.000.000 de reproducciones en plataformas
+            digitales.
           </p>
-
-          <p>
-            Actualmente tocando y produciendo remix, solo y con distintos artistas reconocidos del rubro. Su música y producciones lograron superar las 2.000.000 de reproducciones en plataformas digitales.
-          </p>
-
-          <div class="about-signature">
-            NAHUEL KINDER
-          </div>
 
         </div>
 
       </div>
-
     </section>
 
-
     <!-- =========================
-         MUSICA
-    ========================== -->
+         MUSIC
+    ========================= -->
 
-    <section class="section music-section" id="musica">
+    <section class="music" id="music">
 
-      <div class="section-label reveal">
-        02 / Música
+      <div class="section-number reveal">
+        02 / Music
       </div>
 
-      <div class="music-header">
+      <div class="music-grid">
 
-        <h2 class="section-title reveal">
-          Escuchá<br>
-          mi música
-        </h2>
+        <div class="reveal">
 
-        <p class="music-description reveal">
-          Producciones, remixes y música seleccionada.
-          Descubrí el sonido de Nahuel Kinder en plataformas digitales.
-        </p>
+          <div class="eyebrow">
+            Selected release
+          </div>
+
+          <h2 class="music-title">
+            Music<br />
+            & Remixes
+          </h2>
+
+          <p class="music-copy">
+            Escuchá música y producciones de Nahuel Kinder en Spotify.
+          </p>
+
+          <a
+            href="https://open.spotify.com/intl-es/artist/6BHzE0aDmQphuuaDTkfJtu?si=ciqs4476SbGrGxKes0zyWw"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="spotify-link"
+          >
+            Ver artista en Spotify ↗
+          </a>
+
+        </div>
+
+        <div class="reveal">
+
+          <iframe
+            class="spotify-frame"
+            src="https://open.spotify.com/embed/track/2XkaQhLNsaWKJkosmUEk95?utm_source=generator&theme=0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+
+        </div>
 
       </div>
-
-
-      <div class="spotify-box reveal">
-
-        <iframe
-          src="https://open.spotify.com/embed/track/2XkaQhLNsaWKJkosmUEk95?utm_source=generator&theme=0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy">
-        </iframe>
-
-      </div>
-
-
-      <a
-        class="spotify-link"
-        href="https://open.spotify.com/intl-es/artist/6BHzE0aDmQphuuaDTkfJtu?si=ciqs4476SbGrGxKes0zyWw"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Ver artista en Spotify →
-      </a>
-
     </section>
 
-
     <!-- =========================
-         ESTADISTICAS
-    ========================== -->
+         STATS
+    ========================= -->
 
-    <section class="section">
+    <section class="stats">
 
-      <div class="section-label reveal">
-        03 / Números
+      <div class="section-number reveal">
+        03 / Numbers
       </div>
 
-      <div class="stats reveal">
+      <div class="stats-grid reveal">
 
         <div class="stat">
-
           <div class="stat-number">
             +180K
           </div>
@@ -1611,12 +1282,9 @@
           <div class="stat-label">
             Oyentes mensuales
           </div>
-
         </div>
 
-
         <div class="stat">
-
           <div class="stat-number">
             +2M
           </div>
@@ -1624,12 +1292,9 @@
           <div class="stat-label">
             Reproducciones
           </div>
-
         </div>
 
-
         <div class="stat">
-
           <div class="stat-number">
             ARG
           </div>
@@ -1637,597 +1302,441 @@
           <div class="stat-label">
             Argentina
           </div>
-
         </div>
 
       </div>
-
     </section>
-
 
     <!-- =========================
-         EXPERIENCIA
-    ========================== -->
+         EXPERIENCE
+    ========================= -->
 
-    <section class="section" id="experiencia">
+    <section class="experience" id="experience">
 
-      <div class="section-label reveal">
-        04 / Experiencia
+      <div class="section-number reveal">
+        04 / Experience
       </div>
 
-      <h2 class="section-title reveal">
-        Ciudades<br>
-        y escenarios
-      </h2>
+      <div class="experience-head">
 
+        <h2 class="section-title reveal">
+          Ciudades<br />
+          y escenarios
+        </h2>
 
-      <div class="experience-list reveal">
-
-
-        <div class="experience-item">
-
-          <div class="event-number">
-            01
-          </div>
-
-          <div class="event-name">
-            Buenos Aires
-          </div>
-
-          <div class="event-place">
-            Podestá · Palermo Soho
-          </div>
-
-        </div>
-
-
-        <div class="experience-item">
-
-          <div class="event-number">
-            02
-          </div>
-
-          <div class="event-name">
-            Rosario
-          </div>
-
-          <div class="event-place">
-            Bound
-          </div>
-
-        </div>
-
-
-        <div class="experience-item">
-
-          <div class="event-number">
-            03
-          </div>
-
-          <div class="event-name">
-            Rosario
-          </div>
-
-          <div class="event-place">
-            La Isla
-          </div>
-
-        </div>
-
-
-        <div class="experience-item">
-
-          <div class="event-number">
-            04
-          </div>
-
-          <div class="event-name">
-            Concordia
-          </div>
-
-          <div class="event-place">
-            Bonzo Costanera
-          </div>
-
-        </div>
-
-
-        <div class="experience-item">
-
-          <div class="event-number">
-            05
-          </div>
-
-          <div class="event-name">
-            Villaguay
-          </div>
-
-          <div class="event-place">
-            Santo Grial
-          </div>
-
-        </div>
-
-
-        <div class="experience-item">
-
-          <div class="event-number">
-            06
-          </div>
-
-          <div class="event-name">
-            Villaguay
-          </div>
-
-          <div class="event-place">
-            Navidad
-          </div>
-
-        </div>
-
-
-        <div class="experience-item">
-
-          <div class="event-number">
-            07
-          </div>
-
-          <div class="event-name">
-            San Salvador
-          </div>
-
-          <div class="event-place">
-            Entre Ríos
-          </div>
-
-        </div>
-
-
-        <div class="experience-item">
-
-          <div class="event-number">
-            08
-          </div>
-
-          <div class="event-name">
-            Villa Clara
-          </div>
-
-          <div class="event-place">
-            Entre Ríos
-          </div>
-
-        </div>
-
-
-        <div class="experience-item">
-
-          <div class="event-number">
-            09
-          </div>
-
-          <div class="event-name">
-            Villa Elisa
-          </div>
-
-          <div class="event-place">
-            Entre Ríos
-          </div>
-
-        </div>
+        <p class="experience-subtitle reveal">
+          Presentaciones y escenarios en distintas ciudades de Argentina.
+        </p>
 
       </div>
 
+      <div class="event-list">
+
+        <div class="event reveal">
+          <div class="event-number">01</div>
+          <div class="event-name">Buenos Aires</div>
+          <div class="event-place">Podestá · Palermo Soho</div>
+        </div>
+
+        <div class="event reveal">
+          <div class="event-number">02</div>
+          <div class="event-name">Rosario</div>
+          <div class="event-place">Bound</div>
+        </div>
+
+        <div class="event reveal">
+          <div class="event-number">03</div>
+          <div class="event-name">Rosario</div>
+          <div class="event-place">La Isla</div>
+        </div>
+
+        <div class="event reveal">
+          <div class="event-number">04</div>
+          <div class="event-name">Concordia</div>
+          <div class="event-place">Bonzo Costanera</div>
+        </div>
+
+        <div class="event reveal">
+          <div class="event-number">05</div>
+          <div class="event-name">Villaguay</div>
+          <div class="event-place">Santo Grial</div>
+        </div>
+
+        <div class="event reveal">
+          <div class="event-number">06</div>
+          <div class="event-name">Villaguay</div>
+          <div class="event-place">Navidad</div>
+        </div>
+
+        <div class="event reveal">
+          <div class="event-number">07</div>
+          <div class="event-name">San Salvador</div>
+          <div class="event-place">Entre Ríos</div>
+        </div>
+
+        <div class="event reveal">
+          <div class="event-number">08</div>
+          <div class="event-name">Villa Clara</div>
+          <div class="event-place">Entre Ríos</div>
+        </div>
+
+        <div class="event reveal">
+          <div class="event-number">09</div>
+          <div class="event-name">Villa Elisa</div>
+          <div class="event-place">Entre Ríos</div>
+        </div>
+
+      </div>
     </section>
-
 
     <!-- =========================
          MEDIA
-    ========================== -->
+    ========================= -->
 
-    <section class="section media-section" id="media">
+    <section class="media">
 
-      <div class="section-label reveal">
+      <div class="section-number reveal">
         05 / Media
       </div>
 
       <h2 class="section-title reveal">
-        Visual<br>
-        archive
+        Gallery
       </h2>
-
 
       <div class="gallery">
 
-
         <div class="gallery-item reveal">
-
           <img
             src="./gallery-01.jpg"
-            alt="Nahuel Kinder — Gallery 01"
+            alt="Nahuel Kinder"
             loading="lazy"
           />
-
         </div>
 
-
         <div class="gallery-item reveal">
-
           <img
             src="./gallery-02.jpg"
-            alt="Nahuel Kinder — Gallery 02"
+            alt="Nahuel Kinder"
             loading="lazy"
           />
-
         </div>
 
-
         <div class="gallery-item reveal">
-
           <img
             src="./gallery-03.jpg"
-            alt="Nahuel Kinder — Gallery 03"
+            alt="Nahuel Kinder"
             loading="lazy"
           />
-
         </div>
 
-
         <div class="gallery-item reveal">
-
           <img
             src="./gallery-04.jpg"
-            alt="Nahuel Kinder — Gallery 04"
+            alt="Nahuel Kinder"
             loading="lazy"
           />
-
         </div>
 
       </div>
-
     </section>
 
-
     <!-- =========================
-         REDES
-    ========================== -->
+         SOCIALS
+    ========================= -->
 
-    <section class="section">
+    <section class="socials">
 
-      <div class="section-label reveal">
-        06 / Redes
+      <div class="section-number reveal">
+        06 / Connect
       </div>
 
       <h2 class="section-title reveal">
-        Follow<br>
-        the sound
+        Follow
       </h2>
 
-
-      <div class="social-grid reveal">
-
+      <div class="social-list">
 
         <a
-          class="social-card"
           href="https://www.instagram.com/nahuelkinderknecht/"
           target="_blank"
           rel="noopener noreferrer"
+          class="social-link reveal"
         >
-
-          <div>
-
-            <div class="social-name">
-              Instagram
-            </div>
-
-            <div class="social-handle">
-              @nahuelkinderknecht
-            </div>
-
-          </div>
-
-          <div class="social-arrow">
-            ↗
-          </div>
-
+          <span class="social-name">Instagram</span>
+          <span class="social-arrow">↗</span>
         </a>
 
-
         <a
-          class="social-card"
           href="https://open.spotify.com/intl-es/artist/6BHzE0aDmQphuuaDTkfJtu?si=ciqs4476SbGrGxKes0zyWw"
           target="_blank"
           rel="noopener noreferrer"
+          class="social-link reveal"
         >
-
-          <div>
-
-            <div class="social-name">
-              Spotify
-            </div>
-
-            <div class="social-handle">
-              Nahuel Kinder
-            </div>
-
-          </div>
-
-          <div class="social-arrow">
-            ↗
-          </div>
-
+          <span class="social-name">Spotify</span>
+          <span class="social-arrow">↗</span>
         </a>
 
-
         <a
-          class="social-card"
           href="https://www.youtube.com/@nahuelkinder"
           target="_blank"
           rel="noopener noreferrer"
+          class="social-link reveal"
         >
-
-          <div>
-
-            <div class="social-name">
-              YouTube
-            </div>
-
-            <div class="social-handle">
-              @nahuelkinder
-            </div>
-
-          </div>
-
-          <div class="social-arrow">
-            ↗
-          </div>
-
+          <span class="social-name">YouTube</span>
+          <span class="social-arrow">↗</span>
         </a>
 
-
         <a
-          class="social-card"
           href="https://www.tiktok.com/@nahuelkin_"
           target="_blank"
           rel="noopener noreferrer"
+          class="social-link reveal"
         >
-
-          <div>
-
-            <div class="social-name">
-              TikTok
-            </div>
-
-            <div class="social-handle">
-              @nahuelkin_
-            </div>
-
-          </div>
-
-          <div class="social-arrow">
-            ↗
-          </div>
-
+          <span class="social-name">TikTok</span>
+          <span class="social-arrow">↗</span>
         </a>
 
       </div>
-
     </section>
-
 
     <!-- =========================
          BOOKING
-    ========================== -->
+    ========================= -->
 
-    <section class="section booking" id="booking">
+    <section class="booking" id="booking">
 
-      <div class="section-label reveal">
-        07 / Booking
+      <div class="booking-inner">
+
+        <div class="section-number reveal">
+          07 / Booking
+        </div>
+
+        <h2 class="booking-title reveal">
+          Let's<br />
+          work
+        </h2>
+
+        <div class="booking-grid">
+
+          <div class="booking-item reveal">
+            <div class="booking-label">
+              Email
+            </div>
+
+            <div class="booking-value">
+              Nahuelkinder@gmail.com
+            </div>
+          </div>
+
+          <div class="booking-item reveal">
+            <div class="booking-label">
+              WhatsApp
+            </div>
+
+            <div class="booking-value">
+              +54 9 345 414 1714
+            </div>
+          </div>
+
+        </div>
+
+        <a
+          href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="booking-button reveal"
+        >
+          Consultar fecha ↗
+        </a>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         TECH RIDER
+    ========================= -->
+
+    <section class="tech-rider" id="tech-rider">
+
+      <div class="section-number reveal">
+        08 / Tech Rider
       </div>
 
-      <h2 class="booking-title reveal">
-        Contratá<br>
-        a Nahuel
-      </h2>
+      <div class="tech-head">
 
+        <h2 class="tech-title reveal">
+          Pioneer<br />
+          DDJ-FLX10
+        </h2>
 
-      <div class="booking-grid">
+        <p class="tech-description reveal">
+          Equipment requerido para la presentación.
+        </p>
 
+      </div>
 
-        <div class="booking-contact reveal">
+      <div class="tech-product reveal">
 
-          <div class="booking-label">
-            Email
-          </div>
+        <img
+          src="./ddj-flx10.png"
+          alt="Pioneer DDJ-FLX10"
+          loading="lazy"
+        />
 
-          <a
-            class="booking-link"
-            href="mailto:Nahuelkinder@gmail.com"
-          >
-            Nahuelkinder@gmail.com
-          </a>
+      </div>
 
-        </div>
-
-
-        <div class="booking-contact reveal">
-
-          <div class="booking-label">
-            WhatsApp
-          </div>
-
-          <a
-            class="booking-link"
-            href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            +54 345 414-1714
-          </a>
-
-          <p class="booking-note">
-            Consultas por fechas, eventos, bookings,
-            presentaciones y contrataciones.
-          </p>
-
-        </div>
-
+      <div class="tech-product-name reveal">
+        PIONEER DDJ-FLX10
       </div>
 
     </section>
 
   </main>
 
-
   <!-- =========================
        WHATSAPP
-  ========================== -->
+  ========================= -->
 
   <div class="whatsapp-popup" id="whatsappPopup">
     Contratá a Nahuel Kinder por acá!
   </div>
 
   <a
-    class="whatsapp"
     href="https://wa.me/543454141714?text=Hola%20Nahuel!%20Quisiera%20consultar%20por%20una%20fecha%20para%20contratarte."
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Contactar a Nahuel Kinder por WhatsApp"
+    class="whatsapp"
+    aria-label="Contactar por WhatsApp"
   >
-    ✆
-  </a>
 
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L4 20l1.1-4.1A8.5 8.5 0 1 1 21 11.5Z"></path>
+      <path d="M8.7 8.7c.2-.5.4-.5.7-.5h.5c.2 0 .4.1.5.4l.6 1.4c.1.2.1.4-.1.6l-.5.6c-.1.1-.1.3 0 .5.3.6 1.1 1.7 2.6 2.3.2.1.4.1.5-.1l.6-.7c.2-.2.4-.2.6-.1l1.4.7c.2.1.3.3.2.6-.2.8-.9 1.4-1.7 1.5-.5.1-1.1 0-1.7-.2-1-.4-2.2-1.1-3.2-2.1-1-1-1.7-2.2-2-3.2-.2-.7-.2-1.3 0-1.7Z"></path>
+    </svg>
+
+  </a>
 
   <!-- =========================
        FOOTER
-  ========================== -->
+  ========================= -->
 
   <footer>
 
-    <span>
-      © 2026 Nahuel Kinder
-    </span>
+    <div class="footer-top">
 
-    <span>
-      Press Kit Oficial
-    </span>
+      <img
+        src="./nahuel%20kinder%20png%20logo.png"
+        alt="Nahuel Kinder"
+        class="footer-logo"
+      />
+
+      <div class="footer-text">
+        DJ · Remixer · Producer · Open Format<br />
+        Argentina
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Nahuel Kinder</span>
+      <span>Press Kit Oficial</span>
+    </div>
 
   </footer>
 
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
-
   <script>
-
     /* =========================
        INTRO
-    ========================== */
+    ========================= */
 
-    const intro = document.getElementById("intro");
+    document.addEventListener("DOMContentLoaded", () => {
 
-    setTimeout(() => {
+      const intro = document.getElementById("intro");
 
-      intro.classList.add("hide");
-
-      document.body.classList.remove("intro-active");
-
-    }, 3300);
-
-
-    /* =========================
-       SCROLL REVEAL
-    ========================== */
-
-    const revealElements =
-      document.querySelectorAll(".reveal");
-
-    const revealObserver =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach((entry) => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add("visible");
-
-              revealObserver.unobserve(entry.target);
-
-            }
-
-          });
-
-        },
-        {
-          threshold: .12
-        }
-      );
-
-
-    revealElements.forEach((element) => {
-
-      revealObserver.observe(element);
+      setTimeout(() => {
+        intro.classList.add("hidden");
+        document.body.classList.remove("intro-active");
+      }, 3300);
 
     });
 
 
     /* =========================
-       HERO PARALLAX
-    ========================== */
+       SCROLL REVEAL
+    ========================= */
 
-    const heroPhoto =
-      document.getElementById("heroPhoto");
+    const revealElements = document.querySelectorAll(".reveal");
 
-    window.addEventListener(
-      "scroll",
-      () => {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
 
-        const scroll =
-          window.scrollY;
+        entries.forEach((entry) => {
 
-        if (scroll < window.innerHeight) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
 
-          heroPhoto.style.transform =
-            `scale(1.04) translateY(${scroll * 0.12}px)`;
-
-        }
+        });
 
       },
-      { passive: true }
+      {
+        threshold: 0.12
+      }
     );
+
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
+    });
 
 
     /* =========================
        WHATSAPP POPUP
-    ========================== */
+    ========================= */
 
     const whatsappPopup =
       document.getElementById("whatsappPopup");
 
-
-    function showWhatsappPopup() {
+    function showWhatsAppPopup() {
 
       whatsappPopup.classList.add("show");
 
       setTimeout(() => {
-
         whatsappPopup.classList.remove("show");
-
       }, 4500);
 
     }
 
+    setTimeout(showWhatsAppPopup, 6000);
 
-    setTimeout(showWhatsappPopup, 6000);
+    setInterval(showWhatsAppPopup, 15000);
 
 
-    setInterval(
-      showWhatsappPopup,
-      15000
-    );
+    /* =========================
+       HERO PARALLAX
+    ========================= */
 
+    const heroBg = document.getElementById("heroBg");
+
+    window.addEventListener("scroll", () => {
+
+      if (!heroBg) return;
+
+      const scrollY = window.scrollY;
+
+      if (scrollY < window.innerHeight) {
+        heroBg.style.transform =
+          `scale(1.05) translateY(${scrollY * 0.08}px)`;
+      }
+
+    });
   </script>
 
 </body>
